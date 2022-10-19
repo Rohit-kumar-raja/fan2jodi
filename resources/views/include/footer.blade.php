@@ -1,10 +1,10 @@
 <!-- Start Footer Area -->
-        <footer class="footer-area bg-1b060a ptb-70 fixed">
+        <footer class="footer-area bg-1b060a ptb-70 fixed footer">
             <div class="container">
                 <div class="footer-content">
                     <div class="logo">
-                        <a href="#" class="d-inline-block"><img src="{{url('img/logo.png')}}" alt="image"></a>
-                        <p>© Cricket Superstar is Proudly Owned by <a href="" target="_blank">EnvyTheme</a></p>
+                        <a href="#" class="d-inline-block"><img width="100px" class="logo"src="{{url('img/logo.png')}}" alt="image"></a>
+                        <p>Copyright©{{ date('Y')}} Fan2Jodi Powered by <a href="" target="_blank">TogoTeams</a></p>
                         {{-- <ul class="footer-menu">
                             <li class="nav-item"><a class="nav-link" href="#">Legal</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Terms of Use</a></li>

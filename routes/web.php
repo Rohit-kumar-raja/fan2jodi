@@ -1,18 +1,11 @@
 <?php
 
+use App\Http\Controllers\ContestController;
+use App\Http\Controllers\indexController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
+Route::get('/', [indexController::class,'index'])->name('home');
 
 
 Route::get('register', function() {
@@ -36,14 +29,12 @@ Route::get('add_cash', function() {
 Route::get('account', function() {
     return view('account');})->name('account');
 
-Route::get('contest', function() {
-    return view('contest');})->name('contest');
+Route::get('contest/{matche_id}', [ContestController::class,'index'])->name('contest');
 
 Route::get('game', function() {
     return view('game');})->name('game');
 
-Route::get('/', function() {
-    return view('battle');})->name('home');
+
         
 Route::get('list', function() {
     return view('list');})->name('list');

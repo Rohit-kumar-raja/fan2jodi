@@ -5,72 +5,30 @@
 
         <!-- Start Main Banner Area -->
         <div class="home-slides owl-carousel owl-theme">
-            <div class="single-banner-item banner-bg1 jarallax" data-jarallax='{"speed": 0.3}'>
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-12">
-                            <div class="main-banner-content">
-                                <div class="logo">
-                                    {{-- <img src="{{asset('img/zelda.png')}}" alt="image"> --}}
-                                </div>
-                            </div>
-                        </div>
+            @foreach ($sliders as $slider)
+                <div style="background-image: url('{{ env('IMG_URL') . 'slider/' . $slider->image_name }}');"
+                    class="single-banner-item  jarallax" data-jarallax='{"speed": 0.3}'>
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5 col-md-12">
+                                <div class="main-banner-content">
+                                    <div class="logo">
 
-                        <div class="col-lg-7 col-md-12">
-                            <div class="main-banner-image">
-                                {{-- <img src="assets/img/banner-img1.png" alt="image"> --}}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
 
-            <div class="single-banner-item banner-bg2 jarallax" data-jarallax='{"speed": 0.3}'>
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-12">
-                            <div class="main-banner-content">
-                                <div class="logo">
-                                    {{-- <img src="{{asset('img/zelda.png')}}" alt="image"> --}}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-7 col-md-12">
-                            <div class="main-banner-image">
-                                {{-- <img src="assets/img/banner-img1.png" alt="image"> --}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="single-banner-item banner-bg3 jarallax" data-jarallax='{"speed": 0.3}'>
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-12">
-                            <div class="main-banner-content">
-                                <div class="logo">
-                                    {{-- <img src="{{asset('img/zelda.png')}}" alt="image"> --}}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-7 col-md-12">
-                            <div class="main-banner-image">
-                                {{-- <img src="assets/img/banner-img1.png" alt="image"> --}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
         </div>
-      
+
 
         <!-- Start Products Details Area -->
-        <section class="products-details-area white-bg">
+        <section class="products-details-area  bg-red ">
             <div class="container">
                 <div class="row align-items-center">
 
@@ -84,83 +42,83 @@
                                         href="#reviews" role="tab" aria-controls="reviews">Finished</a></li>
                             </ul>
 
-                            <div class="tab-content" id="myTabContent">
+                            <div class="tab-content " id="myTabContent">
                                 <div class="tab-pane fade show active" id="description" role="tabpanel">
                                     <div class="single-matches-box">
                                         <div class="row align-items-center">
-                                            <div class="col-lg-12 col-md-12">
-                                                {{-- <img src="{{asset('img/team1.png')}}" class="wow animate__animated animate__fadeInLeft" data-wow-delay="00ms" data-wow-duration="1500ms" alt="image"> --}}
-                                                <div class="flex-container mt--10">
-                                                    <div class="flex-child c1">
-                                                        <img src="{{ asset('img/t1.png') }}" alt="image">
-                                                    </div>
-                                                    <div class="flex-child c2">
-                                                        <div class="content blue-bg text-center">
-                                                            <h3 class="text-white mb-0">SA vs SL T20</h3>
-                                                            <div id="timer" class="flex-wrap d-flex justify-content-center text-white">
-                                                                <div id="days" class="align-items-center flex-column d-flex justify-content-center"></div>D &nbsp;
-                                                                <div id="hours" class="align-items-center flex-column d-flex justify-content-center"></div>H &nbsp;
-                                                                <div id="minutes" class="align-items-center flex-column d-flex justify-content-center"></div>M &nbsp;
-                                                                <div id="seconds" class="align-items-center flex-column d-flex justify-content-center"></div>S &nbsp;
+
+                                            @foreach ($data as $battel)
+                                                <div class="col-lg-12 col-md-12">
+                                                    <a href="{{ route('contest',$battel->id) }}"
+                                                        class="flex-container  border border-2 bg-gray10">
+                                                        <div class="flex-child c1">
+                                                            <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamoneimg }}"
+                                                                alt="image">
+                                                        </div>
+
+                                                        <div class="flex-child c2 p-2">
+                                                            <div class="content blue-bg text-center p-2">
+                                                                <h3 class="text-white mb-0">{{ $battel->teamone }} vs
+                                                                    {{ $battel->teamtwo }}</h3>
+                                                                <div id="timer"
+                                                                    class="flex-wrap d-flex justify-content-center text-white">
+                                                                    <div id="demo{{$loop->iteration}}"
+                                                                        class="align-items-center flex-column d-flex justify-content-center">
+                                                                        20D 20H 10
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="flex-child c3">
-                                                        <img src="{{ asset('img/t2.png') }}" alt="image">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-md-12">
-                                                {{-- <img src="{{asset('img/team1.png')}}" class="wow animate__animated animate__fadeInLeft" data-wow-delay="00ms" data-wow-duration="1500ms" alt="image"> --}}
-                                                <div class="flex-container mt--10">
-                                                    <div class="flex-child c1">
-                                                        <img src="{{ asset('img/t3.png') }}" alt="image">
-                                                    </div>
-                                                    <div class="flex-child c2">
-                                                        <div class="content blue-bg text-center">
-                                                            <h3 class="text-white">ENG vs IND TEST</h3>
-                                                            <div id="timer" class="flex-wrap d-flex justify-content-center text-white">
-                                                                <div id="days" class="align-items-center flex-column d-flex justify-content-center"></div>
-                                                                <div id="hours" class="align-items-center flex-column d-flex justify-content-center"></div>
-                                                                <div id="minutes" class="align-items-center flex-column d-flex justify-content-center"></div>
-                                                                <div id="seconds" class="align-items-center flex-column d-flex justify-content-center"></div>
-                                                            </div>
+                                                        <div class="flex-child c3 ms-3">
+                                                            <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamtwoimg }}"
+                                                                alt="image">
                                                         </div>
-                                                    </div>
-                                                    <div class="flex-child c3">
-                                                        <img src="{{ asset('img/t8.png') }}" alt="image">
-                                                    </div>
+                                                    </a>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-12 col-md-12">
-                                                {{-- <img src="{{asset('img/team1.png')}}" class="wow animate__animated animate__fadeInLeft" data-wow-delay="00ms" data-wow-duration="1500ms" alt="image"> --}}
-                                                <div class="flex-container mt--10">
-                                                    <div class="flex-child c1">
-                                                        <img src="{{ asset('img/t5.png') }}" alt="image">
-                                                    </div>
-                                                    <div class="flex-child c2">
-                                                        <div class="content blue-bg text-center">
-                                                            <h3 class="text-white">KKR vs CSL</h3>
-                                                            <div id="timer" class="flex-wrap d-flex justify-content-center text-white">
-                                                                <div id="days" class="align-items-center flex-column d-flex justify-content-center"></div>
-                                                                <div id="hours" class="align-items-center flex-column d-flex justify-content-center"></div>
-                                                                <div id="minutes" class="align-items-center flex-column d-flex justify-content-center"></div>
-                                                                <div id="seconds" class="align-items-center flex-column d-flex justify-content-center"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-child c3">
-                                                        <img src="{{ asset('img/t6.png') }}" alt="image">
-                                                    </div>
-                                                </div>
-                                            </div>
+
+                                                <?php
+                                                $y=explode(',',$battel->date)[1];
+                                                $m=explode(',',$battel->date)[2];
+                                                $date =$y.','.$m;
+                                                $time = explode(' ', $battel->time)[0];
+                                                ?>
+                                                <script>
+                                                    // Set the date we're counting down to
+                                                    var countDownDate = new Date("{{ $date }} {{ $time }}").getTime();
+
+                                                    // Update the count down every 1 second
+                                                    var x = setInterval(function() {
+                                                        // Get today's date and time
+                                                        var now = new Date().getTime();
+
+                                                        // Find the distance between now and the count down date
+                                                        var distance = countDownDate - now;
+
+                                                        // Time calculations for days, hours, minutes and seconds
+                                                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                                        // Display the result in the element with id="demo"
+                                                        document.getElementById("demo{{$loop->iteration}}").innerHTML = days + "d " + hours + "h " +
+                                                            minutes + "m " + seconds + "s ";
+
+                                                        // If the count down is finished, write some text
+                                                        if (distance < 0) {
+                                                            clearInterval(x);
+                                                            document.getElementById("demo{{$loop->iteration}}").innerHTML = "EXPIRED";
+                                                        }
+                                                    }, 1000);
+                                                </script>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="reviews" role="tabpanel">
                                     <div class="single-matches-box">
                                         <div class="row align-items-center">
-                                            <div class="col-lg-12 col-md-12">                                            
+                                            <div class="col-lg-12 col-md-12">
                                                 <div class="flex-container mt--10">
                                                     <div class="flex-child c1">
                                                         <img src="{{ asset('img/t1.png') }}" alt="image">
@@ -176,15 +134,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                           
-                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            
-                            
                         </div>
                     </div>
                 </div>

@@ -5,76 +5,77 @@
         padding-bottom: 95px;
     }
 }
-.f-28{font-size: 28px;}
+
+.f-28 {
+    font-size: 28px;
+}
+
 /* ==========================register===================================== */
-.bor-rad-30
-{
+.bor-rad-30 {
     border-radius: 30px;
     border: 4px solid #690202;
 }
-.mtb-100
-{
+
+.mtb-100 {
     margin-top: 100px;
     margin-bottom: 20px;
 }
-.img-45
-{
+
+.img-45 {
     max-width: 45%;
 }
-.img-br-20
-{
+
+.img-br-20 {
     border-radius: 20px;
 }
 
 /* ======================= price-list =========================== */
-.white-bg
-{
-    background-color: white; 
-    color:black !important;
+.white-bg {
+    background-color: white;
+    color: black !important;
 }
 
-.img-400
-{ height: 450px!important; }
+.img-400 {
+    height: 450px !important;
+}
 
-.sp 
-{
+.sp {
     font-size: 18px;
     color: red;
 }
-.mt-30
-{
+
+.mt-30 {
     margin-top: -30px;
 }
 
 /* ================================ wallet ================================= */
-.box-sh
-{
+.box-sh {
     box-shadow: 5px 5px 20px #2e2c2c;
-    border:none;
+    border: none;
 }
 
-.blue-bg
-{
+.blue-bg {
     background: #010a31;
 }
-.mtt-30
-{
+
+.mtt-30 {
     margin-top: 30px;
 }
-.text-blue
-{
+
+.text-blue {
     color: #010a31;
     font-size: 35px;
 }
-.br-10
-{
+
+.br-10 {
     border-radius: 10px;
 }
-.mr-40
-{margin-right: 40px;}
 
-.blue-br
-{
+.mr-40 {
+    margin-right: 40px;
+}
+
+.blue-br {
     border: 1px white solid;
     color: white;
 }
@@ -93,56 +94,58 @@
     text-align: center;
     /* cursor: pointer; */
 }
+
 .mt--10 {
-    margin-top: -10px!important;
+    margin-top: -10px !important;
 }
 
 /* ================================== add cash ==================================== */
-.design
-{
-        border: 0;
-        outline: 0;
-        background: transparent;
-        border-bottom: 1px solid black;
-        width:95%;
+.design {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+    width: 95%;
 }
-.mr-20
-{margin-right: 20px;}
 
-.lr
-{
-        display: flex;
-        justify-content: space-between;
+.mr-20 {
+    margin-right: 20px;
+}
+
+.lr {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* ================================= account ====================================== */
-.img-br
-{
+.img-br {
     border: 3px white solid;
 }
-.bnt
-{
+
+.bnt {
     margin-top: 10px;
     margin-left: 22px;
 }
+
 .ratingg i {
     color: #ffba0a;
     display: inline-block;
     margin-right: -1px;
-  }
-.user-img
-{
+}
+
+.user-img {
     border-radius: 50%;
     width: 50%;
 }
-.designn
-{
-        border: 0;
-        outline: 0;
-        background: transparent;
-        border-bottom: 1px solid white;
-        width:80%;
+
+.designn {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid white;
+    width: 80%;
 }
+
 .flex-container {
     display: flex;
     margin-top: 20px;
@@ -151,101 +154,109 @@
 
 .flex-child {
     flex: 3;
-    
-}  
+
+}
 
 .flex-child:second-child {
     margin-left: -80px;
-} 
-.kyc 
-{
+}
+
+.kyc {
     background: #0a1d38;
-    padding:20px !important;
+    padding: 20px !important;
     margin-right: 15px;
 }
-.plb
-{
+
+.plb {
     padding-left: 10px;
     padding-right: 10px;
 }
 
 /* =================================== contest ============================================= */
-.p-15
-{
+.p-15 {
     padding: 15px;
 }
-.text-black
-{
-    color:black;
+
+.text-black {
+    color: black;
 }
-.blue-bor
-{
-    border:2px double #010a31;
+
+.blue-bor {
+    border: 2px double #010a31;
 }
+
 .ptb {
     padding-top: 25px;
     padding-bottom: 95px;
 }
-.mr--25px
-{
+
+.mr--25px {
     margin-right: -25px;
 }
-.mrr-60
-{
+
+.mrr-60 {
     margin-right: -60px;
 }
-.sm-text
-{
-    margin-top: -3px;
-    font-size: 9px !important;
+
+.sm-text {
+    margin-top: -6px;
+    font-size: 14px !important;
     margin-left: 15px;
 }
+
 /* =================================== contest ========================================== */
-.text-red
-{
-    color:maroon
+.text-red {
+    color: maroon
 }
-.f-18
-{
-    font-size: 18px!important;
+
+.f-18 {
+    font-size: 18px !important;
 }
-.ab
-{
-    letter-spacing: 2px; 
+
+.ab {
+    letter-spacing: 2px;
 }
+
 .middle .bar-4 {
     width: 75%;
     height: 8px;
-    background-color: red;   
+    background-color: red;
     border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
-  }
-  .middle .bar-container {
-    background-color: grey;   
-    }
-  
-    .imgg {
-        border: 2px #e5a50a solid;
-        border-radius: 50%;
-        padding: 5px;
-    }
+}
+
+.middle .bar-container {
+    background-color: grey;
+}
+
+.imgg {
+    border: 2px #e5a50a solid;
+    border-radius: 50%;
+    padding: 5px;
+}
 
 /* =============================== battle ======================================= */
-.c1 img
-{
+.c1 img {
     width: 80%;
     margin-left: 10px;
 }
-.c2
-{
+
+.c2 {
     margin-top: 10px;
-    padding: 0px 30px;    
+    padding: 0px 30px;
 }
-.c2 .content
-{width:150px!important;}
-.c3 img
-{
+
+
+
+.c3 img {
     width: 80%;
     margin-right: 15px;
 }
+
+@media only screen and (min-width: 600px) {
+    .c2 {
+        margin-top: 50px;
+        padding: 0px 30px;
+    }
+  }

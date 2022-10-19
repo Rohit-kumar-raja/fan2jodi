@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-light">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="{{ asset('img/logo.png') }}" alt="logo">
+                    <img width="100px" src="{{ asset('img/logo.png') }}" alt="logo">
                 </a>
 
                 <div class="collapse navbar-collapse mean-menu">
@@ -30,8 +30,7 @@
                         </li>
                         <li class="nav-item"><a href="{{ route('account') }}" class="nav-link active">My Account</a>
                         </li>
-                        <li class="nav-item"><a href="{{ route('contest') }}" class="nav-link active">My Contest</a>
-                        </li>
+            
                     
                     </ul>
 
@@ -46,12 +45,12 @@
                     <div class="dark-version-btn">
                         <a href=""> <i class="fas fa-user-circle"></i> </a>
                     </div>
-                    <div class="dark-version-btn">
+                    {{-- <div class="dark-version-btn">
                         <label id="switch" class="switch">
                             <input type="checkbox" onchange="toggleTheme()" id="slider">
                             <span class="slider round"></span>
                         </label>
-                    </div>
+                    </div> --}}
                  
                 </div>
             </nav>
