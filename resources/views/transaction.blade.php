@@ -1,0 +1,100 @@
+<x-layout>
+    @slot('title', 'transaction Summary')
+    @slot('body')
+
+
+
+        <!-- Start Stream Schedule Area -->
+        <section class="stream-schedule-area pt-100 mt-70 bg-red">
+            <div class="container white-bg rounded">
+                <div class="row  ">
+
+                    <div class="col-lg-12 col-md-12 ">
+                        <div class="single-stream-schedule-box pl-1 mt-3 rounded-pill">
+                            <div class="p-1 pt-3 text-center">
+                                <h5 class="text-success">Pending/Failed All Transaction</h5>
+                                {{-- <button class="btn btn-md btn-success mr-10 mt--40 float-end text-white">Check Status
+                                </button> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-container ">
+                        <div class="flex-child mr-20 mt-3 mb-3">
+                            <h2 class="text-black mb-0">Date Range</h2>
+                            <div class="row">
+                                <div class="col-5">
+                                    <input type="date" name="date" class="form-control rounded-pill  text-black h-35">
+
+                                </div>
+                                <div class="col-5">
+                                    <input type="date" name="date" class="form-control rounded-pill  text-black h-35">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-child mt-3 mb-3">
+                            <h2 class="text-black mb-0">Transaction Type</h2>
+                            <select class="form-control text-black h-35 rounded-pill">
+                                <option>All</option>
+                                <option>First</option>
+                                <option>Second</option>
+                                <option>Third</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 mb-4">
+                        <div class="single-stream-schedule-box pink-bg shadow p-3 mb-5  rounded">
+                            <div class="flex-container ">
+                                <div class="flex-child mrr-60 ml-20 text-red">
+                                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                    <span class="text-black mb-0 text-red">₹25</span>
+                                </div>
+                                <div class="flex-child mr-20">
+                                    <span class="text-black mb-0">Fantasy-Cricket-Entry</span>
+                                </div>
+                                <div class="flex-child">
+                                    <span class="text-black mb-0 ml-20 text-gray">18 Oct '22</span>
+                                </div>
+                            </div>
+                            <div class=" text-center">
+                                <span class="time">Rumble - 25-KQgnndab_216491</span>
+                                <span class="time">Time: 8:57PM</span>
+                            </div>
+
+
+                        </div>
+                        <div class="single-stream-schedule-box pink-bg shadow p-3 mb-3  rounded">
+                            <div class="flex-container ">
+                                <div class="flex-child mrr-60 ml-20 text-red">
+                                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                    <span class="text-black mb-0 text-red">₹25</span>
+                                </div>
+                                <div class="flex-child mr-20">
+                                    <span class="text-black mb-0">Fantasy-Cricket-Entry</span>
+                                </div>
+                                <div class="flex-child">
+                                    <span class="text-black mb-0 ml-20 text-gray">18 Oct '22</span>
+                                </div>
+                            </div>
+                            <div class=" text-center">
+                                <span class="time">Rumble - 25-KQgnndab_216491</span>
+                                <span class="time">Time: 8:57PM</span>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+        <!-- End Stream Schedule Area -->
+        <div class="go-top"><i class='bx bx-up-arrow-alt'></i></div>
+
+        <div class="zelda-cursor"></div>
+        <div class="zelda-cursor2"></div>
+
+    @endslot
+</x-layout>

@@ -70,7 +70,7 @@ Default CSS
   --fontFamily: 'Teko', sans-serif;
   --fontFamily2: VerminVibes;
   --fontFamily3: 'Poppins', sans-serif;
-  --mainColor: #fc0820;
+  /* --mainColor: #fc0820; */
   --whiteColor: #ffffff;
   --blackColor: #0c0305;
   --fontSize: 18px;
@@ -6492,7 +6492,7 @@ Stream Schedule Area CSS
 .single-stream-schedule-box {
   /* border-radius: 60px; */
   position: relative;
-  border: 1px solid #1d1b1b;
+  border: 1px solid #1d1b1b4d;
   /* text-align: center; */
   /* margin-bottom: 30px; */
   padding-left: 20px;
@@ -6512,10 +6512,16 @@ Stream Schedule Area CSS
 }
 
 .single-stream-schedule-box .content {
-  border-left: 1px solid #1d1b1b;
+  /* border-left: 1px solid #1d1b1b; */
   border-radius: 60px;
   padding-top: 25px;
   padding-bottom: 25px;
+}
+.single-stream-schedule-box .content1 {
+  /* border-left: 1px solid #1d1b1b; */
+  border-radius: 60px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .single-stream-schedule-box .content .time {
@@ -9707,14 +9713,63 @@ Sidebar Modal CSS
   font-size: 35px;
 }
 
-.bg-gray10{
+.bg-gray10 {
   background: #fff;
 
 }
 
-.bg-red{
- background-color: #ff000026
+.bg-red {
+  background-color: #ff000026
 }
-.text-red{
+
+.text-red {
   color: #ff0000 !important;
+}
+
+/* ====================================== transaction summary ====================== */
+.mt-70 {
+  margin-top: 70px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.mt--40 {
+  margin-top: -40px;
+}
+
+.ml-20 {
+  margin-left: 20px;
+}
+
+.pink-bg {
+  background-color: #f7d4d4;
+  color: black !important;
+}
+
+.h-35 {
+  height: 35px !important;
+}
+
+.form-control {
+  height: 50px;
+  color: var(--whiteColor);
+  background-color: #ffffff !important;
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  padding: 2px 0 0 15px;
+  -webkit-box-shadow: unset !important;
+  box-shadow: unset !important;
+  border: none;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+  font-family: var(--fontFamily3);
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px double #1d1b1b4d;
+}
+.rounded{
+  border-radius: 0.75rem!important;
 }

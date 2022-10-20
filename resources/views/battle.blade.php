@@ -50,7 +50,7 @@
                                             @foreach ($data as $battel)
                                                 <div class="col-lg-12 col-md-12">
                                                     <a href="{{ route('contest',$battel->id) }}"
-                                                        class="flex-container  border border-2 bg-gray10">
+                                                        class="flex-container  border border-2 bg-gray10 rounded">
                                                         <div class="flex-child c1">
                                                             <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamoneimg }}"
                                                                 alt="image">
