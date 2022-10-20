@@ -10,5 +10,6 @@ class indexController extends Controller
     $data=DB::table('matches')->where('status',1)->get();
     $sliders=DB::table('slider_tbl')->where('is_deleted',1)->get();
     return view('battle',['data'=>$data,'sliders'=>$sliders]);
+    
    }
 }
