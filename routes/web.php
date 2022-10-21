@@ -18,6 +18,8 @@ Route::get('clear-all', function () {
 });
 Route::get('/', [indexController::class, 'index'])->name('home');
 Route::get('contest/{matche_id}', [ContestController::class, 'index'])->name('contest');
+Route::get('contest/my', [ContestController::class, 'my_contest'])->name('contest.my');
+
 Route::get('wallet/transaction', [WalletController::class, 'transaction'])->name('wallet.transaction');
 
 // user management
@@ -30,9 +32,7 @@ Route::post('scratch', [SctrachCardController::class, 'sratch_card'])->name('pla
 
 
 
-Route::get('player', function () {
-    return view('player');
-})->name('player');
+
 
 Route::get('price_list', function () {
     return view('price_list');
