@@ -26,6 +26,8 @@ Route::post('user/login', [LoginController::class, 'login'])->name('user.login')
 // user management
 
 Route::get('player/scratch/card/{contest_id}/contest/{matche_id}/matche/', [SctrachCardController::class, 'index'])->name('player.scratch');
+Route::post('scratch', [SctrachCardController::class, 'sratch_card'])->name('player.scratch.card');
+
 
 
 Route::get('player', function () {

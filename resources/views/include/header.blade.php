@@ -23,7 +23,7 @@
                 <div class="collapse navbar-collapse mean-menu">
                     <ul class="navbar-nav">
                 
-                        <li class="nav-item"><a href="{{ route('player') }}" class="nav-link active">Player List</a>
+                        <li class="nav-item"><a href="{{ route('player') }}" class="nav-link active">My contest</a>
                         </li>
                         <li class="nav-item"><a href="{{ route('wallet') }}" class="nav-link active">Wallet</a></li>
                         <li class="nav-item"><a href="{{ route('add_cash') }}" class="nav-link active">Add Cash</a>
