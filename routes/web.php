@@ -6,7 +6,14 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 
-
+Route::get('clear-all', function () {
+    $exitcode = Artisan::call('config:clear');
+    $exitcode = Artisan::call('cache:clear');
+    $exitcode = Artisan::call('route:clear');
+    $exitcode = Artisan::call('view:clear');
+    $exitcode = Artisan::call('config:cache');
+    echo "Done";
+});
 Route::get('/', [indexController::class, 'index'])->name('home');
 Route::get('contest/{matche_id}', [ContestController::class, 'index'])->name('contest');
 Route::get('wallet/transaction', [WalletController::class, 'transaction'])->name('wallet.transaction');
