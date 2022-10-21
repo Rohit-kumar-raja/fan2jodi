@@ -8,6 +8,6 @@ class ContestController extends Controller
 {
    public function index($matche_id){
     $data=DB::table('contests')->where('matches_id',$matche_id)->where('status',1)->get();
-    return view('contest',['data'=>$data]);
+    return view('contest',['data'=>$data,'matche_id'=>$matche_id]);
    }
 }

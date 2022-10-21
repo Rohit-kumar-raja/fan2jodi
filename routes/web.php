@@ -3,8 +3,10 @@
 use App\Http\Controllers\ContestController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SctrachCardController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 Route::get('clear-all', function () {
     $exitcode = Artisan::call('config:clear');
@@ -23,14 +25,8 @@ Route::post('user/register', [LoginController::class, 'register'])->name('user.r
 Route::post('user/login', [LoginController::class, 'login'])->name('user.login');
 // user management
 
+Route::get('player/scratch/card/{contest_id}/contest/{matche_id}/matche/', [SctrachCardController::class, 'index'])->name('player.scratch');
 
-Route::get('register', function () {
-    return view('register');
-})->name('register');
-
-Route::get('login', function () {
-    return view('login');
-})->name('login');
 
 Route::get('player', function () {
     return view('player');
@@ -57,8 +53,6 @@ Route::get('game', function () {
     return view('game');
 })->name('game');
 
-
-
 Route::get('list', function () {
     return view('list');
 })->name('list');
@@ -68,4 +62,4 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
