@@ -820,8 +820,8 @@ Navbar Area CSS
   width: 100%;
   height: auto;
   z-index: 999;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  /* padding-top: 20px; */
+  /* padding-bottom: 20px; */
 }
 
 .navbar-area.is-sticky {
@@ -832,11 +832,11 @@ Navbar Area CSS
   z-index: 999;
   -webkit-box-shadow: 0 10px 27px 0 rgba(14, 8, 18, 0.5);
   box-shadow: 0 10px 27px 0 rgba(14, 8, 18, 0.5);
-  background-color: #010a31;
+  /* background-color: #010a31;
   -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
-  animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  animation: 500ms ease-in-out 0s normal none 1 running fadeInDown; */
+  /* padding-top: 15px;
+  padding-bottom: 15px; */
 }
 
 .navbar-area.navbar-style-two .zelda-nav .navbar .navbar-nav {
