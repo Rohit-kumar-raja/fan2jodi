@@ -24,16 +24,18 @@ class SctrachCardController extends Controller
         $contest_id = $request->contest_id;
 
         $exits =  DB::table('participated_users')->where('user_id', Auth::user()->id)->where('matche_id', $matche_id)->where('contest_id', $contest_id)->first();
-        //   $exits=''; 
+        // if user already participated in this matches
         if ($exits == '') {
             $contest =  DB::table('contests')->find($contest_id);
             $wallets_credit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('credit');
             $wallets_debit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('debit');
             $wallet_balance_amount = $wallets_credit - $wallets_debit;
+
+            // if user walllet not sufficiant for the join to the contest
             if ($wallet_balance_amount > $contest->participate_amount) {
 
                 // debit the amount from the user account 
-                $wallet_id =  dB::table('wallets')->insertGetId([
+                $wallet_id =  DB::table('wallets')->insertGetId([
                     'user_id' => Auth::user()->id,
                     'debit' => $contest->participate_amount,
                     'credit' => 0,
@@ -53,7 +55,7 @@ class SctrachCardController extends Controller
                 $team = $team1 . ":" . $team2;
 
                 // adding the data on participated user list
-                DB::table('participated_users')->insert([
+                $participate_id =  DB::table('participated_users')->insertGetId([
                     'user_id' => Auth::user()->id,
                     'matche_id' => $matche_id,
                     'contest_id' => $contest_id,
@@ -64,11 +66,20 @@ class SctrachCardController extends Controller
                     'status' => 1,
                     'created_at' => date('Y-m-d h:m:s')
                 ]);
+                // if user already participate then amount will be not deducted
+                if ($participate_id != '') {
 
-                return response()->json(['team1' => $team1, 'team2' => $team2]);
+                    return response()->json(['team1' => $team1, 'team2' => $team2]);
+                } else {
+
+                    DB::table('wallets')->delete($wallet_id);
+                    return response()->json(['error' => 'You are Already Joined in this contest']);
+                }
+                // if user walllet not sufficiant for the join to the contest
             } else {
                 return response()->json(['error' => "You don't have enogth balance for join this contest"]);
             }
+            // if user already participated in this matches
         } else {
             return response()->json(['error' => 'You are Already Joined in this contest']);
         }

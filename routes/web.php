@@ -17,18 +17,18 @@ Route::get('clear-all', function () {
     echo "Done";
 });
 Route::get('/', [indexController::class, 'index'])->name('home');
-Route::get('contest/{matche_id}', [ContestController::class, 'index'])->name('contest');
-Route::get('contest/my', [ContestController::class, 'my_contest'])->name('contest.my');
+Route::get('contest/{matche_id}', [ContestController::class, 'index'])->name('contest')->middleware('auth');
+Route::get('contest/my', [ContestController::class, 'my_contest'])->name('contest.my')->middleware('auth');
 
-Route::get('wallet/transaction', [WalletController::class, 'transaction'])->name('wallet.transaction');
+Route::get('wallet/transaction', [WalletController::class, 'transaction'])->name('wallet.transaction')->middleware('auth');
 
 // user management
 Route::post('user/register', [LoginController::class, 'register'])->name('user.register');
 Route::post('user/login', [LoginController::class, 'login'])->name('user.login');
 // user management
 
-Route::get('player/scratch/card/{contest_id}/contest/{matche_id}/matche/', [SctrachCardController::class, 'index'])->name('player.scratch');
-Route::post('scratch', [SctrachCardController::class, 'sratch_card'])->name('player.scratch.card');
+Route::get('player/scratch/card/{contest_id}/contest/{matche_id}/matche/', [SctrachCardController::class, 'index'])->name('player.scratch')->middleware('auth');
+Route::post('scratch', [SctrachCardController::class, 'sratch_card'])->name('player.scratch.card')->middleware('auth');
 
 
 
@@ -60,8 +60,6 @@ Route::get('list', function () {
 })->name('list');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 require __DIR__ . '/auth.php';
