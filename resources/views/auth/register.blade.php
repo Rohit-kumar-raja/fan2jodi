@@ -73,11 +73,11 @@
                                         <div class="form-group">
                                             <p>Password:</p>
                                             <input type="confirm_password" name="password" id="password" required
-                                                data-error="Please enter valid password" placeholder="Enter  Password">
+                                             type="password"   data-error="Please enter valid password" placeholder="Enter  Password">
 
                                             <p>Confirm Password:</p>
                                             <input type="confirm_password" name="password_confirmation"
-                                                id="confirm_password" required data-error="Please enter valid password"
+                                              type="password"  id="confirm_password" required data-error="Please enter valid password"
                                                 placeholder="Enter Confirm Password">
                                             <div class="help-block with-errors"></div>
                                         </div>
