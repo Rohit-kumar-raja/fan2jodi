@@ -8,15 +8,18 @@
 
     <section class="top-nav ">
         <div class="logos">
-            <a href="{{ route('home')}}"> <img src="{{ url('img/logo2.png') }}" alt="logo" width="45px">  <span
-                class="f-28 text-uppercase">&ensp;{{ $title }}</span></a>
-         
+            <a href="{{ route('home') }}"> <img src="{{ url('img/logo2.png') }}" alt="logo" width="45px"> <span
+                    class="f-28 text-uppercase">&ensp;{{ $title }}</span></a>
+
         </div>
         <ul>
 
-            <li><a href="{{ route('wallet') }}">WALLET</a></li>
-            <li><a href="{{ route('add_cash') }}">ADD CASH</a></li>
-            <li><a href="{{ route('account') }}">MY ACCOUNT</a></li>
+            <li class="nav-item "><a href="{{ route('account') }}" class="nav-link text-white">MY ACCOUNT</a>
+            <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-white">WALLET</a></li>
+            <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-white">Withdraw</a></li>
+            <li class="nav-item "><a href="{{ route('wallet.transaction') }}"
+                    class="nav-link text-white">Transaction's</a></li>
+            <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-white">ADD CASH</a></li>
         </ul>
     </section>
 
@@ -24,7 +27,7 @@
         <div class="container">
             <div class="zelda-responsive-menu">
                 <div class="logo">
-                    <a href="{{ route('home')}}">
+                    <a href="{{ route('home') }}">
                         <img src="{{ asset('img/logo.png') }}" alt="logo" width="45px"><span
                             class="f-28 text-uppercase">&ensp;{{ $title }}</span>
                     </a>
@@ -74,16 +77,20 @@
 
             <div class="modal-body extra">
                 <div class="logo">
-                    <a href="{{ route('home')}}" class="d-inline-block"><img width="50px" src="{{ asset('img/logo.png') }}" alt="image"></a>
+                    <a href="{{ route('home') }}" class="d-inline-block"><img width="50px"
+                            src="{{ asset('img/logo.png') }}" alt="image"></a>
                 </div>
 
                 <div class="white-bor mt-3">
                     <ul class="navbar-nav black-text">
                         <li class="nav-item "><a href="{{ route('account') }}" class="nav-link text-red">MY ACCOUNT</a>
                         <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-red">WALLET</a></li>
-                        <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-red">Withdraw</a></li>
-                        <li class="nav-item "><a href="{{ route('wallet.transaction') }}" class="nav-link text-red">Transaction's</a></li>
-                        <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-red">ADD CASH</a></li>
+                        <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-red">Withdraw</a>
+                        </li>
+                        <li class="nav-item "><a href="{{ route('wallet.transaction') }}"
+                                class="nav-link text-red">Transaction's</a></li>
+                        <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-red">ADD CASH</a>
+                        </li>
                         </li>
                     </ul>
                 </div>
@@ -119,17 +126,19 @@
 
     .modal.right.fade.show .modal-dialog {
         right: 0;
-        width: 244px ;
+        width: 244px;
     }
-    .fa-bars{
+
+    .fa-bars {
         font-size: 38px;
     }
-    .top-nav  ul{
-        margin-top: 20px
 
+    .top-nav ul {
+        margin-top: 20px
     }
+
     .nav-link {
-    display: block;
-    padding: 0rem 0rem;
-}
+        display: block;
+        padding: 0rem 0rem;
+    }
 </style>
