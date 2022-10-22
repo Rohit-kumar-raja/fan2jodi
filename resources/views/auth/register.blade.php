@@ -72,7 +72,7 @@
                                     <div class="col-lg-12 col-md-12">
                                         <div class="form-group">
                                             <p>Password:</p>
-                                            <input type="confirm_password" name="password" id="password" required
+                                            <input type="password" name="password" id="password" required
                                              type="password"   data-error="Please enter valid password" placeholder="Enter  Password">
 
                                             <p>Confirm Password:</p>
