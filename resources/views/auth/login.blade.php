@@ -8,7 +8,7 @@
                 <div class="row align-items-center">
 
                     <div class="main-banner-image mtb-100">
-                        <img src="{{ url('img/logo2.png') }}" alt="image" width="200px">
+                        <img src="{{ asset('img/logo2.png') }}" alt="image" width="200px">
                     </div>
                     <div class="col-sm-3"></div>
 
