@@ -18,7 +18,8 @@ Route::get('clear-all', function () {
 });
 Route::get('/', [indexController::class, 'index'])->name('home');
 Route::get('contest/{matche_id}', [ContestController::class, 'index'])->name('contest')->middleware('auth');
-Route::get('contest/my', [ContestController::class, 'my_contest'])->name('contest.my')->middleware('auth');
+Route::get('my/contest', [ContestController::class, 'my_contest'])->name('contest.my')->middleware('auth');
+Route::get('my/contest/details/{contest_id}', [ContestController::class, 'my_contest_details'])->name('contest.my.details')->middleware('auth');
 
 Route::get('wallet/transaction', [WalletController::class, 'transaction'])->name('wallet.transaction')->middleware('auth');
 Route::get('wallet', [WalletController::class, 'walletList'])->name('wallet')->middleware('auth');

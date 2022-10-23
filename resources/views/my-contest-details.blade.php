@@ -2,7 +2,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <x-layout>
-    @slot('title', 'MY contest')
+    @slot('title', 'Contest Details')
     @slot('body')
         <!-- Start Products Details Area -->
         <section class="products-details-area ptb-100 bg-red">
@@ -11,8 +11,8 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="products-details-tabs">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item text-red"><a class="nav-link  active">My All
-                                        Contest({{ $my_contest_count }})</a></li>
+                                <li class="nav-item text-red"><a class="nav-link  active">My All Contest Player List
+                                        Details</a></li>
 
                             </ul>
                             <!-- Button trigger modal -->
@@ -170,8 +170,25 @@
                                         @endforeach
 
                                     </div>
+                                    <div class="products-reviews white-bg mb-3 rounded-3">
+                                        <h2 class="text-danger pl-3 pt-2 bg-dark">Rohit Kumar<i class='bx bx:info-circle'></i></h2>
+                                        <div class="row">
+                                            <div class="col-md-4 col-4">
+                                                <img src={{asset('img/user3.jpg')}} class="rounded-3 mb-2">
+                                                <div class="text-center"><button class="btn btn-sm btn-outline-primary">Player 1 <br>Run:20</button></div>
+                                            </div>
+                                            <div class="col-md-4 col-4">
+                                                <img src={{asset('img/user3.jpg')}} class="rounded-3 mb-2">
+                                                <div class="text-center"><button class="btn btn-sm btn-outline-primary">Player 2 <br>Run:20</button></div>
+                                            </div>
+                                            <div class="col-md-4 col-4 mt-3">
+                                                <h2 class="text-primary">Aus-6<h2>
+                                                <h2 class="text-primary">NZ-6<h2>
+                                                
+                                            </div>
+                                            </div>    <hr>                                                                            
+                                    </div>
 
-                                    
                                 </div>
                             </div>
 

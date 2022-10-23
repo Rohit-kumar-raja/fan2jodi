@@ -13,8 +13,8 @@
 
         </div>
         <ul>
-
             <li class="nav-item "><a href="{{ route('account') }}" class="nav-link text-white">MY ACCOUNT</a>
+            <li class="nav-item "><a href="{{ route('contest.my') }}" class="nav-link text-white">My Contest</a></li>
             <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-white">WALLET</a></li>
             <li class="nav-item "><a href="{{ route('withdraw') }}" class="nav-link text-white">Withdraw</a></li>
             <li class="nav-item "><a href="{{ route('wallet.transaction') }}"
@@ -84,6 +84,8 @@
                 <div class="white-bor mt-3">
                     <ul class="navbar-nav black-text">
                         <li class="nav-item "><a href="{{ route('account') }}" class="nav-link text-red">MY ACCOUNT</a>
+                        <li class="nav-item "><a href="{{ route('contest.my') }}" class="nav-link text-white">My Contest</a>
+                        </li>
                         <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-red">WALLET</a></li>
                         <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-red">Withdraw</a>
                         </li>
