@@ -53,10 +53,14 @@
                 document.getElementById('teamone' + data1).innerText = obj.error
                 document.getElementById("teamone" + data1).classList.remove("text-success");
                 document.getElementById("teamone" + data1).classList.add("text-red");
-                document.getElementById("teamone" + data1).style.fontSize='40px';
+                document.getElementById("teamone" + data1).style.fontSize = '40px';
             }
             document.getElementById("screen" + data1).style.transform = 'rotateY(540deg)'
 
+            // var all_flip = document.getElementsByClassName('flip-box')
+            // for (i = 0; i < all_flip.length; i++) {
+
+            // }
         }
         var data = {
             matche_id: {{ $matche->id }},
@@ -74,6 +78,17 @@
         height: 200px;
         border: 1px solid #f1f1f1;
         perspective: 1000px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .flip-box {
+            width: 170px !important;
+
+        }
+
+        .font-55 {
+            font-size: 36px !important;
+        }
     }
 
     .flip-box-inner {
