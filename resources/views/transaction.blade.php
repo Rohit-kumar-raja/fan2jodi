@@ -42,50 +42,35 @@
                             </select>
                         </div>
                     </div>
+                    @foreach ($data as $tran)
+                        <div class="col-lg-12 col-md-12 mb-4">
+                            <div class="single-stream-schedule-box pink-bg shadow p-3 mb-5  rounded">
+                                <div class="flex-container ">
+                                    <div class="flex-child mrr-60 ml-20 text-red">
+                                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                        @if($tran->credit>0)
+                                        <span class="text-black mb-0 text-success">₹{{$tran->credit}}</span>
 
-                    <div class="col-lg-12 col-md-12 mb-4">
-                        <div class="single-stream-schedule-box pink-bg shadow p-3 mb-5  rounded">
-                            <div class="flex-container ">
-                                <div class="flex-child mrr-60 ml-20 text-red">
-                                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                                    <span class="text-black mb-0 text-red">₹25</span>
+                                        @else
+                                        <span class="text-black mb-0 text-red">₹{{$tran->debit}}</span>
+
+                                        @endif
+                                    </div>
+                                    <div class="flex-child mr-20">
+                                        <span class="text-black mb-0">Fantasy-Cricket-Entry</span>
+                                    </div>
+                                    <div class="flex-child">
+                                        <span class="text-black mb-0 ml-20 text-gray">{{ date('d-m-Y',strtotime($tran->created_at)) }}</span>
+                                    </div>
                                 </div>
-                                <div class="flex-child mr-20">
-                                    <span class="text-black mb-0">Fantasy-Cricket-Entry</span>
-                                </div>
-                                <div class="flex-child">
-                                    <span class="text-black mb-0 ml-20 text-gray">18 Oct '22</span>
+                                <div class=" text-center">
+                                    <span class="time">Rumble - INDIA</span>
+                                    <span class="time">Time: 8:57PM</span>
                                 </div>
                             </div>
-                            <div class=" text-center">
-                                <span class="time">Rumble - 25-KQgnndab_216491</span>
-                                <span class="time">Time: 8:57PM</span>
-                            </div>
-
 
                         </div>
-                        <div class="single-stream-schedule-box pink-bg shadow p-3 mb-3  rounded">
-                            <div class="flex-container ">
-                                <div class="flex-child mrr-60 ml-20 text-red">
-                                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                                    <span class="text-black mb-0 text-red">₹25</span>
-                                </div>
-                                <div class="flex-child mr-20">
-                                    <span class="text-black mb-0">Fantasy-Cricket-Entry</span>
-                                </div>
-                                <div class="flex-child">
-                                    <span class="text-black mb-0 ml-20 text-gray">18 Oct '22</span>
-                                </div>
-                            </div>
-                            <div class=" text-center">
-                                <span class="time">Rumble - 25-KQgnndab_216491</span>
-                                <span class="time">Time: 8:57PM</span>
-                            </div>
-
-
-                        </div>
-                    </div>
-
+                    @endforeach
 
                 </div>
             </div>
