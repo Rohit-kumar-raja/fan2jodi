@@ -16,7 +16,7 @@
 
             <li class="nav-item "><a href="{{ route('account') }}" class="nav-link text-white">MY ACCOUNT</a>
             <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-white">WALLET</a></li>
-            <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-white">Withdraw</a></li>
+            <li class="nav-item "><a href="{{ route('withdraw') }}" class="nav-link text-white">Withdraw</a></li>
             <li class="nav-item "><a href="{{ route('wallet.transaction') }}"
                     class="nav-link text-white">Transaction's</a></li>
             <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-white">ADD CASH</a></li>

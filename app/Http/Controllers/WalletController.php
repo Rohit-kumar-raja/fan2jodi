@@ -29,6 +29,12 @@ class WalletController extends Controller
         return view('wallet',['total_balance' => $totalBalance,'total_redeem_balance'=>$totalRedeemBalance]);
     }
 
+    public function withdrawRequest(Request $request)
+    {
+        $data = ['user_id'=>Auth::user()->id,'amount'=>$request->deposit_amount,'payment_status'=>"pending",'status'=>0];
+        DB::table('withdraw_requests')->insert($data);
+        return back();
+    }
 
     public function paymentGatewayRespone(Request $request)
     {

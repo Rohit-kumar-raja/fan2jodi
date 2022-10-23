@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <p>User Name:</p>
                                             <input type="text" name="user_name" id="name" required
-                                                data-error="Please enter your name" placeholder="Your name">
+                                                data-error="Please enter your name" class="text-black" placeholder="User Name">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -64,7 +64,7 @@
                                         <div class="form-group">
                                             <p>Phone No:</p>
                                             <input type="text" name="phone" id="phone_number" required
-                                                data-error="Please enter your phone number" placeholder="Your phone number">
+                                                data-error="Please enter your phone number" minlength="10" maxlength="10" placeholder="Your phone number">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -73,11 +73,11 @@
                                         <div class="form-group">
                                             <p>Password:</p>
                                             <input type="password" name="password"  required
-                                             type="password"   data-error="Please enter valid password" placeholder="Enter  Password">
+                                              minlength="8"   data-error="Please enter valid password" placeholder="Enter  Password">
 
                                             <p>Confirm Password:</p>
-                                            <input type="confirm_password" name="password_confirmation"
-                                              type="password"  required data-error="Please enter valid password"
+                                            <input
+                                              type="password" name="confirm_password"  minlength="8" required data-error="Please enter valid password"
                                                 placeholder="Enter Confirm Password">
                                             <div class="help-block with-errors"></div>
                                         </div>

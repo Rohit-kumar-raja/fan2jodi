@@ -60,8 +60,8 @@
                                 <button class="plb float-right mt-30">Edit</button> <br><br>
                                 <input type="email" class="designn text-white" value="{{Auth::user()->email}}" name="email"  placeholder="Email Id">&ensp;
                                 <button class="plb float-right mt-30">Edit</button> <br><br>
-                                <!-- <input type="text" class="designn" name="phone" value="{{Auth::user()->phone}}"  placeholder="PAN Card">&ensp;
-                                <button class="float-right mt-30">Verify</button> <br><br> -->
+                                <input type="text" class="designn" name="pan_card" value="{{Auth::user()->phone}}"  placeholder="PAN Card">&ensp;
+                                <button class="float-right mt-30">Verify</button> <br><br>
                             </div> <br>
                             <div class="content kyc">
                                 <input type="text" class="designn text-white" name="state" value="{{Auth::user()->state}}"  placeholder="State">&ensp;
