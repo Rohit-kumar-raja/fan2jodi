@@ -46,7 +46,7 @@ class WalletController extends Controller
                 'payment_status' => "pending",
                 'status' => 0,
                 'payment_type' => $request->payment_type,
-                'payment_id' =>$request->payment_id,
+                'payment_id' => $request->payment_id,
 
             ];
             DB::table('withdraw_requests')->insert($data);
@@ -211,7 +211,9 @@ class WalletController extends Controller
         return $randomString;
     }
 
-    public function wallet_data()
+    public function withdraw()
     {
+        $data = DB::table('withdraw_requests')->where('user_id', Auth::user()->id)->paginate(10);
+        return view('withdraw', ['data' => $data]);
     }
 }

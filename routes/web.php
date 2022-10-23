@@ -52,9 +52,7 @@ Route::get('price_list', function () {
 Route::get('add_cash', function () {
     return view('add_cash');
 })->name('add_cash')->middleware('auth');;
-Route::get('withdraw', function () {
-    return view('withdraw');
-})->name('withdraw')->middleware('auth');;
+Route::get('withdraw', [WalletController::class,'withdraw'])->name('withdraw')->middleware('auth');;
 
 Route::get('account', function () {
     return view('account');

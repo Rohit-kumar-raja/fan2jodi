@@ -53,6 +53,48 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-success mt-3 ">Withdraw Request</button>
+
+                            <section class="stream-schedule-area ">
+
+                                <div class="container white-bg rounded mt-4">
+                                    <div class="row  ">
+
+
+
+                                        @foreach ($data as $tran)
+                                            <div class="col-lg-12 col-md-12 ">
+                                                <div class="single-stream-schedule-box pink-bg shadow    rounded">
+                                                    <div class="flex-container ">
+                                                        <div class="flex-child  ">
+
+                                                            <i class="fa fa-minus-circle text-danger"
+                                                                aria-hidden="true"></i>
+                                                            <span class=" mb-0 text-danger">₹{{ $tran->amount }}</span>
+                                                            <span class=" mb-0 text-black">  {{ $tran->payment_status }}</span>
+
+                                                        </div>
+
+                                                        <div class="flex-child">
+                                                            <span
+                                                                class="text-black mb-0  text-gray">{{ date('d-m-Y', strtotime($tran->created_at)) }}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class=" text-center">
+                                                        <span class="time">Rumble - INDIA</span>
+                                                        <span class="time">Time -
+                                                            {{ date('h.i A', strtotime($tran->created_at)) }}</span>
+
+                                                            <span class="text-info"> ({{ $tran->payment_type}} - {{$tran->payment_id}} )</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+
+                                    </div>
+                                    {{ $data->links() }}
+                                </div>
+                            </section>
+
                         </div>
                     </div>
                 </form>
