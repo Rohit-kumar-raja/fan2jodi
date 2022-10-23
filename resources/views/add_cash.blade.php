@@ -11,7 +11,7 @@
                         <div class="single-stream-schedule-box white-bg rounded  ">
                                 <div class="content">
                                     <span class="time">Enter Amount</span>
-                                    <input type="number" min="50" max="20000" value="0" class="design" id="deposit_amount" name="deposit_amount" required onchange="handleAmount()"  placeholder="₹50 to ₹20000">
+                                    <input type="number"  max="20000" value="0" class="design" id="deposit_amount" name="deposit_amount" required onchange="handleAmount()"  placeholder="₹50 to ₹20000">
                                 </div> <br><br>
                                 <button type="button" class="btn btn-md mr-20 text-white blue-bg mt-30" onclick="handleAppendCash(50)" > ₹50 </button>
                                 <button type="button"  class="btn btn-md mr-20 text-white blue-bg mt-30" onclick="handleAppendCash(100)">₹100 </button>
