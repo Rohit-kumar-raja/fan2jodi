@@ -17,7 +17,7 @@
             <li class="nav-item "><a href="{{ route('contest.my') }}" class="nav-link text-white">My Contest</a></li>
             <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-white">WALLET</a></li>
             <li class="nav-item "><a href="{{ route('withdraw') }}" class="nav-link text-white">Withdraw</a></li>
-            <li class="nav-item "><a href="{{ route('wallet.transaction') }}"
+            <li class="nav-item "><a href="{{ route('wallet.transaction')}}"
                     class="nav-link text-white">Transaction's</a></li>
             <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-white">ADD CASH</a></li>
         </ul>
@@ -106,13 +106,13 @@
                     </h2>
                 </div> --}}
 
-                <ul class="social-list">
+                <!-- <ul class="social-list">
                     <li><span>Follow Us On:</span></li>
                     <li><a href="#" target="_blank"><i class='bx bxl-facebook'></i></a></li>
                     <li><a href="#" target="_blank"><i class='bx bxl-twitter'></i></a></li>
                     <li><a href="#" target="_blank"><i class='bx bxl-youtube'></i></a></li>
                     <li><a href="#" target="_blank"><i class='bx bxl-twitch'></i></a></li>
-                </ul>
+                </ul> -->
             </div>
         </div>
     </div>
