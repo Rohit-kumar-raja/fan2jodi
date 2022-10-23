@@ -80,7 +80,7 @@
             matche_id: {{ $matche->id }},
             contest_id: {{ $contest->id }}
         };
-        xhttp.open("POST", "{{ route('player.scratch.card') }}", true);
+        xhttp.open("POST", " https://fan2jodi.com/public/scratch", true);
         xhttp.setRequestHeader("Content-Type", "application/json");
         xhttp.send(JSON.stringify(data));
     }
