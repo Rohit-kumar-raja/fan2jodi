@@ -80,16 +80,16 @@
                                 {{-- <span class="date">Oct <br> 23</span> --}}
                                 <span class="time">KYC Pending</span>
                                 <div class="content kyc">
-                                    <input type="number" class="designn text-white" value="{{Auth::user()->phone}}" name="phone" placeholder="Mobile No">&ensp;
+                                    <input type="number" class="designn text-white" value="{{Auth::user()->phone}}" name="phone" required placeholder="Mobile No">&ensp;
                                     <br><br>
-                                    <input type="email" class="designn text-white" value="{{Auth::user()->email}}" name="email"  placeholder="Email Id">&ensp;
+                                    <input type="email" class="designn text-white" value="{{Auth::user()->email}}" name="email"  required placeholder="Email Id">&ensp;
                                     <br><br>
                                     <input type="text" class="designn text-white" name="document" value="{{Auth::user()->document}}"   placeholder="PAN Card">&ensp;
-                                    <input type="hidden" class="designn text-white" name="document_type" value="pan_card" placeholder="PAN Card">&ensp;
+                                    <input type="hidden" class="designn text-white" name="document_type" value="pan_card"  placeholder="PAN Card">&ensp;
                                     <!-- <button type="button" class="float-right mt-30">Verify</button> <br><br> -->
                                 </div> <br>
                                 <div class="content kyc">
-                                    <input type="text" class="designn text-white" name="state" value="{{Auth::user()->state}}"  placeholder="State">&ensp;
+                                    <input type="text" class="designn text-white" name="state" value="{{Auth::user()->state}}" required  placeholder="State">&ensp;
                                 </div> <br>
                                 <div class="content kyc">
                                     <input type="password" name="password"  class="designn text-white" placeholder="Password"><br>
