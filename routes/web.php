@@ -25,6 +25,7 @@ Route::get('wallet', [WalletController::class, 'walletList'])->name('wallet')->m
 
 // user management
 Route::post('user/register', [LoginController::class, 'register'])->name('user.register');
+Route::get('prikpay-response', [WalletController::class, 'paymentGatewayRespone'])->middleware('auth');
 Route::post('user/login', [LoginController::class, 'login'])->name('user.login');
 Route::post('deposit-amount', [WalletController::class, 'depositAmount'])->name('deposit.amount');
 // user management
@@ -46,11 +47,11 @@ Route::get('price_list', function () {
 
 Route::get('add_cash', function () {
     return view('add_cash');
-})->name('add_cash');
+})->name('add_cash')->middleware('auth');;
 
 Route::get('account', function () {
     return view('account');
-})->name('account');
+})->name('account')->middleware('auth');;
 
 
 Route::get('game', function () {
