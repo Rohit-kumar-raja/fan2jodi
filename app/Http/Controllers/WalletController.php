@@ -91,7 +91,8 @@ class WalletController extends Controller
                 'credit' => $request->amount,
                 'balance' => $lastBalance + $request->amount,
                 'api_info' => json_encode($apiInfo),
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s')
             ];
             DB::table('wallets')->insert($dataArray);
             return redirect('/wallet');
