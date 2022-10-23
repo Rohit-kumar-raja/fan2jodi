@@ -187,8 +187,17 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 col-4 mt-3 text-center ">
-                                                        <h2 class="text-red">{{ explode(':', $con->player)[0] }}<h2>
-                                                                <h2 class="text-red">NZ-6<h2>
+                                                        @php
+                                                            $participated_con_user = DB::table('participated_users')
+                                                                ->where('user_id', Auth::user()->id)
+                                                                ->where('contest_id', $con->id)
+                                                                ->first();
+                                                        @endphp
+                                                        <h2 class="text-red">
+                                                            {{ explode(':', $participated_con_user->player)[0] }}<h2>
+                                                                <h2 class="text-red">
+                                                                    {{ explode(':', $participated_con_user->player)[1] }}
+                                                                    <h2>
 
                                                     </div>
                                                     <hr class="mt-2">
@@ -206,7 +215,6 @@
                                                                         <th scope="col">Winning Position</th>
                                                                         <th>User Name</th>
                                                                         <th>Total Run</th>
-                                                                        <th scope="col">Price Money</th>
                                                                     </tr>
                                                                 </thead>
 
