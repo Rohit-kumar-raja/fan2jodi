@@ -27,7 +27,7 @@
                                             $joined = DB::table('participated_users')
                                                 ->where('contest_id', $con->id)
                                                 ->where('matche_id', $con->matches_id)
-
+                                            
                                                 ->count('contest_id');
                                             $percentage = ($joined / $con->no_of_participate) * 100;
                                             
@@ -136,6 +136,15 @@
 
                                         {{-- pay alert model end --}}
                                         <div class="products-reviews white-bg p-15 mb-3">
+                                            @php
+                                            $matches = DB::table('matches')->find($con->matches_id);
+                                        @endphp
+                                        <div class="text-center">
+                                            <a href="{{ route('contest.my.details', $con->id) }}"
+                                                class="text-red text-center">{{ $matches->name }} - <span
+                                                    class="text-primary">{{ $matches->date }}</span></a>
+
+                                        </div>
                                             <div class="blue-bor m-2 p-4">
                                                 <span class="time">₹ {{ $con->total_price }} Winning Amount <a
                                                         class="text-red" data-toggle="modal"
@@ -151,7 +160,8 @@
                                                                 <div style="width: {{ $percentage }}%" class="bar-2">
                                                                 </div>
                                                             </div>
-                                                            <span class="text-black text-center small mt-3 ml-4 ">{{ $joined }}/{{ $con->no_of_participate }}
+                                                            <span
+                                                                class="text-black text-center small mt-3 ml-4 ">{{ $joined }}/{{ $con->no_of_participate }}
                                                                 joined</span>
                                                         </div>
                                                         <div class="side right">
@@ -269,7 +279,17 @@
 
                                             {{-- pay alert model end --}}
                                             <div class="products-reviews white-bg p-15 mb-3">
+                                                @php
+                                                    $matches = DB::table('matches')->find($con->matches_id);
+                                                @endphp
+                                                <div class="text-center">
+                                                    <a href="{{ route('contest.my.details', $con->id) }}"
+                                                        class="text-red text-center">{{ $matches->name }} - <span
+                                                            class="text-primary">{{ $matches->date }}</span></a>
+
+                                                </div>
                                                 <div class="blue-bor m-2 p-4">
+
                                                     <span class="time">₹ {{ $con->total_price }} Winning Amount <a
                                                             class="text-red" data-toggle="modal"
                                                             data-target="#Modal{{ $con->id }}"><i
@@ -291,8 +311,11 @@
                                                             </div>
                                                             <div class="side right">
                                                                 <div>
+                                                                    <a class=" btn btn-success btn-sm"
+                                                                        href="{{ route('contest.my.details', $con->id) }}">Player
+                                                                    </a>
                                                                     <button type="button"
-                                                                        class="blue-bg text-white plb float-right mrr-60">
+                                                                        class="blue-bg text-white plb float-right mrr-60 btn btn-sm">
                                                                         ₹
                                                                         {{ $con->participate_amount }}
                                                                     </button>

@@ -243,7 +243,7 @@
                                                                             <td class="product-total"><span
                                                                                     class="subtotal-amount">
                                                                                     
-                                                                                    {{ $rank->prize_amount }}</span>
+                                                                                   0</span>
                                                                             </td>
                                                                         </tr>
                                                                     @endforeach
