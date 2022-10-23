@@ -127,18 +127,7 @@ class WalletController extends Controller
             // set post fields
             $amount = $withdraw->amount;
             $tran_id = 'trx' . rand(0001, 99999999);
-            Schema::create('withdraw_requests', function (Blueprint $table) {
-                $table->id();
-                $table->unsignedBigInteger('user_id');
-                $table->unsignedBigInteger('contest_id');
-                $table->string('amount');
-                $table->string('payment_status');
-                $table->string('approved_by');
-                $table->boolean('status');
-                $table->foreign('user_id')->references('id')->on('all_users');
-                $table->foreign('contest_id')->references('id')->on('contests');
-                $table->timestamps();
-            });
+           
             $post = [
                 'guid'   => 'ypwcCJEVXSPMu8LGbNgnefljY',
                 'amount'   => number_format($amount, 2),
