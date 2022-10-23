@@ -20,21 +20,32 @@ class WalletController extends Controller
 
     public function walletList()
     {
-        $totalCredit = DB::table('wallets')->where('user_id',Auth::user()->id)->sum('credit');
-        $totalDebit = DB::table('wallets')->where('user_id',Auth::user()->id)->sum('debit');
+        $totalCredit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('credit');
+        $totalDebit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('debit');
 
-        $totalWithdrawStatus = DB::table('withdraw_requests')->where('payment_status','pending')->where('user_id',Auth::user()->id)->sum('amount');
+        $totalWithdrawStatus = DB::table('withdraw_requests')->where('payment_status', 'pending')->where('user_id', Auth::user()->id)->sum('amount');
         $totalBalance = $totalCredit - $totalDebit;
         $totalRedeemBalance = $totalBalance - $totalWithdrawStatus;
-        
-        return view('wallet',['total_balance' => $totalBalance,'total_redeem_balance'=>$totalRedeemBalance]);
+
+        return view('wallet', ['total_balance' => $totalBalance, 'total_redeem_balance' => $totalRedeemBalance]);
     }
 
     public function withdrawRequest(Request $request)
     {
-        $data = ['user_id'=>Auth::user()->id,'amount'=>$request->deposit_amount,'payment_status'=>"pending",'status'=>0];
-        DB::table('withdraw_requests')->insert($data);
-        return back();
+        $totalCredit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('credit');
+        $totalDebit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('debit');
+
+        $totalWithdrawStatus = DB::table('withdraw_requests')->where('payment_status', 'pending')->where('user_id', Auth::user()->id)->sum('amount');
+        $totalBalance = $totalCredit - $totalDebit;
+        $totalRedeemBalance = $totalBalance - $totalWithdrawStatus;
+        if ($totalRedeemBalance > $request->deposit_amount) {
+
+            $data = ['user_id' => Auth::user()->id, 'amount' => $request->deposit_amount, 'payment_status' => "pending", 'status' => 0];
+            DB::table('withdraw_requests')->insert($data);
+            return back()->with('padding', 'Your Withdraw Request is going to panding');
+        } else {
+            return back()->with('error', 'Your REDEEMABLE BALANCE is not sufficient  ');
+        }
     }
 
     public function paymentGatewayRespone(Request $request)
@@ -55,7 +66,7 @@ class WalletController extends Controller
         $payment->save();
         // $allCreditBalance = 0;
         // $allCreditBalance = DB::table('wallets')->where('user_id',$payment->user_id)->sum('credit');
-        $lastBalance = DB::table('wallets')->where('user_id',$payment->user_id)->orderBy('id','Desc')->value('balance');
+        $lastBalance = DB::table('wallets')->where('user_id', $payment->user_id)->orderBy('id', 'Desc')->value('balance');
         $apiInfo = [
             'payment_id' => $payment->id,
             'user_id' => $payment->user_id,
@@ -71,7 +82,7 @@ class WalletController extends Controller
                 'withdraw_status' => "pending",
                 'credit' => $request->amount,
                 'balance' => $lastBalance + $request->amount,
-                'api_info' =>json_encode($apiInfo),
+                'api_info' => json_encode($apiInfo),
                 'status' => 1
             ];
             DB::table('wallets')->insert($dataArray);
@@ -120,20 +131,20 @@ class WalletController extends Controller
     public function withdrawalSubmit(Request $request)
     {
         $withdrawalData = ['user_id' => Auth::user()->id, 'amount' => $request->request_amount, 'status' => 'pending'];
-        $withdraw =DB::table('withdrawals')->create($withdrawalData);
+        $withdraw = DB::table('withdrawals')->create($withdrawalData);
         if ($withdraw) {
             //////////////////////////////////
             // set post fields
             $amount = $withdraw->amount;
             $tran_id = 'trx' . rand(0001, 99999999);
-           
+
             $post = [
                 'guid'   => 'ypwcCJEVXSPMu8LGbNgnefljY',
                 'amount'   => number_format($amount, 2),
                 'mid'   => 'QsOtFAK3PEcv0u8INUXbM7BKD',
                 'mkey'   => 'mGoQ7UhlP36dYCnyDr5MJZ9ft',
                 'info'   => 'Withdraw lodu moneyearning',
-                'mobile'   =>$withdraw->vpa ?? $withdraw->user->mobile_no,
+                'mobile'   => $withdraw->vpa ?? $withdraw->user->mobile_no,
             ];
             //  return $post;
             $ch = curl_init('https://full2sms.in/api/v1/disburse/paytm');
@@ -142,11 +153,11 @@ class WalletController extends Controller
             $response = curl_exec($ch);
             curl_close($ch);
             $response = json_decode($response);
-             print_r($response);
+            print_r($response);
             if ($response->status == true) {
                 $withdraw->status = 1;
                 $withdraw->transfer_amount = $amount;
-                $withdraw->transfer_date =date('Y-m-d H:i:s');
+                $withdraw->transfer_date = date('Y-m-d H:i:s');
                 $withdraw->utr_id = $response->txn_id;
                 $withdraw->tran_id = $tran_id;
                 $withdraw->status = "paid";
@@ -167,10 +178,9 @@ class WalletController extends Controller
                 //      'trx' => $withdraw->trx,
                 //      'admin_details' => $request->details
                 //  ]);
-                Session::put('success','Your Payment Transfer Successfully');
-            }else
-            {
-            Session::put('danger','Please Try again your  payment');
+                Session::put('success', 'Your Payment Transfer Successfully');
+            } else {
+                Session::put('danger', 'Please Try again your  payment');
             }
         }
         //  return $withdraw;
@@ -188,13 +198,12 @@ class WalletController extends Controller
         $charactersLength = strlen($characters);
         $randomString = '';
         for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
     }
 
-    public function wallet_data(){
-
+    public function wallet_data()
+    {
     }
-
 }

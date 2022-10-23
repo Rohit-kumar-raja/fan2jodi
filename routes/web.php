@@ -29,7 +29,7 @@ Route::post('user/register', [LoginController::class, 'register'])->name('user.r
 Route::get('prikpay-response', [WalletController::class, 'paymentGatewayRespone'])->middleware('auth');
 Route::post('user/login', [LoginController::class, 'login'])->name('user.login');
 Route::post('deposit-amount', [WalletController::class, 'depositAmount'])->name('deposit.amount');
-Route::post('withdraw-request', [WalletController::class, 'withdrawRequest'])->name('deposit.amount');
+Route::post('withdraw-request', [WalletController::class, 'withdrawRequest'])->name('withdraw-request');
 // user management
 
 Route::get('player/scratch/card/{contest_id}/contest/{matche_id}/matche/', [SctrachCardController::class, 'index'])->name('player.scratch')->middleware('auth');
