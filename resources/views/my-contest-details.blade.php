@@ -17,7 +17,7 @@
                             </ul>
                             <!-- Button trigger modal -->
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade  show active" id="description" role="tabpanel">
+                                <div class="tab-pane fade  show active rounded-3" id="description" role="tabpanel">
 
                                     {{-- my contest start --}}
                                     <div class="products-reviews  tab-pane fade  show active">
@@ -143,9 +143,7 @@
                                                             </div>
                                                             <div class="side right">
                                                                 <div>
-                                                                    <a class=" btn btn-success btn-sm"
-                                                                        href="{{ route('contest.my.details', $con->id) }}">Player
-                                                                    </a>
+
                                                                     <button type="button"
                                                                         class="blue-bg text-white plb float-right mrr-60 btn btn-sm">
                                                                         ₹
@@ -167,27 +165,87 @@
                                                     Winners </p>
                                             </div>
                                             </a>
+                                            <div class="products-reviews white-bg mb-3 rounded-2">
+                                                <h4 class="text-danger pl-3 pt-2 bg-dark "> {{ Auth::user()->user_name }} |
+                                                    {{ Auth::user()->name }} | <span class="text-success">Total Run
+                                                        -</span> </h4>
+                                                <div class="row rounded">
+                                                    <div class="col-md-4 col-4 text-center">
+                                                        <img src={{ asset('img/user3.jpg') }} width="100px"
+                                                            class="rounded-3 mb-2 ">
+                                                        <div class="text-center"><button
+                                                                class="btn btn-sm btn-outline-primary">Player 2 </button>
+                                                            <button class="btn btn-sm btn-outline-success">Run:20</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-4 text-center border-left border-right">
+                                                        <img src={{ asset('img/user3.jpg') }} width="100px"
+                                                            class="rounded-3 mb-2">
+                                                        <div class="text-center"><button
+                                                                class="btn btn-sm btn-outline-primary">Player 2 </button>
+                                                            <button class="btn btn-sm btn-outline-success">Run:20</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-4 mt-3 text-center ">
+                                                        <h2 class="text-red">{{ explode(':', $con->player)[0] }}<h2>
+                                                                <h2 class="text-red">NZ-6<h2>
+
+                                                    </div>
+                                                    <hr class="mt-2">
+                                                    <div class="text-center">
+                                                        <h3 class="text-red border-bottom border-2 border-success">All Users
+                                                            Rank List</h3>
+                                                    </div>
+                                                    <hr class="mt-1 pe-3 ps-3">
+                                                    <div class="modal-body">
+                                                        <div class="order-table table-responsive white-bg">
+
+                                                            <table class="table table-bordered text-center">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">Winning Position</th>
+                                                                        <th>User Name</th>
+                                                                        <th>Total Run</th>
+                                                                        <th scope="col">Price Money</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    @php
+                                                                        $participated_user = DB::table('participated_users')
+                                                                            ->where('contest_id', $con->id)
+                                                                            ->get();
+                                                                    @endphp
+                                                                    @foreach ($participated_user as $puser)
+                                                                        <tr>
+                                                                            <td class="product-name">
+
+                                                                                <p>Rank {{ $loop->iteration }}</p>
+
+                                                                            </td>
+                                                                            <td class="product-name">
+
+                                                                                <p> {{ DB::table('all_users')->find($puser->user_id)->user_name }}
+                                                                                </p>
+
+                                                                            </td>
+                                                                            <td class="product-total"><span
+                                                                                    class="subtotal-amount">{{ $rank->prize_amount }}</span>
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
                                         @endforeach
 
                                     </div>
-                                    <div class="products-reviews white-bg mb-3 rounded-3">
-                                        <h2 class="text-danger pl-3 pt-2 bg-dark">Rohit Kumar<i class='bx bx:info-circle'></i></h2>
-                                        <div class="row">
-                                            <div class="col-md-4 col-4">
-                                                <img src={{asset('img/user3.jpg')}} class="rounded-3 mb-2">
-                                                <div class="text-center"><button class="btn btn-sm btn-outline-primary">Player 1 <br>Run:20</button></div>
-                                            </div>
-                                            <div class="col-md-4 col-4">
-                                                <img src={{asset('img/user3.jpg')}} class="rounded-3 mb-2">
-                                                <div class="text-center"><button class="btn btn-sm btn-outline-primary">Player 2 <br>Run:20</button></div>
-                                            </div>
-                                            <div class="col-md-4 col-4 mt-3">
-                                                <h2 class="text-primary">Aus-6<h2>
-                                                <h2 class="text-primary">NZ-6<h2>
-                                                
-                                            </div>
-                                            </div>    <hr>                                                                            
-                                    </div>
+
 
                                 </div>
                             </div>
@@ -203,7 +261,5 @@
         <div class="go-top"><i class='bx bx-up-arrow-alt'></i></div>
         <div class="zelda-cursor"></div>
         <div class="zelda-cursor2"></div>
-
-
     @endslot
 </x-layout>
