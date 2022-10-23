@@ -25,7 +25,7 @@ class WalletController extends Controller
 
         $totalWithdrawStatus = DB::table('withdraw_requests')->where('payment_status', 'pending')->where('user_id', Auth::user()->id)->sum('amount');
         $totalBalance = $totalCredit - $totalDebit;
-        $totalRedeemBalance = $totalBalance - $totalWithdrawStatus;
+        $totalRedeemBalance = $totalWithdrawStatus;
 
         return view('wallet', ['total_balance' => $totalBalance, 'total_redeem_balance' => $totalRedeemBalance]);
     }
@@ -94,9 +94,9 @@ class WalletController extends Controller
                 'status' => 1
             ];
             DB::table('wallets')->insert($dataArray);
-            return redirect('/add_cash');
-        } else {
             return redirect('/wallet');
+        } else {
+            return redirect('/add_cash');
         }
     }
     public function depositAmount(Request $request)
