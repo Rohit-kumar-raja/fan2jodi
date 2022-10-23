@@ -84,8 +84,8 @@ class WalletController extends Controller
     public function depositAmount(Request $request)
     {
         $action = 'https://full2sms.in/gateway/processPpayment';
-        $Success_Url = url('public/payment-response.php');
-        $Failure_Url = $Success_Url;
+        $successUrl = url('/payment-response.php');
+        $failureUrl = $successUrl;
         //   $txnid = hexdec( uniqid() );
         $txnid = $this->generateRandomString(12);
         //   return $txnid;
@@ -106,8 +106,8 @@ class WalletController extends Controller
                 <input type="" value="JaRuYjKMepovCbQHAZ5V7Uk" name="token">
                 <input type="" value="' . $amount . '" name="amount"> 
                 <input type=""  value="' . Auth::user()->phone . '" name="Mobile_Number"> 
-                <input type="" value="' . $Success_Url . '" name="Success_Url"> 
-                <input type="" value="' . $Failure_Url . '" name="Failure_Url"> 
+                <input type="" value="' . $successUrl . '" name="Success_Url"> 
+                <input type="" value="' . $failureUrl . '" name="Failure_Url"> 
                 <input type="" value="' . $payment->id . '" name="Param1"> 
                 <button type="submit" id="payBtn">pay</button>
             </form>
