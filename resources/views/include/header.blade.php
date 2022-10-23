@@ -101,7 +101,7 @@
                         <li class="nav-item "><a href="{{ route('contest.my') }}" class="nav-link text-red">My Contest</a>
                         </li>
                         <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-red">WALLET</a></li>
-                        <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-red">Withdraw</a>
+                        <li class="nav-item "><a href="{{ route('withdraw') }}" class="nav-link text-red">Withdraw</a>
                         </li>
                         <li class="nav-item "><a href="{{ route('wallet.transaction') }}"
                                 class="nav-link text-red">Transaction's</a></li>

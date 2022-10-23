@@ -39,8 +39,9 @@
                                     <h3 class="text-black mt--10">₹ {{$total_redeem_balance}}</h3>
                                 </div>
                                 <div class="col-4 col-md-2">
-                                    <button class="btn btn-sm blue-bg text-white me-1 ">Withdraw </button>
-                                    <i class="fas fa-info-circle text-red"></i>
+                                <a href="{{ route('withdraw')}}" class="btn btn-sm blue-bg text-white me-1">Withdraw</a>
+                                    <!-- <button class="btn btn-sm blue-bg text-white me-1 ">Withdraw </button>
+                                    <i class="fas fa-info-circle text-red"></i> -->
                                 </div>
                             </div>
 
