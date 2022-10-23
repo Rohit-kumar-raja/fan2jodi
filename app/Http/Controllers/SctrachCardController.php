@@ -40,7 +40,7 @@ class SctrachCardController extends Controller
                     'debit' => $contest->participate_amount,
                     'credit' => 0,
                     'balance' => $wallet_balance_amount - $contest->participate_amount,
-                    'withdraw_status' => 1,
+                    'withdraw_status' => "success",
                     'api_info' => 'contest:' . $contest->id,
                     'status' => 1,
                     'created_at' => date('Y-m-d h:m:s'),

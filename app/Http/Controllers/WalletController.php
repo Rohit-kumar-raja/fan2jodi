@@ -14,8 +14,7 @@ class WalletController extends Controller
     public function transaction()
     {
         // $data =   DB::table('wallets')->where('status', 1)->where('id', Auth::user()->id)->get();
-        $data =   DB::table('wallets')->where('id', Auth::user()->id)->get();
-
+        $data =   DB::table('wallets')->where('user_id', Auth::user()->id)->orderByDesc('id')->paginate(10);
         return view('transaction', ['data' => $data]);
     }
 

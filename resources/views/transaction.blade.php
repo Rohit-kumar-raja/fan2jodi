@@ -65,14 +65,14 @@
                                 </div>
                                 <div class=" text-center">
                                     <span class="time">Rumble - INDIA</span>
-                                    <span class="time">Time: 8:57PM</span>
+                                    <span class="time">Time - {{  date('h.i A',strtotime($tran->created_at))}}</span>
                                 </div>
                             </div>
-
                         </div>
                     @endforeach
 
                 </div>
+                {{ $data->links() }}
             </div>
         </section>
         <!-- End Stream Schedule Area -->
