@@ -93,7 +93,7 @@ class WalletController extends Controller
         $payment = new Payment();
         $payment->user_id = Auth::user()->id;
         $payment->order_id = $txnid;
-        $payment->payment_amount = 2;
+        $payment->payment_amount = $amount;
         $payment->payment_type = "deposit";
         $payment->payment_date = date('Y-m-d H:i:s');
         $payment->status = "pending";
