@@ -18,7 +18,7 @@
                                 <div class="row">
                                     <div class="col-8 col-md-10">
                                         <span class="time">Total Balance</span>
-                                        <h3 class="text-black mt--10">₹ 88.20</h3>
+                                        <h3 class="text-black mt--10">₹ {{$total_balance}}</h3>
                                     </div>
                                     <div class="col-4 col-md-2 mt-3">
                                         <a href="{{ route('add_cash')}}" class="btn btn-sm blue-bg text-white me-1">Add Cash </a>
@@ -36,7 +36,7 @@
                             <div class="row">
                                 <div class="col-8 col-md-10">
                                     <span class="time">Redeemable Balance</span>
-                                    <h3 class="text-black mt--10">₹ 70.20</h3>
+                                    <h3 class="text-black mt--10">₹ {{$total_redeem_balance}}</h3>
                                 </div>
                                 <div class="col-4 col-md-2">
                                     <button class="btn btn-sm blue-bg text-white me-1 ">Withdraw </button>

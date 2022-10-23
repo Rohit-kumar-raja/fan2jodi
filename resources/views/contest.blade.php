@@ -16,15 +16,8 @@
                                 <li class="nav-item"><a class="nav-link" id="reviews-tab" data-bs-toggle="tab"
                                         href="#reviews" role="tab" aria-controls="reviews">My Contest
                                         ({{ $my_contest_count }})</a></li>
-
                             </ul>
-
                             <!-- Button trigger modal -->
-
-
-
-
-
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade  show active" id="description" role="tabpanel">
                                     @foreach ($data as $con)
@@ -158,8 +151,7 @@
                                                                 <div style="width: {{ $percentage }}%" class="bar-2">
                                                                 </div>
                                                             </div>
-                                                            <span
-                                                                class="text-black text-center small mt-3 ml-4 ">{{ $joined }}/{{ $con->no_of_participate }}
+                                                            <span class="text-black text-center small mt-3 ml-4 ">{{ $joined }}/{{ $con->no_of_participate }}
                                                                 joined</span>
                                                         </div>
                                                         <div class="side right">
@@ -168,8 +160,7 @@
                                                                     class="blue-bg text-white plb float-right mrr-60"
                                                                     data-toggle="modal"
                                                                     data-target="#staticBackdrop{{ $con->id }}">
-                                                                    ₹
-                                                                    {{ $con->participate_amount }}
+                                                                    ₹ {{ $con->participate_amount }}
                                                                 </button>
                                                                 <br><br>
                                                             </div>

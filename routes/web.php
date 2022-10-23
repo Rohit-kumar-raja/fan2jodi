@@ -21,10 +21,12 @@ Route::get('contest/{matche_id}', [ContestController::class, 'index'])->name('co
 Route::get('contest/my', [ContestController::class, 'my_contest'])->name('contest.my')->middleware('auth');
 
 Route::get('wallet/transaction', [WalletController::class, 'transaction'])->name('wallet.transaction')->middleware('auth');
+Route::get('wallet', [WalletController::class, 'walletList'])->name('wallet')->middleware('auth');
 
 // user management
 Route::post('user/register', [LoginController::class, 'register'])->name('user.register');
 Route::post('user/login', [LoginController::class, 'login'])->name('user.login');
+Route::post('deposit-amount', [WalletController::class, 'depositAmount'])->name('deposit.amount');
 // user management
 
 Route::get('player/scratch/card/{contest_id}/contest/{matche_id}/matche/', [SctrachCardController::class, 'index'])->name('player.scratch')->middleware('auth');
@@ -38,9 +40,9 @@ Route::get('price_list', function () {
     return view('price_list');
 })->name('price_list');
 
-Route::get('wallet', function () {
-    return view('wallet');
-})->name('wallet');
+// Route::get('wallet', function () {
+//     return view('wallet');
+// })->name('wallet');
 
 Route::get('add_cash', function () {
     return view('add_cash');
