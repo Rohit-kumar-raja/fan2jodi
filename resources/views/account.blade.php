@@ -17,7 +17,7 @@
 
 
         <!-- Start Stream Schedule Area -->
-        <section class="stream-schedule-area pt-100 pb-70 mtt-30">
+        <section class="stream-schedule-area pt-100 pb-70 mtt-30 bg-red">
             <div class="container">
                 <div class="row">
 
