@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Payment;
-use Session;
+use App\Models\User;
+use Illuminate\Support\Facades\Session;
+
 class WalletController extends Controller
 {
     public function transaction()
@@ -118,7 +120,7 @@ class WalletController extends Controller
     }
     public function withdrawalSubmit(Request $request)
     {
-        $withdrawalData = ['user_id' => \Auth::user()->id, 'amount' => $request->request_amount, 'status' => 'pending'];
+        $withdrawalData = ['user_id' => Auth::user()->id, 'amount' => $request->request_amount, 'status' => 'pending'];
         $withdraw =DB::table('withdrawals')->create($withdrawalData);
         if ($withdraw) {
             //////////////////////////////////
@@ -133,7 +135,7 @@ class WalletController extends Controller
                 $table->string('payment_status');
                 $table->string('approved_by');
                 $table->boolean('status');
-                $table->foreign('user_id')->references('id')->on('users');
+                $table->foreign('user_id')->references('id')->on('all_users');
                 $table->foreign('contest_id')->references('id')->on('contests');
                 $table->timestamps();
             });
@@ -162,7 +164,7 @@ class WalletController extends Controller
                 $withdraw->status = "paid";
                 $withdraw->save();
                 $totalWidthDrawalAmount = $amount + 10;
-                $user = User::where('id', \Auth::user()->id)->first();
+                $user = User::where('id', Auth::user()->id)->first();
                 $user->wallet_amount = $user->wallet_amount - $totalWidthDrawalAmount;
                 $user->save();
                 //  $general = GeneralSetting::first();
