@@ -8,7 +8,7 @@
 
     <section class="top-nav ">
         <div class="logos">
-            <a href="{{ route('home') }}"> <img src="{{ url('img/logo2.png') }}" alt="logo" width="45px"> <span
+            <a href="{{ route('home') }}"> <img src="{{ asset('img/logo2.png') }}" alt="logo" width="45px"> <span
                     class="f-28 text-uppercase">&ensp;{{ $title }}</span></a>
 
         </div>
