@@ -4,7 +4,7 @@
         <!-- Start Stream Schedule Area -->
         <section class="stream-schedule-area pt-100 pb-70 mtt-30 bg-red">
             <div class="container ">
-                <form action="{{url('withdraw-request')}}" method="post">
+                <form action="{{route('withdraw-request')}}" method="post">
                     @csrf()
                 <div class="row">
                     <div class="col-lg-12 col-md-12 mb-4 ">
