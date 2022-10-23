@@ -34,7 +34,7 @@
                             <div class="flex-container">
                                 <div class="flex-child">
                                         @if(Auth::user()->images)
-                                        <img src="{{ url('upload/user') }}/{{Auth::user()->images}}"  width="130" style="border:solid" class="user-img img-br">
+                                        <img src="upload/user/{{Auth::user()->images}}"  width="130" style="border:solid" class="user-img img-br">
                                         @else
                                         <img src="{{ asset('img/user3.jpg') }}"   width="130" style="border:solid" class="user-img img-br">
                                         @endif
@@ -137,7 +137,7 @@
                                     <div class="flex-child">
                                     <div id="image_preview_section">
                                         @if(Auth::user()->images)
-                                        <img src="{{ url('upload/user') }}/{{Auth::user()->images}}"  id="user_img" width="130" style="border:solid" class="user-img img-br">
+                                        <img src="upload/user/{{Auth::user()->images}}"  id="user_img" width="130" style="border:solid" class="user-img img-br">
                                         @else
                                         <img src="{{ asset('img/user3.jpg') }}"  id="user_img" width="130" style="border:solid" class="user-img img-br">
                                         @endif
