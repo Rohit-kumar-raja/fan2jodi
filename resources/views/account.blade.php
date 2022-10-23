@@ -126,7 +126,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label class="text-black">User Name</label>
-                                    <input type="text" name="user_name"  id="user_name" class="form-control">
+                                    <input type="text" name="user_name" value="{{\Auth::user()->user_name}}"  id="user_name" class="form-control text-white">
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="flex-child">
