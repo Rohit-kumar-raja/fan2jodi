@@ -5,6 +5,9 @@
         background-size: 20px;
     }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <x-layout>
@@ -31,9 +34,8 @@
                             <div class="flex-container">
                                 <div class="flex-child">
                                     <img src={{ asset('img/user3.jpg') }} class="user-img img-br">
-                                    <br><button class="bnt">Edit</button>
+                                    <br><button type="button" class="bnt" data-toggle="modal" data-target="#exampleModal">Edit</button>
                                 </div>
-
                                 <div class="flex-child">
                                     <span>{{Auth::user()->user_name}}</span>
                                     <div class="ratingg ">
@@ -106,5 +108,42 @@
         <div class="zelda-cursor"></div>
         <div class="zelda-cursor2"></div>
 
+
+
+        <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <form action="{{url('update-user-profile')}}" method="post">
+                        @csrf()
+                        <div class="modal-header">
+                            <h5 class="modal-title text-black" id="exampleModalLabel">User Update</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label class="text-black">User Name</label>
+                                    <input type="text" name="user_name"  id="user_name" class="form-control">
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="flex-child">
+                                        <img src={{ asset('img/user3.jpg') }} class="user-img img-br">
+                                        </br>
+                                        <input type="file" name="update_image" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
     @endslot
 </x-layout>
