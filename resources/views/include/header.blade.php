@@ -20,6 +20,20 @@
             <li class="nav-item "><a href="{{ route('wallet.transaction')}}"
                     class="nav-link text-white">Transaction's</a></li>
             <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-white">ADD CASH</a></li>
+            @if(!empty(Auth::user()))
+                <li class="nav-item "> 
+                    <a href="{{ route('logout') }}" class="nav-link text-red" 
+                    onclick="event.preventDefault();
+            document.getElementById('logout-form1').submit();">
+                {{ __('Logout') }}</a>
+            </li>
+            <form id="logout-form1" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            @else
+            <li class="nav-item "><a href="{{ route('login') }}" class="nav-link text-red">Login</a>
+            </li>
+            @endif
         </ul>
     </section>
 
@@ -93,7 +107,20 @@
                                 class="nav-link text-red">Transaction's</a></li>
                         <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-red">ADD CASH</a>
                         </li>
+                        @if(!empty(Auth::user()))
+                        <li class="nav-item "> 
+                            <a href="{{ route('logout') }}" class="nav-link text-red" 
+                            onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}</a>
                         </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        @else
+                        <li class="nav-item "><a href="{{ route('login') }}" class="nav-link text-red">Login</a>
+                        </li>
+                        @endif
                     </ul>
                 </div>
                 {{-- <div class="sidebar-contact-info">

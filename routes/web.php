@@ -35,6 +35,7 @@ Route::post('withdraw-request', [WalletController::class, 'withdrawRequest'])->n
 Route::get('player/scratch/card/{contest_id}/contest/{matche_id}/matche/', [SctrachCardController::class, 'index'])->name('player.scratch')->middleware('auth');
 Route::post('scratch', [SctrachCardController::class, 'sratch_card'])->name('player.scratch.card')->middleware('auth');
 Route::post('update-profile', [indexController::class, 'updateProfile'])->middleware('auth');
+Route::post('update-user-profile', [indexController::class, 'updateUserProfile'])->middleware('auth');
 
 
 

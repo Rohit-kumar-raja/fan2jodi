@@ -33,7 +33,12 @@
                         <div class="single-stream-schedule-box blue-bg">
                             <div class="flex-container">
                                 <div class="flex-child">
-                                    <img src={{ asset('img/user3.jpg') }} class="user-img img-br">
+                                        @if(Auth::user()->images)
+                                        <img src="{{ asset('upload/user') }}/{{Auth::user()->images}}"  width="130" style="border:solid" class="user-img img-br">
+                                        @else
+                                        <img src="{{ asset('img/user3.jpg') }}"   width="130" style="border:solid" class="user-img img-br">
+                                        @endif
+                                    <!-- <img src={{ asset('img/user3.jpg') }} class="user-img img-br"> -->
                                     <br><button type="button" class="bnt" data-toggle="modal" data-target="#exampleModal">Edit</button>
                                 </div>
                                 <div class="flex-child">
@@ -114,25 +119,31 @@
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                    <form action="{{url('update-user-profile')}}" method="post">
+                    <form action="{{url('update-user-profile')}}" method="post" enctype="multipart/form-data">
                         @csrf()
                         <div class="modal-header">
                             <h5 class="modal-title text-black" id="exampleModalLabel">User Update</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label class="text-black">User Name</label>
-                                    <input type="text" name="user_name" value="{{\Auth::user()->user_name}}"  id="user_name" class="form-control text-white">
+                                    <input type="text" name="user_name" value="{{\Auth::user()->user_name}}"  id="user_name" class="form-control text-black">
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="flex-child">
-                                        <img src={{ asset('img/user3.jpg') }} class="user-img img-br">
+                                    <div id="image_preview_section">
+                                        @if(Auth::user()->images)
+                                        <img src="{{ asset('upload/user') }}/{{Auth::user()->images}}"  id="user_img" width="130" style="border:solid" class="user-img img-br">
+                                        @else
+                                        <img src="{{ asset('img/user3.jpg') }}"  id="user_img" width="130" style="border:solid" class="user-img img-br">
+                                        @endif
+                                    </div>
                                         </br>
-                                        <input type="file" name="update_image" >
+                                        <input type="file" name="update_image" id="file" accept="image/*" onchange="validateimg(this)" >
                                     </div>
                                 </div>
                             </div>
@@ -147,3 +158,55 @@
             </div>
     @endslot
 </x-layout>
+<script>
+    function validateimg(ctrl) {
+            var fileUpload = ctrl;
+            var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(.jpg|.PNG|.JPG|.jpeg|.png)$");
+            if (regex.test(fileUpload.value.toLowerCase())) {
+                if (typeof(fileUpload.files) != "undefined") {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(fileUpload.files[0]);
+                    reader.onload = function(e) {
+                        var image = new Image();
+                        image.src = e.target.result;
+                        image.onload = function() {
+                            var height = this.height;
+                            var width = this.width;
+                            // if (height < 500 || width < 500) {
+                            //     alert("At least you can upload a 500*500 photo size.");
+                            //     return false;
+                            // } else {
+                                // alert("Uploaded image has valid Height and Width.");
+                                var validExtensions = ['jpg', 'png', 'jpeg', 'PNG',
+                                    'JPG'
+                                ]; //array of valid extensions
+                                var fileName = fileUpload.files[0].name;
+                                var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                                if ($.inArray(fileNameExt, validExtensions) == -1) {
+                                    fileUpload.type = ''
+                                    fileUpload.type = 'file'
+                                    $('#user_img').attr('src', "");
+                                    alert("Only these file types are accepted : " + validExtensions.join(', '));
+                                } else {
+                                    if (fileUpload.files || fileUpload.files[0]) {
+                                        var filerdr = new FileReader();
+                                        filerdr.onload = function(e) {
+                                            $('#user_img').attr('src', e.target.result);
+                                        }
+                                        filerdr.readAsDataURL(fileUpload.files[0]);
+                                    }
+                                // }
+                                // return true;
+                            }
+                        };
+                    }
+                } else {
+                    alert("This browser does not support HTML5.");
+                    return false;
+                }
+            } else {
+                alert("Please select a valid Image file.");
+                return false;
+            }
+        }
+</script>

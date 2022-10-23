@@ -10,4 +10,13 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    function insert_image($image, $folder)
+    {
+
+        $destinationPath = 'upload/' . $folder . '/';
+        $image_name = time() . "_" . $image->getClientOriginalName();
+        $image->move($destinationPath, $image_name);
+        return $image_name;
+    }
 }

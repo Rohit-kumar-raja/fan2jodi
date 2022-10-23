@@ -32,4 +32,15 @@ class indexController extends Controller
       $user->save();
       return back();
    }
+   public function updateUserProfile(Request $request)
+   {
+      $user = User::find(Auth::user()->id);
+      $user->user_name = $request->user_name;
+      if(!empty($request->file('update_image')))
+      {
+         $user->images = $this->insert_image($request->file('update_image'), 'user');
+      }
+      $user->save();
+      return back();
+   }
 }
