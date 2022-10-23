@@ -9,7 +9,7 @@
             <div class="container white-bg rounded">
                 <div class="row  ">
 
-                    <div class="col-lg-12 col-md-12 ">
+                    <div class="col-lg-12 col-md-12 mb-5 ">
                         <div class="single-stream-schedule-box pl-1 mt-3 rounded-pill">
                             <div class="p-1 pt-3 text-center">
                                 <h5 class="text-success">Pending/Failed All Transaction</h5>
@@ -18,7 +18,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex-container ">
+                    {{-- <div class="flex-container ">
                         <div class="flex-child mr-20 mt-3 mb-3">
                             <h2 class="text-black mb-0">Date Range</h2>
                             <div class="row">
@@ -41,7 +41,7 @@
                                 <option>Third</option>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
                     @foreach ($data as $tran)
                         <div class="col-lg-12 col-md-12 mb-4">
                             <div class="single-stream-schedule-box pink-bg shadow p-3 mb-5  rounded">

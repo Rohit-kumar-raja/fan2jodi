@@ -7,13 +7,18 @@
             <div class="page-title-content text-center">
                 <h1 title="Gallery">Player List</h1>
             </div>
+
+
             <div class="container">
                 <div class="row text-center mx-0">
+                    <div class="alert alert-warning" id="error" style="display: none" role="alert">
+
+                    </div>
                     @for ($i = 0; $i < $contest->no_of_participate; $i++)
                         <div class="col-6 col-lg-3 col-md-3 col-sm-3 wd-50">
                             <div class="single-gallery-item">
 
-                                <div class="flip-box">
+                                <div class="flip-box" id="flip">
                                     <div class="flip-box-inner " id="screen{{ $i }}"
                                         ondblclick="fetchApi({{ $i }})">
                                         <div class="flip-box-front">
@@ -49,18 +54,28 @@
             if (obj.team1 && obj.team2) {
                 document.getElementById('teamone' + data1).innerText = obj.team1
                 document.getElementById('teamtwo' + data1).innerText = obj.team2
+                var flip = document.getElementsByClassName('flip-box')
+
+                for (i = 0; i < flip.length; i++) {
+                    if (i != data1) {
+                        flip[i].style.display = "none";
+                    }
+                }
+
+                document.getElementById("screen" + data1).style.transform = 'rotateY(540deg)'
+
             } else {
-                document.getElementById('teamone' + data1).innerText = obj.error
-                document.getElementById("teamone" + data1).classList.remove("text-success");
-                document.getElementById("teamone" + data1).classList.add("text-red");
-                document.getElementById("teamone" + data1).style.fontSize = '40px';
+                document.getElementById('error').innerText = obj.error
+                document.getElementById('error').style.display = 'block'
+                var flip = document.getElementsByClassName('flip-box')
+
+                for (i = 0; i < flip.length; i++) {
+                    flip[i].style.display = "none";
+                }
+
             }
-            document.getElementById("screen" + data1).style.transform = 'rotateY(540deg)'
 
-            // var all_flip = document.getElementsByClassName('flip-box')
-            // for (i = 0; i < all_flip.length; i++) {
 
-            // }
         }
         var data = {
             matche_id: {{ $matche->id }},
