@@ -73,11 +73,11 @@
                                         <div class="form-group">
                                             <p>Password:</p>
                                             <input type="password" name="password"  required
-                                              minlength="8"   data-error="Please enter valid password" placeholder="Enter  Password">
+                                              minlength="8"   data-error="Please enter valid password" class="text-black" placeholder="Enter  Password">
 
                                             <p>Confirm Password:</p>
                                             <input
-                                              type="password" name="confirm_password"  minlength="8" required data-error="Please enter valid password"
+                                              type="password" name="confirm_password" class="text-black"  minlength="8" required data-error="Please enter valid password"
                                                 placeholder="Enter Confirm Password">
                                             <div class="help-block with-errors"></div>
                                         </div>
