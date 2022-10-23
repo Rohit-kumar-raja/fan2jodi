@@ -22,7 +22,7 @@ class SctrachCardController extends Controller
     {
         $matche_id = $request->matche_id;
         $contest_id = $request->contest_id;
-
+        $wallet_id = '';
         $exits =  DB::table('participated_users')->where('user_id', Auth::user()->id)->where('matche_id', $matche_id)->where('contest_id', $contest_id)->first();
         // if user already participated in this matches
         if ($exits == '') {
@@ -31,9 +31,9 @@ class SctrachCardController extends Controller
             $wallets_debit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('debit');
             $wallet_balance_amount = $wallets_credit - $wallets_debit;
 
-       
+
             // if user walllet not sufficiant for the join to the contest
-            if ($wallet_balance_amount > $contest->participate_amount) {
+            if ($wallet_balance_amount >= $contest->participate_amount) {
 
                 // debit the amount from the user account 
                 $wallet_id =  DB::table('wallets')->insertGetId([
@@ -46,7 +46,7 @@ class SctrachCardController extends Controller
                     'status' => 1,
                     'created_at' => date('Y-m-d h:m:s'),
                     'updated_at' => date('Y-m-d h:m:s')
-    
+
                 ]);
 
                 // creating the player 
@@ -68,14 +68,13 @@ class SctrachCardController extends Controller
                     'created_at' => date('Y-m-d h:m:s')
                 ]);
                 // if user already participate then amount will be not deducted
-                if ($participate_id != '') {
-
+                if ($participate_id > 0) {
                     return response()->json(['team1' => $team1, 'team2' => $team2]);
                 } else {
-
                     DB::table('wallets')->delete($wallet_id);
                     return response()->json(['error' => 'You are Already Joined in this contest']);
                 }
+                
                 // if user walllet not sufficiant for the join to the contest
             } else {
                 // DB::table('wallets')->delete($wallet_id);

@@ -27,7 +27,7 @@ class WalletController extends Controller
         $totalBalance = $totalCredit - $totalDebit;
         $totalRedeemBalance = $totalWithdrawStatus;
 
-        return view('wallet', ['total_balance' => $totalBalance, 'total_redeem_balance' => $totalRedeemBalance]);
+        return view('wallet', ['total_balance' => $totalBalance, 'total_redeem_balance' => $totalRedeemBalance, 'created_at'=>date('Y-m-d')]);
     }
 
     public function withdrawRequest(Request $request)
@@ -38,7 +38,7 @@ class WalletController extends Controller
         $totalWithdrawStatus = DB::table('withdraw_requests')->where('payment_status', 'pending')->where('user_id', Auth::user()->id)->sum('amount');
         $totalBalance = $totalCredit - $totalDebit;
         $totalRedeemBalance = $totalBalance - $totalWithdrawStatus;
-        if ($totalRedeemBalance > $request->deposit_amount) {
+        if ($totalRedeemBalance >= $request->deposit_amount) {
 
             $data = [
                 'user_id' => Auth::user()->id,
