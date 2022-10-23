@@ -8,22 +8,18 @@
                     @csrf()
                     <div class="row">
                         <div class="col-lg-12 col-md-12 mb-4 ">
-                       
-
                             <div class="single-stream-schedule-box white-bg rounded  ">
-
                                 <div class="content">
                                     @if (session('padding'))
-                                    <div class="alert alert-success">
-                                        {{ session('padding') }}
-                                    </div>
-                                @endif
-    
-                                @if (session('error'))
-                                    <div class="alert alert-danger">
-                                        {{ session('error') }}
-                                    </div>
-                                @endif
+                                        <div class="alert alert-success">
+                                            {{ session('padding') }}
+                                        </div>
+                                    @endif
+                                    @if (session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
                                     <span class="time">Enter Amount</span>
                                     <input type="number" min="50" max="20000" value="0" class="design"
                                         id="deposit_amount" name="deposit_amount" required onchange="handleAmount()"
@@ -40,15 +36,27 @@
                             </div>
                         </div>
                         <div class="text-center single-stream-schedule-box white-bg rounded  p-3">
-                            <!-- <span class="text-red">YOU GET</span>
-                                        <span class="text-success">₹ 100</span><br> -->
-                            <button type="submit" class="btn btn-success">Withdraw Request</button>
+                            <div class="row text-center">
+                                <div class="col-sm-4">
+                                    <label for="type">Payment Type</label>
+                                    <select class="form-control form-control-sm  text-red h-1" name="payment_type"
+                                        id="type">
+                                        <option selected disabled>- Payment Type -</option>
+                                        <option value="paytm">paytm</option>
+                                        <option value="upi">UPI</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="id">Payment id</label>
+                                    <input id="id" type="text" class="form-control form-control-sm text-red "
+                                        name="payment_id" placeholder="Enter Your Payment id">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success mt-3 ">Withdraw Request</button>
                         </div>
-
-
                     </div>
+                </form>
             </div>
-            </form>
         </section>
 
 

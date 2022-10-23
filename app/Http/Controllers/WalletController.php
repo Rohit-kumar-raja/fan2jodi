@@ -40,7 +40,15 @@ class WalletController extends Controller
         $totalRedeemBalance = $totalBalance - $totalWithdrawStatus;
         if ($totalRedeemBalance > $request->deposit_amount) {
 
-            $data = ['user_id' => Auth::user()->id, 'amount' => $request->deposit_amount, 'payment_status' => "pending", 'status' => 0];
+            $data = [
+                'user_id' => Auth::user()->id,
+                'amount' => $request->deposit_amount,
+                'payment_status' => "pending",
+                'status' => 0,
+                'payment_type' => $request->payment_type,
+                'payment_id' =>$request->payment_id,
+
+            ];
             DB::table('withdraw_requests')->insert($data);
             return back()->with('padding', 'Your Withdraw Request is going to panding');
         } else {

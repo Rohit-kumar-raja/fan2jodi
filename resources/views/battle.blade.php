@@ -48,7 +48,7 @@
                                         <div class="row align-items-center">
 
                                             @foreach ($data as $battel)
-                                                <div class="col-lg-12 col-md-12">
+                                                <div class="col-lg-12 col-md-12 " id="matches{{$loop->iteration}}">
                                                     <a href="{{ route('contest',$battel->id) }}"
                                                         class="flex-container  border border-2 bg-gray10 rounded">
                                                         <div class="flex-child c1">
@@ -108,7 +108,9 @@
                                                         if (distance{{$loop->iteration}} < 0) {
                                                             clearInterval(x{{$loop->iteration}});
                                                             document.getElementById("demo{{$loop->iteration}}").innerHTML = "EXPIRED";
+                                                            document.getElementById('matches{{$loop->iteration}}').style.display="none";
                                                         }
+
                                                     }, 1000);
                                                 </script>
                                             @endforeach
