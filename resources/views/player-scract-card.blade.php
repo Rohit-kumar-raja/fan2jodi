@@ -15,9 +15,9 @@
 
                                 <div class="flip-box">
                                     <div class="flip-box-inner " id="screen{{ $i }}"
-                                        onclick="fetchApi({{ $i }})">
+                                        ondblclick="fetchApi({{ $i }})">
                                         <div class="flip-box-front">
-                                            <img src="{{ url('img/player3.png') }}" alt="Paris">
+                                            <img src="{{ asset('img/player3.png') }}" alt="Paris">
                                         </div>
                                         <div class="flip-box-back">
                                             <div class="single-gallery-item img-fluid">

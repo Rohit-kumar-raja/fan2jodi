@@ -50,8 +50,8 @@ class SctrachCardController extends Controller
 
                 // creating the player 
                 $matches =  DB::table('matches')->find($matche_id);
-                $team1 = $matches->teamone . '-' . rand(1, 11);
-                $team2 = $matches->teamtwo . '-' . rand(1, 11);
+                $team1 = $matches->teamone . '-' . rand(1, 4);
+                $team2 = $matches->teamtwo . '-' . rand(1, 4);
                 $team = $team1 . ":" . $team2;
 
                 // adding the data on participated user list
