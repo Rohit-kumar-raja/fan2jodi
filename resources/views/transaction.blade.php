@@ -46,26 +46,38 @@
                         <div class="col-lg-12 col-md-12 mb-4">
                             <div class="single-stream-schedule-box pink-bg shadow p-3 mb-5  rounded">
                                 <div class="flex-container ">
-                                    <div class="flex-child mrr-60 ml-20 text-red">
-                                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                                        @if($tran->credit>0)
-                                        <span class="text-black mb-0 text-success">₹{{$tran->credit}}</span>
-
+                                    <div class="flex-child mrr-60 ml-20 ">
+                                        @if ($tran->credit > 0)
+                                            <i class="fa fa-plus-circle text-success" aria-hidden="true"></i>
+                                            <span class=" mb-0 text-success">₹{{ $tran->credit }}</span>
                                         @else
-                                        <span class="text-black mb-0 text-red">₹{{$tran->debit}}</span>
-
+                                            <i class="fa fa-minus-circle text-red " aria-hidden="true"></i>
+                                            <span class="text-black mb-0 text-red">₹{{ $tran->debit }}</span>
                                         @endif
                                     </div>
                                     <div class="flex-child mr-20">
-                                        <span class="text-black mb-0">Fantasy-Cricket-Entry</span>
+                                        <span class="text-black mb-0">
+
+
+
+                                            @if (strlen($tran->api_info) < 50)
+                                                Fantasy-Cricket-Entry - @if ($tran->withdraw_status == 1)
+                                                    <span class="text-success">Success</span>
+                                                @else
+                                                    {{ $tran->withdraw_status }}
+                                                @endif
+                                            @else
+                                            @endif
+                                        </span>
                                     </div>
                                     <div class="flex-child">
-                                        <span class="text-black mb-0 ml-20 text-gray">{{ date('d-m-Y',strtotime($tran->created_at)) }}</span>
+                                        <span
+                                            class="text-black mb-0 ml-20 text-gray">{{ date('d-m-Y', strtotime($tran->created_at)) }}</span>
                                     </div>
                                 </div>
                                 <div class=" text-center">
                                     <span class="time">Rumble - INDIA</span>
-                                    <span class="time">Time - {{  date('h.i A',strtotime($tran->created_at))}}</span>
+                                    <span class="time">Time - {{ date('h.i A', strtotime($tran->created_at)) }}</span>
                                 </div>
                             </div>
                         </div>
