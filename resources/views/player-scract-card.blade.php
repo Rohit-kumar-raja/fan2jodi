@@ -68,7 +68,6 @@
                 document.getElementById('error').innerText = obj.error
                 document.getElementById('error').style.display = 'block'
                 var flip = document.getElementsByClassName('flip-box')
-
                 for (i = 0; i < flip.length; i++) {
                     flip[i].style.display = "none";
                 }

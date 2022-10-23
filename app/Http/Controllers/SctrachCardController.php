@@ -31,22 +31,23 @@ class SctrachCardController extends Controller
             $wallets_debit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('debit');
             $wallet_balance_amount = $wallets_credit - $wallets_debit;
 
+            $wallet_id =  DB::table('wallets')->insertGetId([
+                'user_id' => Auth::user()->id,
+                'debit' => $contest->participate_amount,
+                'credit' => 0,
+                'balance' => $wallet_balance_amount - $contest->participate_amount,
+                'withdraw_status' => "success",
+                'api_info' => 'contest:' . $contest->id,
+                'status' => 1,
+                'created_at' => date('Y-m-d h:m:s'),
+                'updated_at' => date('Y-m-d h:m:s')
+
+            ]);
             // if user walllet not sufficiant for the join to the contest
             if ($wallet_balance_amount > $contest->participate_amount) {
 
                 // debit the amount from the user account 
-                $wallet_id =  DB::table('wallets')->insertGetId([
-                    'user_id' => Auth::user()->id,
-                    'debit' => $contest->participate_amount,
-                    'credit' => 0,
-                    'balance' => $wallet_balance_amount - $contest->participate_amount,
-                    'withdraw_status' => "success",
-                    'api_info' => 'contest:' . $contest->id,
-                    'status' => 1,
-                    'created_at' => date('Y-m-d h:m:s'),
-                    'updated_at' => date('Y-m-d h:m:s')
-
-                ]);
+             
 
                 // creating the player 
                 $matches =  DB::table('matches')->find($matche_id);
@@ -77,6 +78,7 @@ class SctrachCardController extends Controller
                 }
                 // if user walllet not sufficiant for the join to the contest
             } else {
+                DB::table('wallets')->delete($wallet_id);
                 return response()->json(['error' => "You don't have enogth balance for join this contest"]);
             }
             // if user already participated in this matches
