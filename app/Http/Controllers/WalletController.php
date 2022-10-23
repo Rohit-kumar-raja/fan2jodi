@@ -24,7 +24,7 @@ class WalletController extends Controller
         $totalCredit = DB::table('wallets')->where('user_id',Auth::user()->id)->sum('credit');
         $totalDebit = DB::table('wallets')->where('user_id',Auth::user()->id)->sum('debit');
 
-        $totalWithdrawStatus = DB::table('wallets')->where('user_id',Auth::user()->id)->sum('debit');
+        $totalWithdrawStatus = DB::table('withdraw_requests')->where('payment_status','pending')->where('user_id',Auth::user()->id)->sum('amount');
         $totalBalance = $totalCredit - $totalDebit;
         $totalRedeemBalance = $totalCredit - $totalWithdrawStatus;
         
