@@ -24,7 +24,7 @@ class indexController extends Controller
       $request->validate([
          'state' => ['required', 'string', 'max:255'],
          // 'email' => ['required', 'string', 'email', 'max:255', 'unique:all_users'],
-         'password' => ['required', Rules\Password::defaults()],
+         'password' => ['nullable', Rules\Password::defaults()],
          'phone' => ['required', 'max:10', 'min:10']
       ]);
       $user = User::find(Auth::user()->id);
@@ -38,6 +38,9 @@ class indexController extends Controller
    }
    public function updateUserProfile(Request $request)
    {
+      $request->validate([
+         'user_name' => ['required']
+      ]);
       $user = User::find(Auth::user()->id);
       $user->user_name = $request->user_name;
       if (!empty($request->file('update_image'))) {
