@@ -111,63 +111,67 @@ class SctrachCardController extends Controller
     public function dataSet15()
     {
        $return=[
-         array(0=>"a:1",1=>"b:2"),
-         array(0=>"a:2",1=>"b:2"),
-         array(0=>"a:3",1=>"b:2"),
-         array(0=>"a:4",1=>"b:2"),
- 
-         array(0=>"a:2",1=>"b:1"),
-         array(0=>"a:3",1=>"b:1"),
+         array(0=>"a:1",1=>"a:2"),
+         array(0=>"a:2",1=>"a:3"),
+
+         array(0=>"a:1",1=>"a:3"),
          array(0=>"a:1",1=>"b:1"),
-         array(0=>"a:4",1=>"b:1"),
  
+         array(0=>"a:1",1=>"b:2"),
          array(0=>"a:1",1=>"b:3"),
-         array(0=>"a:2",1=>"b:3"),
+         array(0=>"a:3",1=>"b:1"),
+
+         array(0=>"a:3",1=>"b:2"),
          array(0=>"a:3",1=>"b:3"),
-         array(0=>"a:4",1=>"b:3"),
-         array(0=>"b:2",1=>"b:4"),
-         array(0=>"a:2",1=>"b:4"),
-         array(0=>"a:3",1=>"b:4"),
+
+         array(0=>"b:1",1=>"b:2"),
+         array(0=>"b:2",1=>"b:3"),
+         array(0=>"b:1",1=>"b:3"),
+         array(0=>"a:2",1=>"b:1"),
+         array(0=>"a:2",1=>"b:2"),
+         array(0=>"a:2",1=>"b:3"),
        ];
        return $return;
     }
     public function dataSet28()
     {
        $return=[
-         array(0=>"a:1",1=>"b:2"),
-         array(0=>"a:2",1=>"b:2"),
-         array(0=>"a:3",1=>"b:2"),
-         array(0=>"a:4",1=>"b:2"),
- 
-         array(0=>"a:2",1=>"b:1"),
-         array(0=>"a:3",1=>"b:1"),
+         array(0=>"a:1",1=>"a:2"),
+         array(0=>"a:2",1=>"a:3"),
+         array(0=>"a:1",1=>"a:3"),
+
          array(0=>"a:1",1=>"b:1"),
-         array(0=>"a:4",1=>"b:1"),
- 
+         array(0=>"a:1",1=>"b:2"),
          array(0=>"a:1",1=>"b:3"),
-         array(0=>"a:2",1=>"b:3"),
+
+         array(0=>"a:3",1=>"b:1"),
+         array(0=>"a:3",1=>"b:2"),
          array(0=>"a:3",1=>"b:3"),
+ 
+         array(0=>"b:1",1=>"b:2"),
+         array(0=>"b:2",1=>"b:3"),
+         array(0=>"b:1",1=>"b:3"),
+
+         array(0=>"a:1",1=>"b:1"),
+         array(0=>"a:2",1=>"b:2"),
+         array(0=>"a:2",1=>"b:3"),
+
+         array(0=>"a:1",1=>"a:4"),
+         array(0=>"a:2",1=>"a:4"),
+         array(0=>"a:3",1=>"a:4"),
+
+         array(0=>"b:1",1=>"b:4"),
+         array(0=>"b:2",1=>"b:4"),
+         array(0=>"b:3",1=>"b:4"),
+ 
+         array(0=>"a:1",1=>"b:4"),
+         array(0=>"a:2",1=>"b:4"),
+         array(0=>"a:3",1=>"b:4"),
+         array(0=>"a:4",1=>"b:4"),
+ 
+         array(0=>"a:4",1=>"b:1"),
+         array(0=>"a:4",1=>"b:2"),
          array(0=>"a:4",1=>"b:3"),
- 
-         array(0=>"b:2",1=>"b:4"),
-         array(0=>"a:2",1=>"b:4"),
-         array(0=>"a:3",1=>"b:4"),
-         array(0=>"b:2",1=>"b:4"),
- 
-         array(0=>"a:2",1=>"b:4"),
-         array(0=>"a:3",1=>"b:4"),
-         array(0=>"b:2",1=>"b:4"),
-         array(0=>"a:2",1=>"b:4"),
- 
-         array(0=>"a:3",1=>"b:4"),
-         array(0=>"b:2",1=>"b:4"),
-         array(0=>"a:2",1=>"b:4"),
-         array(0=>"a:3",1=>"b:4"),
- 
-         array(0=>"b:2",1=>"b:4"),
-         array(0=>"a:2",1=>"b:4"),
-         array(0=>"a:3",1=>"b:4"),
-         array(0=>"a:3",1=>"b:4"),
        ];
        return $return;
     }
@@ -175,10 +179,10 @@ class SctrachCardController extends Controller
     function generateRandomString($contestnoOfParticipate = 15) {
         if($contestnoOfParticipate==15)
         {
-            return $this->dataSet15()[rand(1, 14)];
+            return $this->dataSet15()[rand(0, $contestnoOfParticipate-1)];
         }else
         {
-            return $this->dataSet28()[rand(1, 14)];
+            return $this->dataSet28()[rand(0, $contestnoOfParticipate-1)];
         }
       
    }
