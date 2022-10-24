@@ -37,7 +37,7 @@
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item"><a class="text-black nav-link active" id="description-tab"
                                         data-bs-toggle="tab" href="#description" role="tab"
-                                        aria-controls="description">Upcoming</a></li>
+                                        aria-controls="description">Upcoming Matches</a></li>
                                 {{-- <li class="nav-item"><a class="text-black nav-link" id="reviews-tab" data-bs-toggle="tab"
                                         href="#reviews" role="tab" aria-controls="reviews">Finished</a></li> --}}
                             </ul>
