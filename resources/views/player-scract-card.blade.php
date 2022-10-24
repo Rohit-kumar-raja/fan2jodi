@@ -20,7 +20,7 @@
 
                                 <div class="flip-box" id="flip">
                                     <div class="flip-box-inner " id="screen{{ $i }}"
-                                        ondblclick="fetchApi({{ $i }})">
+                                        onclick="fetchApi({{ $i }})">
                                         <div class="flip-box-front">
                                             <img src="{{ asset('img/player3.png') }}" alt="Paris">
                                         </div>
