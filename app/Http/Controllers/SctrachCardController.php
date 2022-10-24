@@ -48,11 +48,33 @@ class SctrachCardController extends Controller
                     'updated_at' => date('Y-m-d h:m:s')
 
                 ]);
-
+                // $team1 =[0=>''];
                 // creating the player 
                 $matches =  DB::table('matches')->find($matche_id);
-                $team1 = $matches->teamone . '-' . rand(1, 4);
-                $team2 = $matches->teamtwo . '-' . rand(1, 4);
+                $contestnoOfParticipate = DB::table('contests')->where('matches_id',$matche_id)->value('no_of_participate');
+                $randMembers =$this->generateRandomString($contestnoOfParticipate);
+                $randPlayer1Team = explode(":",$randMembers[0])[0];
+                $randPlayer2Team = explode(":",$randMembers[1])[0];
+                $randPlayer1 = explode(":",$randMembers[0])[1];
+                $randPlayer2 = explode(":",$randMembers[1])[1];
+                
+                // return [$randPlayer2,$randPlayer1,$randPlayer1Team,$randPlayer2Team];
+                if($randPlayer1Team=="a")
+                {
+                    $team1 = $matches->teamone . '-' . $randPlayer1;
+                }else
+                {
+                    $team1 =$matches->teamtwo . '-' . $randPlayer1;
+                }
+
+                if($randPlayer2Team=="a")
+                {
+                    $team2 = $matches->teamone . '-' . $randPlayer2;
+                }else
+                {
+                    $team2 =$matches->teamtwo . '-' . $randPlayer2;
+                }
+               
                 $team = $team1 . ":" . $team2;
 
                 // adding the data on participated user list
@@ -85,4 +107,79 @@ class SctrachCardController extends Controller
             return response()->json(['error' => 'You are Already Joined in this contest']);
         }
     }
+
+    public function dataSet15()
+    {
+       $return=[
+         array(0=>"a:1",1=>"b:2"),
+         array(0=>"a:2",1=>"b:2"),
+         array(0=>"a:3",1=>"b:2"),
+         array(0=>"a:4",1=>"b:2"),
+ 
+         array(0=>"a:2",1=>"b:1"),
+         array(0=>"a:3",1=>"b:1"),
+         array(0=>"a:1",1=>"b:1"),
+         array(0=>"a:4",1=>"b:1"),
+ 
+         array(0=>"a:1",1=>"b:3"),
+         array(0=>"a:2",1=>"b:3"),
+         array(0=>"a:3",1=>"b:3"),
+         array(0=>"a:4",1=>"b:3"),
+         array(0=>"b:2",1=>"b:4"),
+         array(0=>"a:2",1=>"b:4"),
+         array(0=>"a:3",1=>"b:4"),
+       ];
+       return $return;
+    }
+    public function dataSet28()
+    {
+       $return=[
+         array(0=>"a:1",1=>"b:2"),
+         array(0=>"a:2",1=>"b:2"),
+         array(0=>"a:3",1=>"b:2"),
+         array(0=>"a:4",1=>"b:2"),
+ 
+         array(0=>"a:2",1=>"b:1"),
+         array(0=>"a:3",1=>"b:1"),
+         array(0=>"a:1",1=>"b:1"),
+         array(0=>"a:4",1=>"b:1"),
+ 
+         array(0=>"a:1",1=>"b:3"),
+         array(0=>"a:2",1=>"b:3"),
+         array(0=>"a:3",1=>"b:3"),
+         array(0=>"a:4",1=>"b:3"),
+ 
+         array(0=>"b:2",1=>"b:4"),
+         array(0=>"a:2",1=>"b:4"),
+         array(0=>"a:3",1=>"b:4"),
+         array(0=>"b:2",1=>"b:4"),
+ 
+         array(0=>"a:2",1=>"b:4"),
+         array(0=>"a:3",1=>"b:4"),
+         array(0=>"b:2",1=>"b:4"),
+         array(0=>"a:2",1=>"b:4"),
+ 
+         array(0=>"a:3",1=>"b:4"),
+         array(0=>"b:2",1=>"b:4"),
+         array(0=>"a:2",1=>"b:4"),
+         array(0=>"a:3",1=>"b:4"),
+ 
+         array(0=>"b:2",1=>"b:4"),
+         array(0=>"a:2",1=>"b:4"),
+         array(0=>"a:3",1=>"b:4"),
+         array(0=>"a:3",1=>"b:4"),
+       ];
+       return $return;
+    }
+ 
+    function generateRandomString($contestnoOfParticipate = 15) {
+        if($contestnoOfParticipate==15)
+        {
+            return $this->dataSet15()[rand(1, 14)];
+        }else
+        {
+            return $this->dataSet28()[rand(1, 14)];
+        }
+      
+   }
 }
