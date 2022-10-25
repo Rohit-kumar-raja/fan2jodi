@@ -166,7 +166,7 @@
                                                         </div>
                                                         <div class="side right">
                                                             <div>
-                                                                @if ($joined >= $con->no_of_participate)
+                                                                @if ($con->no_of_participate >= $joined)
                                                                     <button type="button"
                                                                         class="blue-bg text-white plb float-right mrr-60"
                                                                         data-toggle="modal"

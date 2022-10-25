@@ -18,18 +18,51 @@ class SctrachCardController extends Controller
         return view('player-scract-card', ['contest' => $contest, 'matche' => $matche]);
     }
 
+
+    public function create_new_contest($contest_id)
+    {
+        $contest =  DB::table('contests')->find($contest_id);
+        $contest_id_new = DB::table('contests')->insertGetId([
+            'name' => $contest->name,
+            'matches_id' => $contest->matches_id,
+            'total_price' => $contest->total_price,
+            'no_of_participate' => $contest->no_of_participate,
+            'no_of_winnners' => $contest->no_of_winnners,
+            'percentage_of_winners' => $contest->percentage_of_winners,
+            'participate_amount' => $contest->participate_amount,
+            'no_scratch_card_in_one' => $contest->no_scratch_card_in_one,
+            'status' => $contest->status,
+            'created_at' => date('Y-m-d h:m:s'),
+            'updated_at' => date('Y-m-d h:m:s'),
+        ]);
+
+        $winner_rank =  DB::table('contest_winner_ranks')->where('contest_id', $contest_id)->get();
+        foreach ($winner_rank as $rank) {
+            DB::table('contest_winner_ranks')->insertGetId([
+                'contest_id' => $contest_id_new,
+                'from' => $rank->from,
+                'to' => $rank->to,
+                'prize_amount' => $rank->prize_amount,
+                'created_at' => date('Y-m-d h:m:s'),
+
+            ]);
+        }
+    }
+
+
+
     public function sratch_card(Request $request)
     {
         $matche_id = $request->matche_id;
         $contest_id = $request->contest_id;
         $wallet_id = '';
         $exits =  DB::table('participated_users')->where('user_id', Auth::user()->id)->where('matche_id', $matche_id)->where('contest_id', $contest_id)->first();
-        // $total_member =  DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->count();
-
+        $total_member =  DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->count();
         // if user already participated in this matches
         if ($exits == '') {
             $contest =  DB::table('contests')->find($contest_id);
-            
+
+
             $wallets_credit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('credit');
             $wallets_debit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('debit');
             $wallet_balance_amount = $wallets_credit - $wallets_debit;
@@ -54,30 +87,26 @@ class SctrachCardController extends Controller
                 // $team1 =[0=>''];
                 // creating the player 
                 $matches =  DB::table('matches')->find($matche_id);
-                $contestnoOfParticipate = DB::table('contests')->where('matches_id',$matche_id)->value('no_of_participate');
-                $randMembers =$this->generateRandomString($contestnoOfParticipate,$matche_id,$contest_id);
-                $randPlayer1Team = explode(":",$randMembers[0])[0];
-                $randPlayer2Team = explode(":",$randMembers[1])[0];
-                $randPlayer1 = explode(":",$randMembers[0])[1];
-                $randPlayer2 = explode(":",$randMembers[1])[1];
-                
+                $contestnoOfParticipate = DB::table('contests')->where('matches_id', $matche_id)->value('no_of_participate');
+                $randMembers = $this->generateRandomString($contestnoOfParticipate, $matche_id, $contest_id);
+                $randPlayer1Team = explode(":", $randMembers[0])[0];
+                $randPlayer2Team = explode(":", $randMembers[1])[0];
+                $randPlayer1 = explode(":", $randMembers[0])[1];
+                $randPlayer2 = explode(":", $randMembers[1])[1];
+
                 // return [$randPlayer2,$randPlayer1,$randPlayer1Team,$randPlayer2Team];
-                if($randPlayer1Team=="a")
-                {
+                if ($randPlayer1Team == "a") {
                     $team1 = $matches->teamone . '-' . $randPlayer1;
-                }else
-                {
-                    $team1 =$matches->teamtwo . '-' . $randPlayer1;
+                } else {
+                    $team1 = $matches->teamtwo . '-' . $randPlayer1;
                 }
 
-                if($randPlayer2Team=="a")
-                {
+                if ($randPlayer2Team == "a") {
                     $team2 = $matches->teamone . '-' . $randPlayer2;
-                }else
-                {
-                    $team2 =$matches->teamtwo . '-' . $randPlayer2;
+                } else {
+                    $team2 = $matches->teamtwo . '-' . $randPlayer2;
                 }
-               
+
                 $team = $team1 . ":" . $team2;
 
                 // adding the data on participated user list
@@ -92,6 +121,12 @@ class SctrachCardController extends Controller
                     'status' => 1,
                     'created_at' => date('Y-m-d h:m:s')
                 ]);
+
+                // checking conditions and  creating new record for contest
+                if ($total_member >= $contest->no_of_participate) {
+                    $this->create_new_contest($contest_id);
+                }
+
                 // if user already participate then amount will be not deducted
                 if ($participate_id > 0) {
                     return response()->json(['team1' => $team1, 'team2' => $team2]);
@@ -99,7 +134,7 @@ class SctrachCardController extends Controller
                     DB::table('wallets')->delete($wallet_id);
                     return response()->json(['error' => 'You are Already Joined in this contest']);
                 }
-                
+
                 // if user walllet not sufficiant for the join to the contest
             } else {
                 // DB::table('wallets')->delete($wallet_id);
@@ -113,116 +148,111 @@ class SctrachCardController extends Controller
 
     public function dataSet15()
     {
-       $return=[
-         array(0=>"a:1",1=>"a:2"),
-         array(0=>"a:2",1=>"a:3"),
+        $return = [
+            array(0 => "a:1", 1 => "a:2"),
+            array(0 => "a:2", 1 => "a:3"),
 
-         array(0=>"a:1",1=>"a:3"),
-         array(0=>"a:1",1=>"b:1"),
- 
-         array(0=>"a:1",1=>"b:2"),
-         array(0=>"a:1",1=>"b:3"),
-         array(0=>"a:3",1=>"b:1"),
+            array(0 => "a:1", 1 => "a:3"),
+            array(0 => "a:1", 1 => "b:1"),
 
-         array(0=>"a:3",1=>"b:2"),
-         array(0=>"a:3",1=>"b:3"),
+            array(0 => "a:1", 1 => "b:2"),
+            array(0 => "a:1", 1 => "b:3"),
+            array(0 => "a:3", 1 => "b:1"),
 
-         array(0=>"b:1",1=>"b:2"),
-         array(0=>"b:2",1=>"b:3"),
-         array(0=>"b:1",1=>"b:3"),
-         array(0=>"a:2",1=>"b:1"),
-         array(0=>"a:2",1=>"b:2"),
-         array(0=>"a:2",1=>"b:3"),
-       ];
-       return $return;
+            array(0 => "a:3", 1 => "b:2"),
+            array(0 => "a:3", 1 => "b:3"),
+
+            array(0 => "b:1", 1 => "b:2"),
+            array(0 => "b:2", 1 => "b:3"),
+            array(0 => "b:1", 1 => "b:3"),
+            array(0 => "a:2", 1 => "b:1"),
+            array(0 => "a:2", 1 => "b:2"),
+            array(0 => "a:2", 1 => "b:3"),
+        ];
+        return $return;
     }
     public function dataSet28()
     {
-       $return=[
-         array(0=>"a:1",1=>"a:2"),
-         array(0=>"a:2",1=>"a:3"),
-         array(0=>"a:1",1=>"a:3"),
+        $return = [
+            array(0 => "a:1", 1 => "a:2"),
+            array(0 => "a:2", 1 => "a:3"),
+            array(0 => "a:1", 1 => "a:3"),
 
-         array(0=>"a:1",1=>"b:1"),
-         array(0=>"a:1",1=>"b:2"),
-         array(0=>"a:1",1=>"b:3"),
+            array(0 => "a:1", 1 => "b:1"),
+            array(0 => "a:1", 1 => "b:2"),
+            array(0 => "a:1", 1 => "b:3"),
 
-         array(0=>"a:3",1=>"b:1"),
-         array(0=>"a:3",1=>"b:2"),
-         array(0=>"a:3",1=>"b:3"),
- 
-         array(0=>"b:1",1=>"b:2"),
-         array(0=>"b:2",1=>"b:3"),
-         array(0=>"b:1",1=>"b:3"),
+            array(0 => "a:3", 1 => "b:1"),
+            array(0 => "a:3", 1 => "b:2"),
+            array(0 => "a:3", 1 => "b:3"),
 
-         array(0=>"a:1",1=>"b:1"),
-         array(0=>"a:2",1=>"b:2"),
-         array(0=>"a:2",1=>"b:3"),
+            array(0 => "b:1", 1 => "b:2"),
+            array(0 => "b:2", 1 => "b:3"),
+            array(0 => "b:1", 1 => "b:3"),
 
-         array(0=>"a:1",1=>"a:4"),
-         array(0=>"a:2",1=>"a:4"),
-         array(0=>"a:3",1=>"a:4"),
+            array(0 => "a:1", 1 => "b:1"),
+            array(0 => "a:2", 1 => "b:2"),
+            array(0 => "a:2", 1 => "b:3"),
 
-         array(0=>"b:1",1=>"b:4"),
-         array(0=>"b:2",1=>"b:4"),
-         array(0=>"b:3",1=>"b:4"),
- 
-         array(0=>"a:1",1=>"b:4"),
-         array(0=>"a:2",1=>"b:4"),
-         array(0=>"a:3",1=>"b:4"),
-         array(0=>"a:4",1=>"b:4"),
- 
-         array(0=>"a:4",1=>"b:1"),
-         array(0=>"a:4",1=>"b:2"),
-         array(0=>"a:4",1=>"b:3"),
-       ];
-       return $return;
+            array(0 => "a:1", 1 => "a:4"),
+            array(0 => "a:2", 1 => "a:4"),
+            array(0 => "a:3", 1 => "a:4"),
+
+            array(0 => "b:1", 1 => "b:4"),
+            array(0 => "b:2", 1 => "b:4"),
+            array(0 => "b:3", 1 => "b:4"),
+
+            array(0 => "a:1", 1 => "b:4"),
+            array(0 => "a:2", 1 => "b:4"),
+            array(0 => "a:3", 1 => "b:4"),
+            array(0 => "a:4", 1 => "b:4"),
+
+            array(0 => "a:4", 1 => "b:1"),
+            array(0 => "a:4", 1 => "b:2"),
+            array(0 => "a:4", 1 => "b:3"),
+        ];
+        return $return;
     }
- 
-    function generateRandomString($contestnoOfParticipate = 15,$matche_id,$contest_id) {
+
+    function generateRandomString($contestnoOfParticipate = 15, $matche_id, $contest_id)
+    {
         // if($contestnoOfParticipate==15)
         // {
-            $players = "";
-            $invoiceNoExist = true;
-            while ($invoiceNoExist) {
-                if($contestnoOfParticipate==15)
-                {
-                    $players = $this->dataSet15()[rand(0, $contestnoOfParticipate-1)];
-                }else
-                {
-                    $players =  $this->dataSet28()[rand(0, $contestnoOfParticipate-1)];
-                }
-                $randPlayer1Team = explode(":",$players[0])[0];
-                $randPlayer2Team = explode(":",$players[1])[0];
-                $randPlayer1 = explode(":",$players[0])[1];
-                $randPlayer2 = explode(":",$players[1])[1];
-                
-                $matches =  DB::table('matches')->find($matche_id);
-                if($randPlayer1Team=="a")
-                {
-                    $team1 = $matches->teamone . '-' . $randPlayer1;
-                }else
-                {
-                    $team1 =$matches->teamtwo . '-' . $randPlayer1;
-                }
-
-                if($randPlayer2Team=="a")
-                {
-                    $team2 = $matches->teamone . '-' . $randPlayer2;
-                }else
-                {
-                    $team2 =$matches->teamtwo . '-' . $randPlayer2;
-                }
-                $teams = $team1 . ":" . $team2;
-                if (! DB::table('participated_users')->where('matche_id',$matche_id)->where('contest_id',$contest_id)->where('player',$teams)->first()) {
-                    $invoiceNoExist = false;
-                }
-                return $players;
+        $players = "";
+        $invoiceNoExist = true;
+        while ($invoiceNoExist) {
+            if ($contestnoOfParticipate == 15) {
+                $players = $this->dataSet15()[rand(0, $contestnoOfParticipate - 1)];
+            } else {
+                $players =  $this->dataSet28()[rand(0, $contestnoOfParticipate - 1)];
             }
+            $randPlayer1Team = explode(":", $players[0])[0];
+            $randPlayer2Team = explode(":", $players[1])[0];
+            $randPlayer1 = explode(":", $players[0])[1];
+            $randPlayer2 = explode(":", $players[1])[1];
+
+            $matches =  DB::table('matches')->find($matche_id);
+            if ($randPlayer1Team == "a") {
+                $team1 = $matches->teamone . '-' . $randPlayer1;
+            } else {
+                $team1 = $matches->teamtwo . '-' . $randPlayer1;
+            }
+
+            if ($randPlayer2Team == "a") {
+                $team2 = $matches->teamone . '-' . $randPlayer2;
+            } else {
+                $team2 = $matches->teamtwo . '-' . $randPlayer2;
+            }
+            $teams = $team1 . ":" . $team2;
+            if (!DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->where('player', $teams)->first()) {
+                $invoiceNoExist = false;
+            }
+            return $players;
+        }
         //     // return $this->dataSet15()[rand(0, $contestnoOfParticipate-1)];
         // }else
         // {
         //     return $this->dataSet28()[rand(0, $contestnoOfParticipate-1)];
         // }
-   }
+    }
 }
