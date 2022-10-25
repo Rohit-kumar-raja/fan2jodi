@@ -164,39 +164,74 @@
                                                     {{ $con->no_of_winnners }}
                                                     Winners </p>
                                             </div>
+
+                                            {{-- all kind of data getting --}}
+                                            @php
+                                                $participated_con_user = DB::table('participated_users')
+                                                    ->where('user_id', Auth::user()->id)
+                                                    ->where('contest_id', $con->id)
+                                                    ->first();
+                                                
+                                                $team1 = explode(':', $participated_con_user->player)[0];
+                                                $team2 = explode(':', $participated_con_user->player)[1];
+                                                $team1_name = explode('-', $team1)[0];
+                                                $team2_name = explode('-', $team2)[0];
+                                                $team1_possition = explode('-', $team1)[1];
+                                                $team2_possition = explode('-', $team2)[1];
+                                                
+                                                if ($matches->api != '') {
+                                                    $matches_details = json_decode($matches->api);
+                                                    $matches_team1_name = explode('-', $matches_team1 = $matches_details->details->one->score)[0];
+                                                    $matches_team2_name = explode('-', $matches_team1 = $matches_details->details->two->score)[0];
+                                                    if ($team1_name == $matches_team1_name) {
+                                                        $team_one_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
+                                                    } else {
+                                                        $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
+                                                    }
+                                                    if ($team2_name == $matches_team2_name) {
+                                                        $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
+                                                    } else {
+                                                        $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
+                                                    }
+                                                    $total_runs = ((int) explode(')', explode('(', $team_one_batsman->runs)[1])[0]) + ((int) explode(')', explode('(', $team_two_batsman->runs)[1])[0]);
+                                                }
+                                                
+                                            @endphp
+
                                             </a>
                                             <div class="products-reviews white-bg mb-3 rounded-2">
                                                 <h4 class="text-danger pl-3 pt-2 bg-dark "> {{ Auth::user()->user_name }} |
                                                     {{ Auth::user()->name }} | <span class="text-success">Total Run
-                                                        -</span> </h4>
+                                                        -{{ $total_runs }}</span> </h4>
                                                 <div class="row rounded">
                                                     <div class="col-md-4 col-4 text-center">
                                                         <img src={{ asset('img/user3.jpg') }} width="100px"
                                                             class="rounded-3 mb-2 ">
-                                                        <div class="text-center"><button
-                                                                class="btn btn-sm btn-outline-primary">Player 2 </button>
-                                                            <button class="btn btn-sm btn-outline-success">Run:20</button>
+                                                        <div class="text-center">
+                                                            <button
+                                                                class="btn btn-sm btn-outline-primary">{{ $team_one_batsman->name ?? 'Player 1' }}
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-success">Run :
+                                                                {{ $team_one_batsman->runs ?? '0' }}</button>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 col-4 text-center border-left border-right">
                                                         <img src={{ asset('img/user3.jpg') }} width="100px"
                                                             class="rounded-3 mb-2">
-                                                        <div class="text-center"><button
-                                                                class="btn btn-sm btn-outline-primary">Player 2 </button>
-                                                            <button class="btn btn-sm btn-outline-success">Run:20</button>
+                                                        <div class="text-center"> <button
+                                                                class="btn btn-sm btn-outline-primary">{{ $team_two_batsman->name ?? 'Player 2' }}
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-success">Run :
+                                                                {{ $team_two_batsman->runs ?? '0' }}</button>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 col-4 mt-3 text-center ">
-                                                        @php
-                                                            $participated_con_user = DB::table('participated_users')
-                                                                ->where('user_id', Auth::user()->id)
-                                                                ->where('contest_id', $con->id)
-                                                                ->first();
-                                                        @endphp
+
                                                         <h2 class="text-red">
-                                                            {{ explode(':', $participated_con_user->player)[0] }}<h2>
+                                                            {{ $team1 }}
+                                                            <h2>
                                                                 <h2 class="text-red">
-                                                                    {{ explode(':', $participated_con_user->player)[1] }}
+                                                                    {{ $team2 }}
                                                                     <h2>
 
                                                     </div>
@@ -220,6 +255,7 @@
 
                                                                 <tbody>
                                                                     @php
+                                                                    // dd( $matches_details);
                                                                         $participated_user = DB::table('participated_users')
                                                                             ->where('contest_id', $con->id)
                                                                             ->get();
@@ -242,8 +278,8 @@
                                                                             @endphp
                                                                             <td class="product-total"><span
                                                                                     class="subtotal-amount">
-                                                                                    
-                                                                                   0</span>
+
+                                                                                    0</span>
                                                                             </td>
                                                                         </tr>
                                                                     @endforeach
