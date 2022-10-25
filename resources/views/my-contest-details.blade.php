@@ -255,31 +255,53 @@
 
                                                                 <tbody>
                                                                     @php
-                                                                    // dd( $matches_details);
+                                                                        // dd( $matches_details);
                                                                         $participated_user = DB::table('participated_users')
                                                                             ->where('contest_id', $con->id)
                                                                             ->get();
+                                                                        
                                                                     @endphp
                                                                     @foreach ($participated_user as $puser)
+                                                                        @php
+                                                                            $team1 = explode(':', $puser->player)[0];
+                                                                            $team2 = explode(':', $puser->player)[1];
+                                                                            $team1_name = explode('-', $team1)[0];
+                                                                            $team2_name = explode('-', $team2)[0];
+                                                                            $team1_possition = explode('-', $team1)[1];
+                                                                            $team2_possition = explode('-', $team2)[1];
+                                                                            
+                                                                            if ($matches->api != '') {
+                                                                                $matches_details = json_decode($matches->api);
+                                                                                $matches_team1_name = explode('-', $matches_team1 = $matches_details->details->one->score)[0];
+                                                                                $matches_team2_name = explode('-', $matches_team1 = $matches_details->details->two->score)[0];
+                                                                                if ($team1_name == $matches_team1_name) {
+                                                                                    $team_one_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
+                                                                                } else {
+                                                                                    $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
+                                                                                }
+                                                                                if ($team2_name == $matches_team2_name) {
+                                                                                    $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
+                                                                                } else {
+                                                                                    $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
+                                                                                }
+                                                                                $total_runs = ((int) explode(')', explode('(', $team_one_batsman->runs)[1])[0]) + ((int) explode(')', explode('(', $team_two_batsman->runs)[1])[0]);
+                                                                            }
+                                                                            
+                                                                        @endphp
+
                                                                         <tr>
                                                                             <td class="product-name">
-
                                                                                 <p>Rank {{ $loop->iteration }}</p>
-
                                                                             </td>
                                                                             <td class="product-name">
-
                                                                                 <p> {{ DB::table('all_users')->find($puser->user_id)->user_name }}
                                                                                 </p>
-
                                                                             </td>
-                                                                            @php
-                                                                                
-                                                                            @endphp
+
                                                                             <td class="product-total"><span
                                                                                     class="subtotal-amount">
 
-                                                                                    0</span>
+                                                                                    {{$total_runs ?? '0'}}</span>
                                                                             </td>
                                                                         </tr>
                                                                     @endforeach
