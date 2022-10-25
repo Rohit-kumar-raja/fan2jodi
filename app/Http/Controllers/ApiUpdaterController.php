@@ -16,8 +16,8 @@ class ApiUpdaterController extends Controller
         if ($matches != '') {
             foreach ($matches as $data) {
                 $url = $data->url;
-              //  $string = file_get_contents("https://cric-api.vercel.app/i?url=" . $url);
-               // DB::table('matches')->where('id', $data->id)->update(['api' => $string]);
+                $string = file_get_contents("https://cric-api.vercel.app/i?url=" . $url);
+                DB::table('matches')->where('id', $data->id)->update(['api' => $string]);
             }
         }
     }
