@@ -257,7 +257,7 @@
                                                                     @php
                                                                         // dd( $matches_details);
                                                                         $participated_user = DB::table('participated_users')
-                                                                            ->where('contest_id', $con->id)
+                                                                            ->where('contest_id', $con->id)->orderBy('total_run')
                                                                             ->get();
                                                                         
                                                                     @endphp
@@ -286,7 +286,7 @@
                                                                                 }
                                                                                 $total_runs = ((int) explode(')', explode('(', $team_one_batsman->runs)[1])[0]) + ((int) explode(')', explode('(', $team_two_batsman->runs)[1])[0]);
                                                                             }
-                                                                            
+                                                                            DB::table('participated_users')->where('id',$puser->id)->update(['total_run'=>$total_runs]);
                                                                         @endphp
 
                                                                         <tr>
@@ -298,7 +298,7 @@
                                                                                 </p>
                                                                             </td>
 
-                                                                            <td class="product-total"><span
+                                                                            <td id="total_run" class="product-total"><span
                                                                                     class="subtotal-amount">
 
                                                                                     {{$total_runs ?? '0'}}</span>
@@ -328,6 +328,9 @@
             </div>
             </div>
         </section>
+        <script>
+
+        </script>
         <!-- End Products Details Area -->
         <div class="go-top"><i class='bx bx-up-arrow-alt'></i></div>
         <div class="zelda-cursor"></div>
