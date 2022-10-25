@@ -266,7 +266,7 @@
                                                                         // dd( $matches_details);
                                                                         $participated_user = DB::table('participated_users')
                                                                             ->where('contest_id', $con->id)
-                                                                            ->orderBy('total_run')
+                                                                            ->orderByDesc('total_run')
                                                                             ->get();
                                                                         
                                                                     @endphp
