@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiUpdaterController;
 use App\Http\Controllers\ContestController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\LoginController;
@@ -36,6 +37,7 @@ Route::get('player/scratch/card/{contest_id}/contest/{matche_id}/matche/', [Sctr
 Route::post('scratch', [SctrachCardController::class, 'sratch_card'])->name('player.scratch.card')->middleware('auth');
 Route::post('update-profile', [indexController::class, 'updateProfile'])->middleware('auth');
 Route::post('update-user-profile', [indexController::class, 'updateUserProfile'])->middleware('auth');
+Route::get('matches/api/update', [ApiUpdaterController::class, 'index'])->name('api.updater');
 
 
 

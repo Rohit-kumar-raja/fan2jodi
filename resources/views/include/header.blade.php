@@ -17,22 +17,22 @@
             <li class="nav-item "><a href="{{ route('contest.my') }}" class="nav-link text-white">My Contest</a></li>
             <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-white">WALLET</a></li>
             <li class="nav-item "><a href="{{ route('withdraw') }}" class="nav-link text-white">Withdraw</a></li>
-            <li class="nav-item "><a href="{{ route('wallet.transaction')}}"
+            <li class="nav-item "><a href="{{ route('wallet.transaction') }}"
                     class="nav-link text-white">Transaction's</a></li>
             <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-white">ADD CASH</a></li>
-            @if(!empty(Auth::user()))
-                <li class="nav-item "> 
-                    <a href="{{ route('logout') }}" class="nav-link text-red" 
-                    onclick="event.preventDefault();
+            @if (!empty(Auth::user()))
+                <li class="nav-item ">
+                    <a href="{{ route('logout') }}" class="nav-link text-red"
+                        onclick="event.preventDefault();
             document.getElementById('logout-form1').submit();">
-                {{ __('Logout') }}</a>
-            </li>
-            <form id="logout-form1" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
+                        {{ __('Logout') }}</a>
+                </li>
+                <form id="logout-form1" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             @else
-            <li class="nav-item "><a href="{{ route('login') }}" class="nav-link text-red">Login</a>
-            </li>
+                <li class="nav-item "><a href="{{ route('login') }}" class="nav-link text-red">Login</a>
+                </li>
             @endif
         </ul>
     </section>
@@ -98,28 +98,31 @@
                 <div class="white-bor mt-3">
                     <ul class="navbar-nav black-text">
                         <li class="nav-item "><a href="{{ route('account') }}" class="nav-link text-red">MY ACCOUNT</a>
-                        <li class="nav-item "><a href="{{ route('contest.my') }}" class="nav-link text-red">My Contest</a>
+                        <li class="nav-item "><a href="{{ route('contest.my') }}" class="nav-link text-red">My
+                                Contest</a>
                         </li>
                         <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-red">WALLET</a></li>
                         <li class="nav-item "><a href="{{ route('withdraw') }}" class="nav-link text-red">Withdraw</a>
                         </li>
                         <li class="nav-item "><a href="{{ route('wallet.transaction') }}"
                                 class="nav-link text-red">Transaction's</a></li>
-                        <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-red">ADD CASH</a>
+                        <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-red">ADD
+                                CASH</a>
                         </li>
-                        @if(!empty(Auth::user()))
-                        <li class="nav-item "> 
-                            <a href="{{ route('logout') }}" class="nav-link text-red" 
-                            onclick="event.preventDefault();
+                        @if (!empty(Auth::user()))
+                            <li class="nav-item ">
+                                <a href="{{ route('logout') }}" class="nav-link text-red"
+                                    onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}</a>
-                        </li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+                                    {{ __('Logout') }}</a>
+                            </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
                         @else
-                        <li class="nav-item "><a href="{{ route('login') }}" class="nav-link text-red">Login</a>
-                        </li>
+                            <li class="nav-item "><a href="{{ route('login') }}" class="nav-link text-red">Login</a>
+                            </li>
                         @endif
                     </ul>
                 </div>
@@ -171,3 +174,16 @@
         padding: 0rem 0rem;
     }
 </style>
+
+<script>
+    setInterval(() => {
+        calling_api();
+    }, 20000);
+
+    function calling_api() {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {}
+        xmlhttp.open("GET", "{{ route('api.updater') }}", true);
+        xmlhttp.send();
+    }
+</script>
