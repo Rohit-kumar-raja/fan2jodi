@@ -257,6 +257,7 @@
                                                                     <tr>
                                                                         <th scope="col">Winning Position</th>
                                                                         <th>User Name</th>
+                                                                        <th>Team</th>
                                                                         <th>Total Run</th>
                                                                     </tr>
                                                                 </thead>
@@ -315,6 +316,9 @@
                                                                             <td class="product-name">
                                                                                 <p> {{ DB::table('all_users')->find($puser->user_id)->user_name }}
                                                                                 </p>
+                                                                            </td>
+                                                                            <td>
+                                                                                {{$puser->player}}
                                                                             </td>
 
                                                                             <td id="total_run" class="product-total"><span
