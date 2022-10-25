@@ -11,6 +11,7 @@ class ContestController extends Controller
    public function index($matche_id)
    {
       $data = DB::table('contests')->where('matches_id', $matche_id)->where('status', 1)->get();
+
       //  my contest for particular matches
       $my_contest = DB::table('participated_users')->where('matche_id', $matche_id)->where('user_id', Auth::user()->id)->where('status', 1)->get();
       // count of total joined contest 

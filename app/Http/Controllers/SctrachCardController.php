@@ -24,9 +24,12 @@ class SctrachCardController extends Controller
         $contest_id = $request->contest_id;
         $wallet_id = '';
         $exits =  DB::table('participated_users')->where('user_id', Auth::user()->id)->where('matche_id', $matche_id)->where('contest_id', $contest_id)->first();
+        // $total_member =  DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->count();
+
         // if user already participated in this matches
         if ($exits == '') {
             $contest =  DB::table('contests')->find($contest_id);
+            
             $wallets_credit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('credit');
             $wallets_debit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('debit');
             $wallet_balance_amount = $wallets_credit - $wallets_debit;

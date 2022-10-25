@@ -137,14 +137,14 @@
                                         {{-- pay alert model end --}}
                                         <div class="products-reviews white-bg p-15 mb-3">
                                             @php
-                                            $matches = DB::table('matches')->find($con->matches_id);
-                                        @endphp
-                                        <div class="text-center">
-                                            <a href="{{ route('contest.my.details', $con->id) }}"
-                                                class="text-red text-center">{{ $matches->name }} - <span
-                                                    class="text-primary">{{ $matches->date }}</span></a>
+                                                $matches = DB::table('matches')->find($con->matches_id);
+                                            @endphp
+                                            <div class="text-center">
+                                                <a href="{{ route('contest.my.details', $con->id) }}"
+                                                    class="text-red text-center">{{ $matches->name }} - <span
+                                                        class="text-primary">{{ $matches->date }}</span></a>
 
-                                        </div>
+                                            </div>
                                             <div class="blue-bor m-2 p-4">
                                                 <span class="time">₹ {{ $con->total_price }} Winning Amount <a
                                                         class="text-red" data-toggle="modal"
@@ -166,12 +166,15 @@
                                                         </div>
                                                         <div class="side right">
                                                             <div>
-                                                                <button type="button"
-                                                                    class="blue-bg text-white plb float-right mrr-60"
-                                                                    data-toggle="modal"
-                                                                    data-target="#staticBackdrop{{ $con->id }}">
-                                                                    ₹ {{ $con->participate_amount }}
-                                                                </button>
+                                                                @if ($joined >= $con->no_of_participate)
+                                                                    <button type="button"
+                                                                        class="blue-bg text-white plb float-right mrr-60"
+                                                                        data-toggle="modal"
+                                                                        data-target="#staticBackdrop{{ $con->id }}">
+                                                                        ₹ {{ $con->participate_amount }}
+                                                                    </button>
+                                                                @endif
+
                                                                 <br><br>
                                                             </div>
                                                         </div>
