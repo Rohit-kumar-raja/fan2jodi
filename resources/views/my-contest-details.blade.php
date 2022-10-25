@@ -243,7 +243,7 @@
                                                                             <td class="product-total"><span
                                                                                     class="subtotal-amount">
                                                                                     
-                                                                                   2</span>
+                                                                                   0</span>
                                                                             </td>
                                                                         </tr>
                                                                     @endforeach
