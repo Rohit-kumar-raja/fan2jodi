@@ -173,7 +173,13 @@
                                                                         data-target="#staticBackdrop{{ $con->id }}">
                                                                         ₹ {{ $con->participate_amount }}
                                                                     </button>
+                                                                @else
+                                                                    <button type="button"
+                                                                        class="blue-bg text-white plb float-right mrr-60">
+                                                                        ₹ {{ 'Full' }}
+                                                                    </button>
                                                                 @endif
+
 
                                                                 <br><br>
                                                             </div>
