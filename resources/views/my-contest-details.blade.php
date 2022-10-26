@@ -210,7 +210,7 @@
                                             <div class="products-reviews white-bg mb-3 rounded-2">
                                                 <h4 class="text-danger pl-3 pt-2 bg-dark "> {{ Auth::user()->user_name }} |
                                                     {{ Auth::user()->name }} | <span class="text-success">Total Run
-                                                        -{{ $total_runs }}</span> </h4>
+                                                        -{{ $total_runs ?? '0' }}</span> </h4>
                                                 <div class="row rounded">
                                                     <div class="col-md-4 col-4 text-center">
                                                         <img src={{ asset('img/user3.jpg') }} width="100px"
