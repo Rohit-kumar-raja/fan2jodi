@@ -182,27 +182,29 @@
                                                 
                                                 if (Str::length($matches->api) > 40) {
                                                     $matches_details = json_decode($matches->api);
-                                                    $matches_team1_name = explode('-', $matches_team1 = $matches_details->details->one->score)[0];
-                                                    $matches_team2_name = explode('-', $matches_team1 = $matches_details->details->two->score)[0];
-                                                    if ($team1_name == $matches_team1_name) {
-                                                        if ($team1_possition > 0) {
-                                                            $team_one_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
+                                                    if ($matches_details->details->one != '') {
+                                                        $matches_team1_name = explode('-', $matches_team1 = $matches_details->details->one->score)[0];
+                                                        $matches_team2_name = explode('-', $matches_team1 = $matches_details->details->two->score)[0];
+                                                        if ($team1_name == $matches_team1_name) {
+                                                            if ($team1_possition > 0) {
+                                                                $team_one_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
+                                                            }
+                                                        } else {
+                                                            if ($team1_possition > 0) {
+                                                                $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
+                                                            }
                                                         }
-                                                    } else {
-                                                        if ($team1_possition > 0) {
-                                                            $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
+                                                        if ($team2_name == $matches_team2_name) {
+                                                            if ($team2_possition) {
+                                                                $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
+                                                            }
+                                                        } else {
+                                                            if ($team2_possition) {
+                                                                $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
+                                                            }
                                                         }
+                                                        $total_runs = ((int) explode(')', explode('(', $team_one_batsman->runs)[1])[0]) + ((int) explode(')', explode('(', $team_two_batsman->runs)[1])[0]);
                                                     }
-                                                    if ($team2_name == $matches_team2_name) {
-                                                        if ($team2_possition) {
-                                                            $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
-                                                        }
-                                                    } else {
-                                                        if ($team2_possition) {
-                                                            $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
-                                                        }
-                                                    }
-                                                    $total_runs = ((int) explode(')', explode('(', $team_one_batsman->runs)[1])[0]) + ((int) explode(')', explode('(', $team_two_batsman->runs)[1])[0]);
                                                 }
                                                 
                                             @endphp
@@ -285,27 +287,29 @@
                                                                             
                                                                             if (Str::length($matches->api) > 40) {
                                                                                 $matches_details = json_decode($matches->api);
-                                                                                $matches_team1_name = explode('-', $matches_team1 = $matches_details->details->one->score)[0];
-                                                                                $matches_team2_name = explode('-', $matches_team1 = $matches_details->details->two->score)[0];
-                                                                                if ($team1_name == $matches_team1_name) {
-                                                                                    if ($team1_possition > 0) {
-                                                                                        $team_one_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
+                                                                                if ($matches_details->details->one != '') {
+                                                                                    $matches_team1_name = explode('-', $matches_team1 = $matches_details->details->one->score)[0];
+                                                                                    $matches_team2_name = explode('-', $matches_team1 = $matches_details->details->two->score)[0];
+                                                                                    if ($team1_name == $matches_team1_name) {
+                                                                                        if ($team1_possition > 0) {
+                                                                                            $team_one_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
+                                                                                        }
+                                                                                    } else {
+                                                                                        if ($team1_possition > 0) {
+                                                                                            $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
+                                                                                        }
                                                                                     }
-                                                                                } else {
-                                                                                    if ($team1_possition > 0) {
-                                                                                        $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
+                                                                                    if ($team2_name == $matches_team2_name) {
+                                                                                        if ($team2_possition > 0) {
+                                                                                            $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
+                                                                                        }
+                                                                                    } else {
+                                                                                        if ($team2_possition > 0) {
+                                                                                            $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
+                                                                                        }
                                                                                     }
+                                                                                    $total_runs = ((int) explode(')', explode('(', $team_one_batsman->runs)[1])[0]) + ((int) explode(')', explode('(', $team_two_batsman->runs)[1])[0]);
                                                                                 }
-                                                                                if ($team2_name == $matches_team2_name) {
-                                                                                    if ($team2_possition > 0) {
-                                                                                        $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
-                                                                                    }
-                                                                                } else {
-                                                                                    if ($team2_possition > 0) {
-                                                                                        $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
-                                                                                    }
-                                                                                }
-                                                                                $total_runs = ((int) explode(')', explode('(', $team_one_batsman->runs)[1])[0]) + ((int) explode(')', explode('(', $team_two_batsman->runs)[1])[0]);
                                                                             }
                                                                             DB::table('participated_users')
                                                                                 ->where('id', $puser->id)
