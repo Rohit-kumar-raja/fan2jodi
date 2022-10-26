@@ -137,7 +137,7 @@ class SctrachCardController extends Controller
 
                 // if user walllet not sufficiant for the join to the contest
             } else {
-                // DB::table('wallets')->delete($wallet_id);
+                DB::table('wallets')->delete($wallet_id);
                 return response()->json(['error' => "You don't have enogth balance for join this contest"]);
             }
             // if user already participated in this matches
@@ -244,7 +244,7 @@ class SctrachCardController extends Controller
                 $team2 = $matches->teamtwo . '-' . $randPlayer2;
             }
             $teams = $team1 . ":" . $team2;
-            $teams = $team2 . ":" . $team1;
+            $teams12 = $team2 . ":" . $team1;
 
             $t1_exits=DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->where('player', $teams)->first();
             $t2_exits=DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->where('player', $teams12)->first();
