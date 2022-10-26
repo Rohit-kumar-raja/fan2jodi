@@ -57,7 +57,6 @@ class SctrachCardController extends Controller
         $contest_id = $request->contest_id;
         $wallet_id = '';
         $exits =  DB::table('participated_users')->where('user_id', Auth::user()->id)->where('matche_id', $matche_id)->where('contest_id', $contest_id)->first();
-        $total_member =  DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->count();
         // if user already participated in this matches
         if ($exits == '') {
             $contest =  DB::table('contests')->find($contest_id);
@@ -123,6 +122,7 @@ class SctrachCardController extends Controller
                 ]);
 
                 // checking conditions and  creating new record for contest
+                $total_member =  DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->count();
                 if ($total_member == $contest->no_of_participate) {
                     $this->create_new_contest($contest_id);
                 }
