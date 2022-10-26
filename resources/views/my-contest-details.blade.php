@@ -24,7 +24,7 @@
                                         @foreach ($my_contest as $my)
                                             {{-- Rank model start --}}
                                             @php
-                                                
+                                                error_reporting(0);
                                                 $con = DB::table('contests')->find($my->contest_id);
                                                 
                                                 // getting the data of joined pepole
