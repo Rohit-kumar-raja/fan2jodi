@@ -167,6 +167,7 @@
 
                                             {{-- all kind of data getting --}}
                                             @php
+                                                $total_runs = 0;
                                                 $participated_con_user = DB::table('participated_users')
                                                     ->where('user_id', Auth::user()->id)
                                                     ->where('contest_id', $con->id)
@@ -179,7 +180,7 @@
                                                 $team1_possition = explode('-', $team1)[1];
                                                 $team2_possition = explode('-', $team2)[1];
                                                 
-                                                if (Str::length($matches->api)>40) {
+                                                if (Str::length($matches->api) > 40) {
                                                     $matches_details = json_decode($matches->api);
                                                     $matches_team1_name = explode('-', $matches_team1 = $matches_details->details->one->score)[0];
                                                     $matches_team2_name = explode('-', $matches_team1 = $matches_details->details->two->score)[0];
@@ -264,6 +265,8 @@
 
                                                                 <tbody>
                                                                     @php
+                                                                        $total_runs = 0;
+                                                                        
                                                                         // dd( $matches_details);
                                                                         $participated_user = DB::table('participated_users')
                                                                             ->where('contest_id', $con->id)
@@ -280,7 +283,7 @@
                                                                             $team1_possition = explode('-', $team1)[1];
                                                                             $team2_possition = explode('-', $team2)[1];
                                                                             
-                                                                            if (Str::length($matches->api)>40) {
+                                                                            if (Str::length($matches->api) > 40) {
                                                                                 $matches_details = json_decode($matches->api);
                                                                                 $matches_team1_name = explode('-', $matches_team1 = $matches_details->details->one->score)[0];
                                                                                 $matches_team2_name = explode('-', $matches_team1 = $matches_details->details->two->score)[0];
@@ -318,7 +321,7 @@
                                                                                 </p>
                                                                             </td>
                                                                             <td>
-                                                                                {{$puser->player}}
+                                                                                {{ $puser->player }}
                                                                             </td>
 
                                                                             <td id="total_run" class="product-total"><span
