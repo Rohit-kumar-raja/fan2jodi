@@ -123,7 +123,7 @@ class SctrachCardController extends Controller
                 ]);
 
                 // checking conditions and  creating new record for contest
-                if ($total_member >= $contest->no_of_participate) {
+                if ($total_member == $contest->no_of_participate) {
                     $this->create_new_contest($contest_id);
                 }
 
