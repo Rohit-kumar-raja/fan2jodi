@@ -182,7 +182,7 @@
                                                 
                                                 if (Str::length($matches->api) > 40) {
                                                     $matches_details = json_decode($matches->api);
-                                                    if (isset($matches_details->details->one->score)) {
+                                                    if (isset($matches_details->details->one) && isset($matches_details->details->one->score) ) {
                                                         $matches_team1_name = explode('-', $matches_team1 = $matches_details->details->one->score)[0];
                                                         $matches_team2_name = explode('-', $matches_team1 = $matches_details->details->two->score)[0];
                                                         if ($team1_name == $matches_team1_name) {
@@ -287,7 +287,7 @@
                                                                             
                                                                             if (Str::length($matches->api) > 40) {
                                                                                 $matches_details = json_decode($matches->api);
-                                                                                if (isset($matches_details->details->one->score)) {
+                                                                                if (isset($matches_details->details->one) && isset($matches_details->details->one->score) ) {
                                                                                     $matches_team1_name = explode('-', $matches_team1 = $matches_details->details->one->score)[0];
                                                                                     $matches_team2_name = explode('-', $matches_team1 = $matches_details->details->two->score)[0];
                                                                                     if ($team1_name == $matches_team1_name) {
