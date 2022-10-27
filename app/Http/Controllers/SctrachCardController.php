@@ -79,8 +79,8 @@ class SctrachCardController extends Controller
                     'withdraw_status' => "success",
                     'api_info' => 'contest:' . $contest->id,
                     'status' => 1,
-                    'created_at' => date('Y-m-d h:m:s'),
-                    'updated_at' => date('Y-m-d h:m:s')
+                    'created_at' => date('Y-m-d h:i:s'),
+                    'updated_at' => date('Y-m-d h:i:s')
                 ]);
                 // $team1 =[0=>''];
                 // creating the player 
@@ -118,7 +118,7 @@ class SctrachCardController extends Controller
                     'scratch' => $contest->no_scratch_card_in_one,
                     'participate_amount' => $contest->participate_amount,
                     'status' => 1,
-                    'created_at' => date('Y-m-d h:m:s')
+                    'created_at' => date('Y-m-d h:i:s')
                 ]);
 
                 // checking conditions and  creating new record for contest
