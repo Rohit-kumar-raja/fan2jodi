@@ -24,7 +24,7 @@
                                         @foreach ($my_contest as $my)
                                             {{-- Rank model start --}}
                                             @php
-                                              //  error_reporting(0);
+                                                error_reporting(0);
                                                 $con = DB::table('contests')->find($my->contest_id);
                                                 
                                                 // getting the data of joined pepole
@@ -212,8 +212,7 @@
                                                                 $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
                                                             }
                                                         } else {
-                                                            if (isset($matches_details->details->one->sc) && $team2_possition > 0 && $matches_team1_name > 0) {
-                                                
+                                                            if (isset($matches_details->details->one->sc) && $team2_possition > 0 && $team1_name==$team2_name) {
                                                                 $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
                                                             }
                                                         }
@@ -343,7 +342,7 @@
                                                                                             $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
                                                                                         }
                                                                                     } else {
-                                                                                        if (isset($matches_details->details->one->sc) && $team2_possition > 0 && $matches_team1_name > 0) {
+                                                                                        if (isset($matches_details->details->one->sc) && $team2_possition > 0 && $team1_name==$team2_name) {
                                                                             
                                                                                             $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
                                                                                         }
