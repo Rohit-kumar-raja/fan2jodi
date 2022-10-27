@@ -82,7 +82,7 @@
                                                 $date =$y.','.$m;
                                                 $timeF = explode(' ', $battel->time)[0];
                                                 $timeD = explode(' ',$battel->time)[1];
-                                                $time = date("H:m:i",strtotime($timeF." ".$timeD));
+                                                $time = date("H:i:s",strtotime($timeF." ".$timeD));
                                                 ?>
                                                 <script>
                                                     // Set the date we're counting down to
