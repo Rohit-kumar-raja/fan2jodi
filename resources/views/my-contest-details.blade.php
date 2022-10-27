@@ -300,7 +300,7 @@
                                                                     @endphp
                                                                     @foreach ($participated_user as $puser)
                                                                         @php
-                                                                                                                                                $total_runs = 0;
+                                                                                                                                               
                                                                         $total_runs = 0;
 
                                                                             $team1 = explode(':', $puser->player)[0];
