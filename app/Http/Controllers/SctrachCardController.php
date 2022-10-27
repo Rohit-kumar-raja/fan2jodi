@@ -32,8 +32,8 @@ class SctrachCardController extends Controller
             'participate_amount' => $contest->participate_amount,
             'no_scratch_card_in_one' => $contest->no_scratch_card_in_one,
             'status' => $contest->status,
-            'created_at' => date('Y-m-d h:m:s'),
-            'updated_at' => date('Y-m-d h:m:s'),
+            'created_at' => date('Y-m-d h:i:s'),
+            'updated_at' => date('Y-m-d h:i:s'),
         ]);
 
         $winner_rank =  DB::table('contest_winner_ranks')->where('contest_id', $contest_id)->get();
@@ -43,7 +43,7 @@ class SctrachCardController extends Controller
                 'from' => $rank->from,
                 'to' => $rank->to,
                 'prize_amount' => $rank->prize_amount,
-                'created_at' => date('Y-m-d h:m:s'),
+                'created_at' => date('Y-m-d h:i:s'),
 
             ]);
         }
