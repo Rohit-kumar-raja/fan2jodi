@@ -216,7 +216,7 @@ class SctrachCardController extends Controller
     {
         // if($contestnoOfParticipate==15)
         // {
-        $players = "";
+        $teams = "";
         $invoiceNoExist = true;
         while ($invoiceNoExist) {
             if ($contestnoOfParticipate == 15) {
@@ -251,8 +251,8 @@ class SctrachCardController extends Controller
             if ($t1_exits=='' && $t2_exits=='') {
                 $invoiceNoExist = false;
             }
-            return $teams;
         }
+        return $teams;
         //     // return $this->dataSet15()[rand(0, $contestnoOfParticipate-1)];
         // }else
         // {
