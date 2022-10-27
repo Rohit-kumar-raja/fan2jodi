@@ -81,7 +81,6 @@ class SctrachCardController extends Controller
                     'status' => 1,
                     'created_at' => date('Y-m-d h:m:s'),
                     'updated_at' => date('Y-m-d h:m:s')
-
                 ]);
                 // $team1 =[0=>''];
                 // creating the player 
@@ -105,7 +104,8 @@ class SctrachCardController extends Controller
                 // } else {
                 //     $team2 = $matches->teamtwo . '-' . $randPlayer2;
                 // }
-
+                $team1 = explode(":",$team)[0];
+                $team1 = explode(":",$team)[1];
                 // $team = $team1 . ":" . $team2;
 
                 // adding the data on participated user list
@@ -151,10 +151,8 @@ class SctrachCardController extends Controller
         $return = [
             array(0 => "a:1", 1 => "a:2"),
             array(0 => "a:2", 1 => "a:3"),
-
             array(0 => "a:1", 1 => "a:3"),
             array(0 => "a:1", 1 => "b:1"),
-
             array(0 => "a:1", 1 => "b:2"),
             array(0 => "a:1", 1 => "b:3"),
             array(0 => "a:3", 1 => "b:1"),
@@ -247,8 +245,8 @@ class SctrachCardController extends Controller
             $teams = $team1 . ":" . $team2;
             $teams12 = $team2 . ":" . $team1;
 
-            $t1_exits=DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->where('player', $teams)->first();
-            $t2_exits=DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->where('player', $teams12)->first();
+            $t1_exits = DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->where('player', $teams)->first();
+            $t2_exits = DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->where('player', $teams12)->first();
 
             if ($t1_exits=='' && $t2_exits=='') {
                 $invoiceNoExist = false;
