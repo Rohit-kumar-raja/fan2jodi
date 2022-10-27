@@ -43,7 +43,7 @@ class WalletController extends Controller
                 'user_id' => Auth::user()->id,
                 'amount' => $request->deposit_amount,
                 'payment_status' => "pending",
-                'status' => 0,
+                'status' => 1,
                 'payment_type' => $request->payment_type,
                 'payment_id' => $request->payment_id,
 
