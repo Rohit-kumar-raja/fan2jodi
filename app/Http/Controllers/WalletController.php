@@ -37,8 +37,7 @@ class WalletController extends Controller
 
         $totalWithdrawStatus = DB::table('withdraw_requests')->where('payment_status', 'pending')->where('user_id', Auth::user()->id)->sum('amount');
         $totalBalance = $totalCredit - $totalDebit;
-        $totalRedeemBalance = $totalBalance - $totalWithdrawStatus;
-        if ($totalRedeemBalance >= $request->deposit_amount) {
+        if ($totalBalance >= $request->deposit_amount) {
 
             $data = [
                 'user_id' => Auth::user()->id,
