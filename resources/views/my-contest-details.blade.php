@@ -219,10 +219,10 @@
                                                         // echo '<pre>';
                                                         // print_r($matches_details->details->one);
                                                         if (isset($team_one_batsman->runs)) {
-                                                            $total_runs = ((int) explode(')', explode('(', $team_one_batsman->runs)[1])[0]);
+                                                            $total_runs = ((int) explode('(', $team_one_batsman->runs)[0]);
                                                         }
                                                         if (isset($team_two_batsman->runs)) {
-                                                            $total_runs = $total_runs + (int) explode(')', explode('(', $team_two_batsman->runs)[1])[0];
+                                                            $total_runs = $total_runs + (int) explode('(', $team_two_batsman->runs)[0];
                                                         }
                                                     }
                                                 }
@@ -331,7 +331,6 @@
                                                                                             $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
                                                                                         }
                                                                                     } else {
-                                                                            
                                                                                         if (isset($matches_details->details->one->sc) && $team1_possition > 0) {
                                                                                             $team_one_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
                                                                                         }
@@ -349,10 +348,10 @@
                                                                                     // echo '<pre>';
                                                                                     // print_r($matches_details->details->one);
                                                                                     if (isset($team_one_batsman->runs)) {
-                                                                                        $total_runs = ((int) explode(')', explode('(', $team_one_batsman->runs)[1])[0]);
+                                                                                        $total_runs = ((int) explode('(', $team_one_batsman->runs)[0]);
                                                                                     }
                                                                                     if (isset($team_two_batsman->runs)) {
-                                                                                        $total_runs = $total_runs + (int) explode(')', explode('(', $team_two_batsman->runs)[1])[0];
+                                                                                        $total_runs = $total_runs + (int) explode('(', $team_two_batsman->runs)[0];
                                                                                     }
                                                                                 }
                                                                             }
