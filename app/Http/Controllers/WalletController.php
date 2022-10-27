@@ -47,6 +47,9 @@ class WalletController extends Controller
                 'status' => 1,
                 'payment_type' => $request->payment_type,
                 'payment_id' => $request->payment_id,
+                'created_at'=>date('Y-m-d h:m:s'),
+                'updated_at'=>date('Y-m-d h:m:s')
+
 
             ];
             DB::table('withdraw_requests')->insert($data);
