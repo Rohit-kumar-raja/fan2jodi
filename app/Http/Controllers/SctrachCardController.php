@@ -87,26 +87,26 @@ class SctrachCardController extends Controller
                 // creating the player 
                 $matches =  DB::table('matches')->find($matche_id);
                 $contestnoOfParticipate = DB::table('contests')->where('matches_id', $matche_id)->value('no_of_participate');
-                $randMembers = $this->generateRandomString($contestnoOfParticipate, $matche_id, $contest_id);
-                $randPlayer1Team = explode(":", $randMembers[0])[0];
-                $randPlayer2Team = explode(":", $randMembers[1])[0];
-                $randPlayer1 = explode(":", $randMembers[0])[1];
-                $randPlayer2 = explode(":", $randMembers[1])[1];
+                $team = $this->generateRandomTeam($contestnoOfParticipate, $matche_id, $contest_id);
+                // $randPlayer1Team = explode(":", $randMembers[0])[0];
+                // $randPlayer2Team = explode(":", $randMembers[1])[0];
+                // $randPlayer1 = explode(":", $randMembers[0])[1];
+                // $randPlayer2 = explode(":", $randMembers[1])[1];
 
                 // return [$randPlayer2,$randPlayer1,$randPlayer1Team,$randPlayer2Team];
-                if ($randPlayer1Team == "a") {
-                    $team1 = $matches->teamone . '-' . $randPlayer1;
-                } else {
-                    $team1 = $matches->teamtwo . '-' . $randPlayer1;
-                }
+                // if ($randPlayer1Team == "a") {
+                //     $team1 = $matches->teamone . '-' . $randPlayer1;
+                // } else {
+                //     $team1 = $matches->teamtwo . '-' . $randPlayer1;
+                // }
 
-                if ($randPlayer2Team == "a") {
-                    $team2 = $matches->teamone . '-' . $randPlayer2;
-                } else {
-                    $team2 = $matches->teamtwo . '-' . $randPlayer2;
-                }
+                // if ($randPlayer2Team == "a") {
+                //     $team2 = $matches->teamone . '-' . $randPlayer2;
+                // } else {
+                //     $team2 = $matches->teamtwo . '-' . $randPlayer2;
+                // }
 
-                $team = $team1 . ":" . $team2;
+                // $team = $team1 . ":" . $team2;
 
                 // adding the data on participated user list
                 $participate_id =  DB::table('participated_users')->insertGetId([
@@ -214,7 +214,7 @@ class SctrachCardController extends Controller
         return $return;
     }
 
-    function generateRandomString($contestnoOfParticipate = 15, $matche_id, $contest_id)
+    function generateRandomTeam($contestnoOfParticipate = 15, $matche_id, $contest_id)
     {
         // if($contestnoOfParticipate==15)
         // {
@@ -228,6 +228,7 @@ class SctrachCardController extends Controller
             }
             $randPlayer1Team = explode(":", $players[0])[0];
             $randPlayer2Team = explode(":", $players[1])[0];
+            
             $randPlayer1 = explode(":", $players[0])[1];
             $randPlayer2 = explode(":", $players[1])[1];
 
@@ -252,7 +253,7 @@ class SctrachCardController extends Controller
             if ($t1_exits=='' && $t2_exits=='') {
                 $invoiceNoExist = false;
             }
-            return $players;
+            return $teams;
         }
         //     // return $this->dataSet15()[rand(0, $contestnoOfParticipate-1)];
         // }else
