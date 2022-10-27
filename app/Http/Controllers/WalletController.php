@@ -22,12 +22,12 @@ class WalletController extends Controller
     {
         $totalCredit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('credit');
         $totalDebit = DB::table('wallets')->where('user_id', Auth::user()->id)->sum('debit');
-
-        $totalWithdrawStatus = DB::table('withdraw_requests')->where('payment_status', 'pending')->where('user_id', Auth::user()->id)->sum('amount');
-        $totalBalance = $totalCredit - $totalDebit;
+        
+        $totalWithdrawStatus = DB::table('withdraw_requests')->where('payment_status', 'pending')->where('user_id', Auth::user()->id)->where('status',1)->sum('amount');
+        $totalBalance = ($totalCredit - $totalDebit)-$totalWithdrawStatus;
         $totalRedeemBalance = $totalWithdrawStatus;
-
         return view('wallet', ['total_balance' => $totalBalance, 'total_redeem_balance' => $totalRedeemBalance, 'created_at'=>date('Y-m-d')]);
+ 
     }
 
     public function withdrawRequest(Request $request)
@@ -214,7 +214,7 @@ class WalletController extends Controller
 
     public function withdraw()
     {
-        $data = DB::table('withdraw_requests')->where('user_id', Auth::user()->id)->paginate(10);
+        $data = DB::table('withdraw_requests')->where('user_id', Auth::user()->id)->where('status',1)->paginate(10);
         return view('withdraw', ['data' => $data]);
     }
 }

@@ -26,7 +26,7 @@
                             <div class="content mt-1">
                                 <div class="row">
                                     <div class="col-8 col-md-10">
-                                        <span class="time">Redeemable Balance</span>
+                                        <span class="time">Pedding Redeemable Balance</span>
                                         <h3 class="text-black mt--10">₹ {{ $total_redeem_balance }}</h3>
                                     </div>
                                     <div class="col-4 col-md-2">
