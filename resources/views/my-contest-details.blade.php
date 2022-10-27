@@ -198,22 +198,21 @@
                                                         }
                                                 
                                                         if ($team1_name == $matches_team1_name) {
-                                                            if (isset($matches_details->details->one->sc) && $team1_possition > 0) {
-                                                                echo $team1_possition;
+                                                            if (isset($matches_details->details->two->sc) && $team1_possition > 0) {
                                                                 $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
                                                             }
                                                         } else {
-                                                            if (isset($matches_details->details->two->sc) && $team1_possition > 0) {
+                                                            if (isset($matches_details->details->one->sc) && $team1_possition > 0) {
                                                                 $team_one_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
                                                             }
                                                         }
                                                 
                                                         if ($team2_name == $matches_team2_name) {
-                                                            if (isset($matches_details->details->two->sc) && $team2_possition > 0) {
+                                                            if (isset($matches_details->details->one->sc) && $team2_possition > 0) {
                                                                 $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
                                                             }
                                                         } else {
-                                                            if (isset($matches_details->details->one->sc) && $team2_possition > 0) {
+                                                            if (isset($matches_details->details->two->sc) && $team2_possition > 0) {
                                                                 $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
                                                             }
                                                         }
@@ -327,23 +326,23 @@
                                                                                     }
                                                                             
                                                                                     if ($team1_name == $matches_team1_name) {
-                                                                                        if (isset($matches_details->details->one->sc) && $team1_possition > 0) {
+                                                                                        if (isset($matches_details->details->two->sc) && $team1_possition > 0) {
                                                                                             echo $team1_possition;
                                                                                             $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
                                                                                         }
                                                                                     } else {
                                                                             
-                                                                                        if (isset($matches_details->details->two->sc) && $team1_possition > 0) {
+                                                                                        if (isset($matches_details->details->one->sc) && $team1_possition > 0) {
                                                                                             $team_one_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
                                                                                         }
                                                                                     }
                                                                             
                                                                                     if ($team2_name == $matches_team2_name) {
-                                                                                        if (isset($matches_details->details->two->sc) && $team2_possition > 0) {
+                                                                                        if (isset($matches_details->details->one->sc) && $team2_possition > 0) {
                                                                                             $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
                                                                                         }
                                                                                     } else {
-                                                                                        if (isset($matches_details->details->one->sc) && $team2_possition > 0) {
+                                                                                        if (isset($matches_details->details->two->sc) && $team2_possition > 0) {
                                                                                             $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
                                                                                         }
                                                                                     }
