@@ -246,9 +246,9 @@ class SctrachCardController extends Controller
             $teams12 = $team2 . ":" . $team1;
 
             $t1_exits = DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->where('player', $teams)->first();
-            $t2_exits = DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->where('player', $teams12)->first();
+            // $t2_exits = DB::table('participated_users')->where('matche_id', $matche_id)->where('contest_id', $contest_id)->where('player', $teams12)->first();
 
-            if ($t1_exits=='' && $t2_exits=='') {
+            if (empty($t1_exits)) {
                 $invoiceNoExist = false;
             }
         }
