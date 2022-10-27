@@ -84,9 +84,7 @@ class SctrachCardController extends Controller
                 ]);
                 // $team1 =[0=>''];
                 // creating the player 
-                $matches =  DB::table('matches')->find($matche_id);
-                $contestnoOfParticipate = DB::table('contests')->where('matches_id', $matche_id)->value('no_of_participate');
-                $team = $this->generateRandomTeam($contestnoOfParticipate, $matche_id, $contest_id);
+                $team = $this->generateRandomTeam($contest->no_of_participate, $matche_id, $contest_id);
                 // $randPlayer1Team = explode(":", $randMembers[0])[0];
                 // $randPlayer2Team = explode(":", $randMembers[1])[0];
                 // $randPlayer1 = explode(":", $randMembers[0])[1];
