@@ -177,8 +177,8 @@
                                                 $team2 = explode(':', $participated_con_user->player)[1];
                                                 $team1_name = explode('-', $team1)[0];
                                                 $team2_name = explode('-', $team2)[0];
-                                                $team1_possition = explode('-', $team1)[1];
-                                                $team2_possition = explode('-', $team2)[1];
+                                                $team1_possition = explode('-', $team1)[1]-1;
+                                                $team2_possition = explode('-', $team2)[1]-1;
                                                 
                                                 if (Str::length($matches->api) > 40) {
                                                     $matches_details = json_decode($matches->api);
@@ -282,8 +282,8 @@
                                                                             $team2 = explode(':', $puser->player)[1];
                                                                             $team1_name = explode('-', $team1)[0];
                                                                             $team2_name = explode('-', $team2)[0];
-                                                                            $team1_possition = explode('-', $team1)[1];
-                                                                            $team2_possition = explode('-', $team2)[1];
+                                                                            $team1_possition = explode('-', $team1)[1]-1;
+                                                                            $team2_possition = explode('-', $team2)[1]-1;
                                                                             
                                                                             if (Str::length($matches->api) > 40) {
                                                                                 $matches_details = json_decode($matches->api);

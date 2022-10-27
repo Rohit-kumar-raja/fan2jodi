@@ -67,7 +67,7 @@
                                                     {{ $tran->withdraw_status }}
                                                 @endif
                                             @else
-                                          Cash Added  <span class="text-success">Success</span>
+                                                Cash Added <span class="text-success">Success</span>
                                             @endif
                                         </span>
                                     </div>
