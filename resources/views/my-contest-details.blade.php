@@ -24,7 +24,7 @@
                                         @foreach ($my_contest as $my)
                                             {{-- Rank model start --}}
                                             @php
-                                                error_reporting(0);
+                                                // error_reporting(0);
                                                 $con = DB::table('contests')->find($my->contest_id);
                                                 
                                                 // getting the data of joined pepole
@@ -290,7 +290,6 @@
 
                                                                 <tbody>
                                                                     @php
-                                                                        $total_runs = 0;
                                                                         
                                                                         // dd( $matches_details);
                                                                         $participated_user = DB::table('participated_users')
@@ -301,6 +300,9 @@
                                                                     @endphp
                                                                     @foreach ($participated_user as $puser)
                                                                         @php
+                                                                                                                                                $total_runs = 0;
+                                                                        $total_runs = 0;
+
                                                                             $team1 = explode(':', $puser->player)[0];
                                                                             $team2 = explode(':', $puser->player)[1];
                                                                             $team1_name = explode('-', $team1)[0];
