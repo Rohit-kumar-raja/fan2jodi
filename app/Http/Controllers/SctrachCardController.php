@@ -105,7 +105,7 @@ class SctrachCardController extends Controller
                 //     $team2 = $matches->teamtwo . '-' . $randPlayer2;
                 // }
                 $team1 = explode(":",$team)[0];
-                $team1 = explode(":",$team)[1];
+                $team2 = explode(":",$team)[1];
                 // $team = $team1 . ":" . $team2;
 
                 // adding the data on participated user list
