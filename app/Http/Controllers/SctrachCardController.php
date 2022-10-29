@@ -186,7 +186,7 @@ class SctrachCardController extends Controller
             array(0 => "b:2", 1 => "b:3"),
             array(0 => "b:1", 1 => "b:3"),
 
-            array(0 => "a:1", 1 => "b:1"),
+            array(0 => "a:2", 1 => "b:1"),
             array(0 => "a:2", 1 => "b:2"),
             array(0 => "a:2", 1 => "b:3"),
 
