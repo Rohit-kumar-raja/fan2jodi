@@ -85,7 +85,7 @@ class WalletController extends Controller
             'payment_id' => $payment->id,
             'user_id' => $payment->user_id,
             'order_id' => $request->order_id ?? null,
-            'order_amount' => $request->amount,
+            'order_amount' => $payment->payment_amount,
             'txn_id' => $request->order_id,
             'status' => $request->status
         ];
@@ -94,8 +94,8 @@ class WalletController extends Controller
                 'user_id' => $payment->user_id,
                 'debit' => 0,
                 'withdraw_status' => "pending",
-                'credit' => $request->amount,
-                'balance' => $lastBalance + $request->amount,
+                'credit' => $payment->payment_amount,
+                'balance' => $lastBalance + $payment->payment_amount,
                 'api_info' => json_encode($apiInfo),
                 'status' => 1,
                 'created_at' => date('Y-m-d H:i:s')
