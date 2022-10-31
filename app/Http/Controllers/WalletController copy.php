@@ -8,10 +8,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
-use App\Traits\PaymentTrait;
+
 class WalletController extends Controller
 {
-    use PaymentTrait;
     public function transaction()
     {
         // $data =   DB::table('wallets')->where('status', 1)->where('id', Auth::user()->id)->get();
@@ -63,18 +62,14 @@ class WalletController extends Controller
         # code...
         //  return 
         //  return $request->all();
-       
-        $payment = Payment::where('client_txn_id', $request->client_txn_id)->first();
-        $data=["client_txn_id"=>$payment->client_txn_id,'txn_date'=>date('d-m-Y',strtotime($payment->created_at))];
-        $responseData = $this->checkPaymentStatus($data); 
-        $paymentStatus = $responseData->data->status;
-        // $paymentStatus = "failed";
-        if ($paymentStatus == 'success') {
+        $paymentStatus = "failed";
+        if ($request->status == 'success') {
             $paymentStatus = "paid";
-        } else if ($paymentStatus == 'failure') {
+        } else if ($request->status == 'failed') {
             $paymentStatus = "failed";
-        }      
-        $payment->txn_id = $request->txn_id;
+        }
+        $payment = Payment::where('order_id', $request->order_id)->first();
+        $payment->txn_id = $request->order_id;
         $payment->status = $paymentStatus;
         $payment->payment_date = date('Y-m-d H:i:s');
         $payment->save();
@@ -108,36 +103,40 @@ class WalletController extends Controller
     }
     public function depositAmount(Request $request)
     {
-
-        $successUrl = url('/payment-response');
+        $action = 'https://full2sms.in/gateway/processPpayment';
+        $successUrl = url('/payment-response.php');
+        $failureUrl = $successUrl;
         //   $txnid = hexdec( uniqid() );
         $txnid = $this->generateRandomString(12);
         //   return $txnid;
         $amount = $request->deposit_amount;
         $payment = new Payment();
         $payment->user_id = Auth::user()->id;
-        $payment->client_txn_id = $txnid;
+        $payment->order_id = $txnid;
         $payment->payment_amount = $amount;
         $payment->payment_type = "deposit";
         $payment->payment_date = date('Y-m-d H:i:s');
         $payment->status = "pending";
         // return Auth::user()->phone;
-        // $payment->order_id = $txnid;
-        $data =[
-            "client_txn_id"=>$payment->client_txn_id,
-            "amount"=>$payment->payment_amount,
-            "name"=>Auth::user()->name,
-            "email"=>Auth::user()->email,
-            "phone"=>Auth::user()->phone,
-        ];
-        $responseData = $this->startPayment($data);        
-        $payment->order_id = $responseData->data->order_id;
         $payment->save();
-        $paymentUrl = $responseData->data->payment_url;
-        header("Location: ".$paymentUrl);
-        die();
+        $html = '
+        <form id="prikpay_redr" method="get" action="' . $action . '" style="display:none;">
+                <input type="" value="' . $txnid . '" name="order_id">
+                <input type="" value="53494857575397985510" name="cpin">
+                <input type="" value="JaRuYjKMepovCbQHAZ5V7Uk" name="token">
+                <input type="" value="' . $amount . '" name="amount"> 
+                <input type=""  value="' . Auth::user()->phone . '" name="Mobile_Number"> 
+                <input type="" value="' . $successUrl . '" name="Success_Url"> 
+                <input type="" value="' . $failureUrl . '" name="Failure_Url"> 
+                <input type="" value="' . $payment->id . '" name="Param1"> 
+                <button type="submit" id="payBtn">pay</button>
+            </form>
+            <script>
+                document.getElementById("prikpay_redr").submit();
+            </script>
+        ';
 
-        return  $responseData->data->payment_url;
+        echo $html;
     }
     public function withdrawalSubmit(Request $request)
     {

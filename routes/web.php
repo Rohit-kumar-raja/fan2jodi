@@ -28,6 +28,7 @@ Route::get('wallet', [WalletController::class, 'walletList'])->name('wallet')->m
 // user management
 Route::post('user/register', [LoginController::class, 'register'])->name('user.register');
 Route::get('prikpay-response', [WalletController::class, 'paymentGatewayRespone'])->middleware('auth');
+Route::get('payment-response', [WalletController::class, 'paymentGatewayRespone'])->middleware('auth');
 Route::post('user/login', [LoginController::class, 'login'])->name('user.login');
 Route::post('deposit-amount', [WalletController::class, 'depositAmount'])->name('deposit.amount');
 Route::post('withdraw-request', [WalletController::class, 'withdrawRequest'])->name('withdraw-request');
