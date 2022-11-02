@@ -250,7 +250,7 @@
                                                                 {{  'Player 1' }}
                                                                 @endif
                                                             </button>
-                                                            <button class="btn btn-sm btn-outline-success">Run :one
+                                                            <button class="btn btn-sm btn-outline-success">Run :
                                                                 @if(!empty($matches_team1_name))
                                                                 {{ $team_one_batsman->runs ?? '0' }}
                                                                 @else
@@ -270,7 +270,7 @@
                                                                 {{ 'Player 2' }}
                                                                 @endif
                                                             </button>
-                                                            <button class="btn btn-sm btn-outline-success">Run :two
+                                                            <button class="btn btn-sm btn-outline-success">Run :
                                                             @if($matches_team2_name)
                                                                 {{ $team_two_batsman->runs ?? '0' }}
                                                             @else
