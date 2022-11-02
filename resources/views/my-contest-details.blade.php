@@ -245,7 +245,7 @@
                                                             <button
                                                                 class="btn btn-sm btn-outline-primary">{{ $team_one_batsman->name ?? 'Player 1' }}
                                                             </button>
-                                                            <button class="btn btn-sm btn-outline-success">Run :
+                                                            <button class="btn btn-sm btn-outline-success">Run :one
                                                                 {{ $team_one_batsman->runs ?? '0' }}
 
                                                             </button>
@@ -257,7 +257,7 @@
                                                         <div class="text-center"> <button
                                                                 class="btn btn-sm btn-outline-primary">{{ $team_two_batsman->name ?? 'Player 2' }}
                                                             </button>
-                                                            <button class="btn btn-sm btn-outline-success">Run :
+                                                            <button class="btn btn-sm btn-outline-success">Run :two
 
                                                                 {{ $team_two_batsman->runs ?? '0' }}
                                                             </button>
