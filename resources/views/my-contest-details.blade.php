@@ -368,11 +368,17 @@
                                                                                     }
                                                                                     // echo '<pre>';
                                                                                     // print_r($matches_details->details->one);
-                                                                                    if (isset($team_one_batsman->runs)) {
-                                                                                        $total_runs = ((int) explode('(', $team_one_batsman->runs)[0]);
+                                                                                    if(!empty($matches_team1_name))
+                                                                                    {
+                                                                                        if (isset($team_one_batsman->runs)) {
+                                                                                            $total_runs = ((int) explode('(', $team_one_batsman->runs)[0]);
+                                                                                        }
                                                                                     }
-                                                                                    if (isset($team_two_batsman->runs)) {
-                                                                                        $total_runs = $total_runs + (int) explode('(', $team_two_batsman->runs)[0];
+                                                                                    if(!empty($matches_team2_name))
+                                                                                    {
+                                                                                        if (isset($team_two_batsman->runs)) {
+                                                                                            $total_runs = $total_runs + (int) explode('(', $team_two_batsman->runs)[0];
+                                                                                        }
                                                                                     }
                                                                                 }
                                                                             }
