@@ -243,11 +243,19 @@
                                                             class="rounded-3 mb-2 ">
                                                         <div class="text-center">
                                                             <button
-                                                                class="btn btn-sm btn-outline-primary">{{ $team_one_batsman->name ?? 'Player 1' }}
+                                                                class="btn btn-sm btn-outline-primary">
+                                                                @if(!empty($matches_team1_name))
+                                                                {{ $team_one_batsman->name ?? 'Player 1' }}
+                                                                @else
+                                                                {{  'Player 1' }}
+                                                                @endif
                                                             </button>
                                                             <button class="btn btn-sm btn-outline-success">Run :one
+                                                                @if(!empty($matches_team1_name))
                                                                 {{ $team_one_batsman->runs ?? '0' }}
-
+                                                                @else
+                                                                {{  '0' }}
+                                                                @endif
                                                             </button>
                                                         </div>
                                                     </div>
@@ -255,11 +263,19 @@
                                                         <img src={{ asset('img/user3.jpg') }} width="100px"
                                                             class="rounded-3 mb-2">
                                                         <div class="text-center"> <button
-                                                                class="btn btn-sm btn-outline-primary">{{ $team_two_batsman->name ?? 'Player 2' }}
+                                                                class="btn btn-sm btn-outline-primary">
+                                                                @if($matches_team2_name)
+                                                                {{ $team_two_batsman->name ?? 'Player 2' }}
+                                                                @else
+                                                                {{ 'Player 2' }}
+                                                                @endif
                                                             </button>
                                                             <button class="btn btn-sm btn-outline-success">Run :two
-
+                                                            @if($matches_team2_name)
                                                                 {{ $team_two_batsman->runs ?? '0' }}
+                                                            @else
+                                                            {{  '0' }}
+                                                            @endif
                                                             </button>
                                                         </div>
                                                     </div>
