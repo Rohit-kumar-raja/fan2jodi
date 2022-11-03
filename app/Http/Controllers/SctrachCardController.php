@@ -136,7 +136,7 @@ class SctrachCardController extends Controller
                 // if user walllet not sufficiant for the join to the contest
             } else {
                 DB::table('wallets')->delete($wallet_id);
-                return response()->json(['error' => "You don't have enogth balance for join this contest"]);
+                return response()->json(['error' => "You don't have enough balance for join this contest"]);
             }
             // if user already participated in this matches
         } else {

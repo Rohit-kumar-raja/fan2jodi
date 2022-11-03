@@ -202,17 +202,33 @@
                                                             if (isset($matches_details->details->one->sc) && $team1_possition > 0) {
                                                                 $team_one_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
                                                             }
-                                                        } else {
-                                                            if (isset($matches_details->details->two->sc) && $team1_possition > 0) {
-                                                                $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
+                                                        }
+                                                        if (trim($team2_name) == trim($matches_team1_name)) {
+                                                            if (isset($matches_details->details->one->sc) && $team1_possition > 0) {
+                                                                $team_one_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
                                                             }
                                                         }
+                                                        <!-- else {
+                                                            if (isset($matches_details->details->two->sc) && $team1_possition > 0 && $team1_name == $team2_name) {
+                                                                $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
+                                                            } else {
+                                                                if (isset($matches_details->details->two->sc) && $team1_possition > 0) {
+                                                                    $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
+                                                                }
+                                                            }
+                                                        } -->
                                                 
+                                                        if (trim($team1_name) == trim($matches_team2_name)) {
+                                                            if (isset($matches_details->details->two->sc) && $team2_possition > 0 && $matches_team2_name > 0) {
+                                                                $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
+                                                            }
+                                                        }
                                                         if (trim($team2_name) == trim($matches_team2_name)) {
                                                             if (isset($matches_details->details->two->sc) && $team2_possition > 0 && $matches_team2_name > 0) {
                                                                 $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
                                                             }
-                                                        } else {
+                                                        }
+                                                         <!-- else {
                                                             if (isset($matches_details->details->one->sc) && $team2_possition > 0 && $team1_name == $team2_name) {
                                                                 $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
                                                             } else {
@@ -220,7 +236,7 @@
                                                                     $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
                                                                 }
                                                             }
-                                                        }
+                                                        } -->
                                                         // echo '<pre>';
                                                         // print_r($matches_details->details->one);
                                                         if (isset($team_one_batsman->runs)) {
@@ -340,35 +356,48 @@
                                                                                         if (isset($matches_details->details->one->sc) && $team1_possition > 0) {
                                                                                             $team_one_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
                                                                                         }
-                                                                                    } else {
+                                                                                    } 
+                                                                                    if (trim($team2_name) == trim($matches_team1_name)) {
+                                                                                        if (isset($matches_details->details->one->sc) && $team1_possition > 0) {
+                                                                                            $team_one_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
+                                                                                        }
+                                                                                    } 
+
+                                                                                    <!-- else {
                                                                                         if (isset($matches_details->details->two->sc) && $team1_possition > 0) {
                                                                                             $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
                                                                                         }
-                                                                                    }
+                                                                                    } -->
                                                                             
                                                                                     if (trim($team2_name) == trim($matches_team2_name)) {
                                                                                         if (isset($matches_details->details->two->sc) && $team2_possition > 0 && $matches_team2_name > 0) {
                                                                                             $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
                                                                                         }
-                                                                                    } else {
+                                                                                    } 
+                                                                                    if (trim($team1_name) == trim($matches_team2_name)) {
+                                                                                        if (isset($matches_details->details->two->sc) && $team2_possition > 0 && $matches_team2_name > 0) {
+                                                                                            $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
+                                                                                        }
+                                                                                    } 
+                                                                                    <!-- else {
                                                                                         if (isset($matches_details->details->one->sc) && $team2_possition > 0 && $team1_name == $team2_name) {
                                                                                             $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
                                                                                         }
-                                                                                    }
+                                                                                    } -->
                                                                                     // echo '<pre>';
                                                                                     // print_r($matches_details->details->one);
-                                                                                    if(!empty($matches_team1_name))
-                                                                                    {
+                                                                                    <!-- if(!empty($matches_team1_name))
+                                                                                    { -->
                                                                                         if (isset($team_one_batsman->runs)) {
                                                                                             $total_runs = ((int) explode('(', $team_one_batsman->runs)[0]);
                                                                                         }
-                                                                                    }
-                                                                                    if(!empty($matches_team2_name))
-                                                                                    {
+                                                                                    <!-- } -->
+                                                                                    <!-- if(!empty($matches_team2_name))
+                                                                                    { -->
                                                                                         if (isset($team_two_batsman->runs)) {
                                                                                             $total_runs = $total_runs + (int) explode('(', $team_two_batsman->runs)[0];
                                                                                         }
-                                                                                    }
+                                                                                    <!-- } -->
                                                                                 }
                                                                             }
                                                                             DB::table('participated_users')
