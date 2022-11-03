@@ -15,7 +15,7 @@ class indexController extends Controller
    {
       //   dd(date(' j F Y'));
       $today = date('l, M d, Y ');
-      $data = DB::table('matches')->where('date','>', $today)->where('status', 1)->orderByDesc('id')->get();
+      $data = DB::table('matches')->where('status', 1)->orderByDesc('id')->get();
       $sliders = DB::table('slider_tbl')->where('is_deleted', 1)->get();
       return view('battle', ['data' => $data, 'sliders' => $sliders]);
    }
