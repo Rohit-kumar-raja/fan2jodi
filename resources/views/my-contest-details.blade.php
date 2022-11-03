@@ -350,14 +350,14 @@
                                                                                     } else
                                                                                     {
                                                                                         
-                                                                                        if (trim($team2_name) == trim($matches_team1_name)) {
+                                                                                       // if (trim($team2_name) == trim($matches_team1_name)) {
                                                                                             if (isset($matches_details->details->one->sc) && $team1_possition > 0) {
                                                                                                 $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team1_possition];
                                                                                                 echo "<pre>";
                                                                                                 print_r($team_two_batsman);
 
                                                                                             }
-                                                                                        } 
+                                                                                        //} 
                                                                                         
                                                                                     }
                                                                                    
@@ -371,12 +371,12 @@
                                                                                         }
                                                                                     }else
                                                                                     {
-                                                                                        if (trim($team1_name) == trim($matches_team2_name)) {
+                                                                                        //if (trim($team1_name) == trim($matches_team2_name)) {
                                                                                             echo "team 2 with team 1"
                                                                                             if (isset($matches_details->details->two->sc) && $team2_possition > 0 && $matches_team2_name > 0) {
                                                                                                 $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
                                                                                             }
-                                                                                        }
+                                                                                       // }
                                                                                     } 
                                                                                     
                                                                                    
