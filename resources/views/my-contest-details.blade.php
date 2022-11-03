@@ -190,6 +190,7 @@
                                                     // echo "<pre>";
                                                     // print_r($matches_details);
                                                     if (isset($matches_details->details->one) && isset($matches_details->details->one->score)) {
+
                                                         if (isset($matches_details->details->one->score)) {
                                                             $matches_team1_name = explode('-', $matches_team1 = $matches_details->details->one->score)[0];
                                                         }
@@ -244,18 +245,12 @@
                                                         <div class="text-center">
                                                             <button
                                                                 class="btn btn-sm btn-outline-primary">
-                                                                @if(!empty($matches_team1_name))
                                                                 {{ $team_one_batsman->name ?? 'Player 1' }}
-                                                                @else
-                                                                {{  'Player 1' }}
-                                                                @endif
+                                                                
                                                             </button>
                                                             <button class="btn btn-sm btn-outline-success">Run :
-                                                                @if(!empty($matches_team1_name))
                                                                 {{ $team_one_batsman->runs ?? '0' }}
-                                                                @else
-                                                                {{  '0' }}
-                                                                @endif
+                                                               
                                                             </button>
                                                         </div>
                                                     </div>
@@ -264,18 +259,12 @@
                                                             class="rounded-3 mb-2">
                                                         <div class="text-center"> <button
                                                                 class="btn btn-sm btn-outline-primary">
-                                                                @if($matches_team2_name)
                                                                 {{ $team_two_batsman->name ?? 'Player 2' }}
-                                                                @else
-                                                                {{ 'Player 2' }}
-                                                                @endif
+                                                               
                                                             </button>
                                                             <button class="btn btn-sm btn-outline-success">Run :
-                                                            @if($matches_team2_name)
                                                                 {{ $team_two_batsman->runs ?? '0' }}
-                                                            @else
-                                                            {{  '0' }}
-                                                            @endif
+                                                          
                                                             </button>
                                                         </div>
                                                     </div>
