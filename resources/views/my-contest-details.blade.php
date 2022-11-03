@@ -206,7 +206,7 @@
                                                                 $team_one_batsman = ((array) $matches_details->details->two->sc->batting)[$team1_possition];
                                                             }
                                                         }
-                                                
+                                                        echo $team2_name;
                                                         if (trim($team2_name) == trim($matches_team2_name)) {
                                                             if (isset($matches_details->details->two->sc) && $team2_possition > 0 && $matches_team2_name > 0) {
                                                                 $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
