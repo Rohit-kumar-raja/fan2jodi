@@ -226,7 +226,7 @@
                                                                     $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
                                                                 }
                                                             } else {
-                                                                if (isset($matches_details->details->one->sc) && $team1_possition > 0) {
+                                                                if (isset($matches_details->details->one->sc) && $team1_possition > 0 && !empty(trim($matches_team2_name))) {
                                                                     $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
                                                                 }
                                                             }
@@ -371,7 +371,7 @@
                                                                                                 $team_two_batsman = ((array) $matches_details->details->two->sc->batting)[$team2_possition];
                                                                                             }
                                                                                         } else {
-                                                                                            if (isset($matches_details->details->one->sc) && $team1_possition > 0) {
+                                                                                            if (isset($matches_details->details->one->sc) && $team1_possition > 0 && !empty(trim($matches_team2_name))) {
                                                                                                 $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
                                                                                             }
                                                                                         }
