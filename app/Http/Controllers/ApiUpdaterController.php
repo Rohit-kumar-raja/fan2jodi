@@ -11,7 +11,7 @@ class ApiUpdaterController extends Controller
     {
         $today = date('l, M d, Y ');
         $previous_date = date('l, M d, Y', (strtotime('-1 day', strtotime($today))));
-        // check the previou date of the matches and today matches according the that we calling getting data
+        // check the previous date of the matches and today matches according the that we calling getting data
         $matches =   DB::table('matches')->where('date', $today)->orWhere('date', $previous_date)->get();
         if ($matches != '') {
             foreach ($matches as $data) {

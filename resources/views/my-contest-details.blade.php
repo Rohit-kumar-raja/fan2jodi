@@ -214,11 +214,13 @@
                                                         } else {
                                                             if (isset($matches_details->details->one->sc) && $team2_possition > 0 && $team1_name == $team2_name) {
                                                                 $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
-                                                            } else {
-                                                                if (isset($matches_details->details->one->sc) && $team2_possition > 0) {
-                                                                    $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
-                                                                }
                                                             }
+                                                
+                                                            // else {
+                                                            //     if (isset($matches_details->details->one->sc) && $team2_possition > 0) {
+                                                            //         $team_two_batsman = ((array) $matches_details->details->one->sc->batting)[$team2_possition];
+                                                            //     }
+                                                            //  }
                                                         }
                                                         // echo '<pre>';
                                                         // print_r($matches_details->details->one);
