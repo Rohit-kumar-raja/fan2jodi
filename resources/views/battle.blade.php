@@ -32,9 +32,11 @@
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item"><a class="text-black nav-link active" id="description-tab"
                                         data-bs-toggle="tab" href="#description" role="tab"
-                                        aria-controls="description">Upcoming Matches</a></li>
-                                {{-- <li class="nav-item"><a class="text-black nav-link" id="reviews-tab" data-bs-toggle="tab"
-                                            href="#reviews" role="tab" aria-controls="reviews">Finished</a></li> --}}
+                                        aria-controls="description">Upcoming </a></li>
+                                <li class="nav-item"><a class="text-black nav-link" id="reviews-tab" data-bs-toggle="tab"
+                                        href="#reviews" role="tab" aria-controls="reviews">Live</a></li>
+                                        <li class="nav-item"><a class="text-black nav-link" id="reviews-tab" data-bs-toggle="tab"
+                                            href="#reviews1" role="tab" aria-controls="reviews">Finished</a></li>
                             </ul>
 
                             <div class="tab-content " id="myTabContent">
@@ -43,76 +45,78 @@
                                         <div class="row align-items-center">
 
                                             @foreach ($data as $battel)
-                                                <div class="col-lg-12 col-md-12 " id="matches{{ $loop->iteration }}">
-                                                    <a href="{{ route('contest', $battel->id) }}"
-                                                        class="flex-container  border border-2 bg-gray10 rounded">
-                                                        <div class="flex-child c1">
-                                                            <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamoneimg }}"
-                                                                alt="image">
-                                                        </div>
+                                                @if (strtotime($battel->date) > strtotime(date('Y-m-d')))
+                                                    <div class="col-lg-12 col-md-12 " id="matches{{ $loop->iteration }}">
+                                                        <a href="{{ route('contest', $battel->id) }}"
+                                                            class="flex-container  border border-2 bg-gray10 rounded">
+                                                            <div class="flex-child c1">
+                                                                <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamoneimg }}"
+                                                                    alt="image">
+                                                            </div>
 
-                                                        <div class="flex-child c2 p-2">
-                                                            <div class="content blue-bg text-center p-2">
-                                                                <h3 class="text-white mb-0">{{ $battel->teamone }} vs
-                                                                    {{ $battel->teamtwo }}</h3>
-                                                                <div id="timer"
-                                                                    class="flex-wrap d-flex justify-content-center text-white">
-                                                                    <div id="demo{{ $loop->iteration }}"
-                                                                        class="align-items-center flex-column d-flex justify-content-center">
-                                                                        20D 20H 10
+                                                            <div class="flex-child c2 p-2">
+                                                                <div class="content blue-bg text-center p-2">
+                                                                    <h3 class="text-white mb-0">{{ $battel->teamone }} vs
+                                                                        {{ $battel->teamtwo }}</h3>
+                                                                    <div id="timer"
+                                                                        class="flex-wrap d-flex justify-content-center text-white">
+                                                                        <div id="demo{{ $loop->iteration }}"
+                                                                            class="align-items-center flex-column d-flex justify-content-center">
+                                                                            20D 20H 10
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="flex-child c3 ms-3">
-                                                            <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamtwoimg }}"
-                                                                alt="image">
-                                                        </div>
-                                                    </a>
-                                                </div>
+                                                            <div class="flex-child c3 ms-3">
+                                                                <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamtwoimg }}"
+                                                                    alt="image">
+                                                            </div>
+                                                        </a>
+                                                    </div>
 
-                                                <?php
-                                                $y = explode(',', $battel->date)[1];
-                                                $m = explode(',', $battel->date)[2];
-                                                $date = $y . ',' . $m;
-                                                $timeF = explode(' ', $battel->time)[0];
-                                                $timeD = explode(' ', $battel->time)[1];
-                                                $time = date('H:i:s', strtotime($timeF . ' ' . $timeD));
-                                                ?>
-                                                <script>
-                                                    // Set the date we're counting down to
-                                                    var countDownDate{{ $loop->iteration }} = new Date("{{ $date }} {{ $time }}").getTime();
+                                                    <?php
+                                                    $y = explode(',', $battel->date)[1];
+                                                    $m = explode(',', $battel->date)[2];
+                                                    $date = $y . ',' . $m;
+                                                    $timeF = explode(' ', $battel->time)[0];
+                                                    $timeD = explode(' ', $battel->time)[1];
+                                                    $time = date('H:i:s', strtotime($timeF . ' ' . $timeD));
+                                                    ?>
+                                                    <script>
+                                                        // Set the date we're counting down to
+                                                        var countDownDate{{ $loop->iteration }} = new Date("{{ $date }} {{ $time }}").getTime();
 
-                                                    // Update the count down every 1 second
-                                                    var x{{ $loop->iteration }} = setInterval(function() {
-                                                        // Get today's date and time
-                                                        var now{{ $loop->iteration }} = new Date().getTime();
+                                                        // Update the count down every 1 second
+                                                        var x{{ $loop->iteration }} = setInterval(function() {
+                                                            // Get today's date and time
+                                                            var now{{ $loop->iteration }} = new Date().getTime();
 
-                                                        // Find the distance between now and the count down date
-                                                        var distance{{ $loop->iteration }} = countDownDate{{ $loop->iteration }} - now{{ $loop->iteration }};
+                                                            // Find the distance between now and the count down date
+                                                            var distance{{ $loop->iteration }} = countDownDate{{ $loop->iteration }} - now{{ $loop->iteration }};
 
-                                                        // Time calculations for days, hours, minutes and seconds
-                                                        var days{{ $loop->iteration }} = Math.floor(distance{{ $loop->iteration }} / (1000 * 60 * 60 * 24));
-                                                        var hours{{ $loop->iteration }} = Math.floor((distance{{ $loop->iteration }} % (1000 * 60 * 60 *
-                                                            24)) / (1000 * 60 * 60));
-                                                        var minutes{{ $loop->iteration }} = Math.floor((distance{{ $loop->iteration }} % (1000 * 60 * 60)) / (
-                                                            1000 * 60));
-                                                        var seconds{{ $loop->iteration }} = Math.floor((distance{{ $loop->iteration }} % (1000 * 60)) / 1000);
+                                                            // Time calculations for days, hours, minutes and seconds
+                                                            var days{{ $loop->iteration }} = Math.floor(distance{{ $loop->iteration }} / (1000 * 60 * 60 * 24));
+                                                            var hours{{ $loop->iteration }} = Math.floor((distance{{ $loop->iteration }} % (1000 * 60 * 60 *
+                                                                24)) / (1000 * 60 * 60));
+                                                            var minutes{{ $loop->iteration }} = Math.floor((distance{{ $loop->iteration }} % (1000 * 60 * 60)) / (
+                                                                1000 * 60));
+                                                            var seconds{{ $loop->iteration }} = Math.floor((distance{{ $loop->iteration }} % (1000 * 60)) / 1000);
 
-                                                        // Display the result in the element with id="demo"
-                                                        document.getElementById("demo{{ $loop->iteration }}").innerHTML = days{{ $loop->iteration }} + "d " +
-                                                            hours{{ $loop->iteration }} + "h " +
-                                                            minutes{{ $loop->iteration }} + "m " + seconds{{ $loop->iteration }} + "s ";
+                                                            // Display the result in the element with id="demo"
+                                                            document.getElementById("demo{{ $loop->iteration }}").innerHTML = days{{ $loop->iteration }} + "d " +
+                                                                hours{{ $loop->iteration }} + "h " +
+                                                                minutes{{ $loop->iteration }} + "m " + seconds{{ $loop->iteration }} + "s ";
 
-                                                        // If the count down is finished, write some text
-                                                        if (distance{{ $loop->iteration }} < 0) {
-                                                            clearInterval(x{{ $loop->iteration }});
-                                                            document.getElementById("demo{{ $loop->iteration }}").innerHTML = "EXPIRED";
-                                                            document.getElementById('matches{{ $loop->iteration }}').style.display = "none";
-                                                        }
+                                                            // If the count down is finished, write some text
+                                                            if (distance{{ $loop->iteration }} < 0) {
+                                                                clearInterval(x{{ $loop->iteration }});
+                                                                document.getElementById("demo{{ $loop->iteration }}").innerHTML = "EXPIRED";
+                                                                document.getElementById('matches{{ $loop->iteration }}').style.display = "none";
+                                                            }
 
-                                                    }, 1000);
-                                                </script>
+                                                        }, 1000);
+                                                    </script>
+                                                @endif
                                             @endforeach
                                         </div>
                                     </div>
@@ -120,22 +124,79 @@
                                 <div class="tab-pane fade" id="reviews" role="tabpanel">
                                     <div class="single-matches-box">
                                         <div class="row align-items-center">
-                                            <div class="col-lg-12 col-md-12">
-                                                <div class="flex-container mt--10">
-                                                    <div class="flex-child c1">
-                                                        <img src="{{ asset('img/t1.png') }}" alt="image">
+                                            @foreach ($data as $battel)
+                                                @if (strtotime($battel->date ) == strtotime(date('Y-m-d')))
+                                               
+
+                                                    <div class="col-lg-12 col-md-12 ">
+                                                        <a href="#"
+                                                            class="flex-container  border border-2 bg-gray10 rounded">
+                                                            <div class="flex-child c1">
+                                                                <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamoneimg }}"
+                                                                    alt="image">
+                                                            </div>
+
+                                                            <div class="flex-child c2 p-2">
+                                                                <div class="content blue-bg text-center p-2">
+                                                                    <h3 class="text-white mb-0">{{ $battel->teamone }} vs
+                                                                        {{ $battel->teamtwo }}</h3>
+                                                                    <div id="timer"
+                                                                        class="flex-wrap d-flex justify-content-center text-white">
+                                                                        <div id="demo{{ $loop->iteration }}"
+                                                                            class="align-items-center flex-column d-flex justify-content-center">
+                                                                           {{ $battel->date}}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex-child c3 ms-3">
+                                                                <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamtwoimg }}"
+                                                                    alt="image">
+                                                            </div>
+                                                        </a>
                                                     </div>
-                                                    <div class="flex-child c2">
-                                                        <div class="content blue-bg text-center">
-                                                            <h3 class="text-white mb-0">SL vs SA T20</h3>
-                                                            <h6 class="text-white">2 days</h6>
-                                                        </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="reviews1" role="tabpanel">
+                                    <div class="single-matches-box">
+                                        <div class="row align-items-center">
+                                            @foreach ($data as $battel)
+                                                @if (strtotime($battel->date) < strtotime(date('Y-m-d')))
+                                               
+
+                                                    <div class="col-lg-12 col-md-12 ">
+                                                        <a href="#"
+                                                            class="flex-container  border border-2 bg-gray10 rounded">
+                                                            <div class="flex-child c1">
+                                                                <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamoneimg }}"
+                                                                    alt="image">
+                                                            </div>
+
+                                                            <div class="flex-child c2 p-2">
+                                                                <div class="content blue-bg text-center p-2">
+                                                                    <h3 class="text-white mb-0">{{ $battel->teamone }} vs
+                                                                        {{ $battel->teamtwo }}</h3>
+                                                                    <div id="timer"
+                                                                        class="flex-wrap d-flex justify-content-center text-white">
+                                                                        <div id="demo{{ $loop->iteration }}"
+                                                                            class="align-items-center flex-column d-flex justify-content-center">
+                                                                           {{ $battel->date}}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex-child c3 ms-3">
+                                                                <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamtwoimg }}"
+                                                                    alt="image">
+                                                            </div>
+                                                        </a>
                                                     </div>
-                                                    <div class="flex-child c3">
-                                                        <img src="{{ asset('img/t2.png') }}" alt="image">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
