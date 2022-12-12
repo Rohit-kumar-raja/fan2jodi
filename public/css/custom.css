@@ -1,5 +1,4 @@
 @media only screen and (max-width: 767px) {
-
     .single-banner-item {
         padding-top: 25px;
         padding-bottom: 95px;
@@ -10,7 +9,9 @@
     font-size: 28px;
 }
 
+
 /* ==========================register===================================== */
+
 .bor-rad-30 {
     border-radius: 30px;
     border: 4px solid #690202;
@@ -29,7 +30,9 @@
     border-radius: 20px;
 }
 
+
 /* ======================= price-list =========================== */
+
 .white-bg {
     background-color: white;
     color: black !important;
@@ -48,7 +51,9 @@
     margin-top: -30px;
 }
 
+
 /* ================================ wallet ================================= */
+
 .box-sh {
     box-shadow: 5px 5px 20px #2e2c2c;
     border: none;
@@ -99,7 +104,9 @@
     margin-top: -10px !important;
 }
 
+
 /* ================================== add cash ==================================== */
+
 .design {
     border: 0;
     outline: 0;
@@ -117,7 +124,9 @@
     justify-content: space-between;
 }
 
+
 /* ================================= account ====================================== */
+
 .img-br {
     border: 3px white solid;
 }
@@ -154,7 +163,7 @@
 
 .flex-child {
     flex: 3;
-
+    margin: auto;
 }
 
 .flex-child:second-child {
@@ -172,7 +181,9 @@
     padding-right: 10px;
 }
 
+
 /* =================================== contest ============================================= */
+
 .p-15 {
     padding: 15px;
 }
@@ -204,7 +215,9 @@
     margin-left: 15px;
 }
 
+
 /* =================================== contest ========================================== */
+
 .text-red {
     color: maroon
 }
@@ -236,9 +249,12 @@
     padding: 5px;
 }
 
+
 /* =============================== battle ======================================= */
+
 .c1 img {
-    width: 80%;
+    height: 160px;
+    width: 90%;
     margin-left: 10px;
 }
 
@@ -247,10 +263,9 @@
     padding: 0px 30px;
 }
 
-
-
 .c3 img {
-    width: 80%;
+    height: 150px;
+    width: 90%;
     margin-right: 15px;
 }
 
@@ -277,7 +292,9 @@
     font-size: 25px !important;
 }
 
+
 /* ============================= new header =============================== */
+
 .top-nav {
     display: flex;
     justify-content: space-between;
@@ -316,4 +333,8 @@
 
 top-nav ul li a {
     color: white !important;
+}
+
+.products-details-area {
+    background: url('https://i2.wp.com/www.learncram.com/wp-content/uploads/2021/03/Summary-of-Grass.png?resize=840%2C473&ssl=1');
 }
