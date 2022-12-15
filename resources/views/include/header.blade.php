@@ -1,5 +1,5 @@
 <style>
-@media(max-width){
+@media(max-width:992px){
 .fan2-footer{
     position: absolute;
     width: 100%;
