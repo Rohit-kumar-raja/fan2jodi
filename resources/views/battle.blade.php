@@ -5,8 +5,8 @@
     }
 
     .battle-gradient{
-        background: rgb(57,182,137);
-        background: linear-gradient(90deg, rgba(57,182,137,1) 0%, rgba(139,197,74,1) 100%);
+        background: rgb(57,182,137)!important;
+        background: linear-gradient(90deg, rgba(57,182,137,1) 0%, rgba(139,197,74,1) 100%)!important;
     }
 </style>
 
