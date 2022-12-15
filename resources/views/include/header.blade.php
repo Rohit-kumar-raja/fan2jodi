@@ -1,5 +1,11 @@
 <style>
-
+@media(max-width){
+.fan2-footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+}
+}
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

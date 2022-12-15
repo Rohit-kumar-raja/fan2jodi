@@ -1,5 +1,5 @@
 <!-- Start Footer Area -->
-        <footer class="footer-area bg-1b060a ptb-70 fixed footer">
+        <footer class="footer-area bg-1b060a ptb-70 fixed footer fan2-footer">
             <div class="container">
                 <div class="footer-content">
                     <div class="logo">
