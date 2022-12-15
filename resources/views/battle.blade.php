@@ -43,7 +43,7 @@
                             <div class="tab-content " id="myTabContent">
                                 <div class="tab-pane fade show active" id="description" role="tabpanel">
                                     <div class="single-matches-box">
-                                        <div class="row align-items-center battle-gradient">
+                                        <div class="row align-items-center">
 
                                             @foreach ($data as $battel)
                                                 @if (strtotime($battel->date) > strtotime(date('Y-m-d')))
@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="reviews" role="tabpanel">
                                     <div class="single-matches-box">
-                                        <div class="row align-items-center battle-gradient">
+                                        <div class="row align-items-center">
                                             @foreach ($data as $battel)
                                                 @if (strtotime($battel->date ) == strtotime(date('Y-m-d')))
                                                
@@ -164,7 +164,7 @@
 
                                 <div class="tab-pane fade" id="reviews1" role="tabpanel">
                                     <div class="single-matches-box">
-                                        <div class="row align-items-center battle-gradient">
+                                        <div class="row align-items-center">
                                             @foreach ($data as $battel)
                                                 @if (strtotime($battel->date) < strtotime(date('Y-m-d')))
                                                
