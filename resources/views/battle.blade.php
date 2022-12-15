@@ -49,7 +49,7 @@
                                                 @if (strtotime($battel->date) > strtotime(date('Y-m-d')))
                                                     <div class="col-lg-12 col-md-12 " id="matches{{ $loop->iteration }}">
                                                         <a href="{{ route('contest', $battel->id) }}"
-                                                            class="flex-container  border border-2 bg-gray10 rounded battle-gradient">
+                                                            class="flex-container  border border-2  rounded battle-gradient">
                                                             <div class="flex-child c1">
                                                                 <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamoneimg }}"
                                                                     alt="image">
@@ -131,7 +131,7 @@
 
                                                     <div class="col-lg-12 col-md-12 ">
                                                         <a href="#"
-                                                            class="flex-container  border border-2 bg-gray10 rounded battle-gradient">
+                                                            class="flex-container  border border-2  rounded battle-gradient">
                                                             <div class="flex-child c1">
                                                                 <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamoneimg }}"
                                                                     alt="image">
@@ -171,7 +171,7 @@
 
                                                     <div class="col-lg-12 col-md-12 ">
                                                         <a href="#"
-                                                            class="flex-container  border border-2 bg-gray10 rounded battle-gradient">
+                                                            class="flex-container  border border-2  rounded battle-gradient">
                                                             <div class="flex-child c1">
                                                                 <img src="{{ env('IMG_URL') . 'matches/' . $battel->teamoneimg }}"
                                                                     alt="image">
