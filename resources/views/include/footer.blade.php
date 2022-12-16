@@ -3,7 +3,7 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="logo">
-                        <a href="#" class="d-inline-block"><img width="100px" class="logo"src="{{url('logo2.png')}}" alt="image"></a>
+                        <a href="#" class="d-inline-block"><img width="100px" class="logo"src="{{asset('img/logo2.png')}}" alt="image"></a>
                         <p>Copyright©{{ date('Y')}} Fan2Jodi Powered by <a href="" target="_blank">TogoTeams</a></p>
                         {{-- <ul class="footer-menu">
                             <li class="nav-item"><a class="nav-link" href="#">Legal</a></li>
