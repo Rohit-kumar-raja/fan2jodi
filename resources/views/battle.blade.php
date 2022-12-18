@@ -17,10 +17,10 @@
 
         <!-- Start Main Banner Area -->
         <div class="home-slides owl-carousel owl-theme">
-            @foreach ($sliders as $slider)
-                <img src="  {{ env('IMG_URL') . 'slider/' . $slider->image_name }}" class="single-banner-item  "
+          
+                <img src="https://fan2jodi.com/admin/public/upload/slider/20221215223025.jpg" class="single-banner-item  "
                     data-jarallax='{"speed": 0.3}' />
-            @endforeach
+           
         </div>
 
         <!-- Start Products Details Area -->
