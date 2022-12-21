@@ -1,11 +1,11 @@
 <style>
-@media(max-width:992px){
-.fan2-footer{
-    position: absolute;
-    width: 100%;
-    bottom: 0px;
-}
-}
+    @media(max-width:992px) {
+        .fan2-footer {
+            position: absolute;
+            width: 100%;
+            bottom: 0px;
+        }
+    }
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,29 +15,31 @@
     <section class="top-nav ">
         <div class="logos">
             <a href="{{ route('home') }}"> <img src="{{ asset('img/logo2.png') }}" alt="logo" width="45px"> <span
-                    class="f-28 text-uppercase">&ensp;{{ $title }}</span></a>
+                    class="f-28 text-capitalize">&ensp;{{ $title }}</span></a>
 
         </div>
         <ul>
-            <li class="nav-item "><a href="{{ route('account') }}" class="nav-link text-white">MY ACCOUNT</a>
+            <li class="nav-item "><a href="{{ route('account') }}" class="nav-link text-white">My Account</a>
             <li class="nav-item "><a href="{{ route('contest.my') }}" class="nav-link text-white">My Contest</a></li>
-            <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-white">WALLET</a></li>
+            <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-white">Wallet</a></li>
             <li class="nav-item "><a href="{{ route('withdraw') }}" class="nav-link text-white">Withdraw</a></li>
             <li class="nav-item "><a href="{{ route('wallet.transaction') }}"
                     class="nav-link text-white">Transaction's</a></li>
-            <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-white">ADD CASH</a></li>
+            <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-white">Add Cash</a></li>
             @if (!empty(Auth::user()))
                 <li class="nav-item ">
                     <a href="{{ route('logout') }}" class="nav-link text-red"
                         onclick="event.preventDefault();
             document.getElementById('logout-form1').submit();">
-                        {{ __('Logout') }}</a>
+                       <i class="fas fa-power-off"></i> {{ __('Logout') }}</a>
                 </li>
                 <form id="logout-form1" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
             @else
-                <li class="nav-item "><a href="{{ route('login') }}" class="nav-link text-red">Login</a>
+                <li class="nav-item  border rounded-pill  ms-2 pl-2 pr-2 pt-1 pb-1 mt--2"><a
+                        href="{{ route('login') }}" class="nav-link text-red"> <i class="fas fa-user-plus"></i>
+                        Login/Register</a>
                 </li>
             @endif
         </ul>
@@ -103,17 +105,17 @@
 
                 <div class="white-bor mt-3">
                     <ul class="navbar-nav black-text">
-                        <li class="nav-item "><a href="{{ route('account') }}" class="nav-link text-red">MY ACCOUNT</a>
+                        <li class="nav-item "><a href="{{ route('account') }}" class="nav-link text-red">My Account</a>
                         <li class="nav-item "><a href="{{ route('contest.my') }}" class="nav-link text-red">My
                                 Contest</a>
                         </li>
-                        <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-red">WALLET</a></li>
+                        <li class="nav-item "><a href="{{ route('wallet') }}" class="nav-link text-red">Wallet</a></li>
                         <li class="nav-item "><a href="{{ route('withdraw') }}" class="nav-link text-red">Withdraw</a>
                         </li>
                         <li class="nav-item "><a href="{{ route('wallet.transaction') }}"
                                 class="nav-link text-red">Transaction's</a></li>
-                        <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-red">ADD
-                                CASH</a>
+                        <li class="nav-item "><a href="{{ route('add_cash') }}" class="nav-link text-red">Add
+                                Cash</a>
                         </li>
                         @if (!empty(Auth::user()))
                             <li class="nav-item ">
@@ -127,7 +129,8 @@
                                 @csrf
                             </form>
                         @else
-                            <li class="nav-item "><a href="{{ route('login') }}" class="nav-link text-red">Login</a>
+                            <li class="nav-item "><a href="{{ route('login') }}" class="nav-link text-red">Login /
+                                    Register</a>
                             </li>
                         @endif
                     </ul>
@@ -172,7 +175,7 @@
     }
 
     .top-nav ul {
-        margin-top: 20px
+        margin-top: 19px
     }
 
     .nav-link {

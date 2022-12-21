@@ -304,19 +304,20 @@
 
 .top-nav ul {
     list-style-type: none;
-    line-height: 25px;
+    line-height: 17px;
     ;
 }
 
 .top-nav ul li {
     float: left;
-    padding: 0px 10px;
-    text-transform: uppercase;
+    padding: 0px 20px;
+    text-transform: capitalize !important;
     color: white !important;
+    border-right: 1px solid #808080d9;
 }
 
 .top-nav .logos {
-    margin-top: 15px;
+    margin-top: 6px;
 }
 
 @media(max-width:576px) {
@@ -333,4 +334,17 @@
 
 top-nav ul li a {
     color: white !important;
+}
+
+.mt--2 {
+    margin-top: -3px;
+}
+
+body {
+    font-family: 'Baloo Paaji 2', cursive;
+    font-family: 'Kanit', sans-serif;
+
+}
+.navbar-area{
+    height: 100vh !important;
 }
