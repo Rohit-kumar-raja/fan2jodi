@@ -129,8 +129,8 @@
                                 @csrf
                             </form>
                         @else
-                            <li class="nav-item "><a href="{{ route('login') }}" class="nav-link text-red">Login /
-                                    Register</a>
+                            <li class="nav-item "><a href="{{ route('login') }}" class="nav-link text-white border rounded-pill  ms-2 pl-2 pr-2 pt-1 pb-1 mt-2"> <i class="fas fa-user-plus"></i> Login /
+                                    Register </a>
                             </li>
                         @endif
                     </ul>
@@ -180,7 +180,7 @@
 
     .nav-link {
         display: block;
-        padding: 0rem 0rem;
+        padding: 0.4rem 0rem;
     }
 </style>
 

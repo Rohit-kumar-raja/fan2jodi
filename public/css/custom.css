@@ -280,12 +280,12 @@
 /* ========================= header ================================ */
 
 .white-bor {
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }
 
 .navbar-nav li {
-    background-color: white;
-    border: 2px solid #010a31;
+    border-top: 1px solid #9e5b5b;
+    margin-top: 2px;
 }
 
 .navbar-nav li a {
@@ -345,6 +345,7 @@ body {
     font-family: 'Kanit', sans-serif;
 
 }
-.navbar-area{
-    height: 100vh !important;
+.black-text li a{
+text-align: left;
+padding-left: 20px !important;
 }
