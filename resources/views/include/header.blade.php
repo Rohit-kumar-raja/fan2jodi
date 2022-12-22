@@ -51,7 +51,7 @@
                 <div class="logo">
                     <a href="{{ route('home') }}">
                         <img src="{{ asset('img/logo.png') }}" alt="logo" width="45px"><span
-                            class="f-28 text-uppercase">&ensp;{{ $title }}</span>
+                            class="f-28 text-capitalize">&ensp;{{ $title }}</span>
                     </a>
                 </div>
             </div>
