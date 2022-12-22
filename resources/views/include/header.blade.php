@@ -95,7 +95,7 @@
 <div class="sidebarModal modal right fade" id="sidebarModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <button type="button" class="close" data-bs-dismiss="modal"><i class="far fa-times-circle text-red"></i></button>
+            <button type="button" class="close" data-bs-dismiss="modal"><i class="fal fa-times-circle text-red"></i></button>
 
             <div class="modal-body extra">
                 <div class="logo">

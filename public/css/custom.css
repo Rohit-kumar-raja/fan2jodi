@@ -289,7 +289,7 @@
 }
 
 .navbar-nav li a {
-    font-size: 25px !important;
+    font-size: 20px !important;
 }
 
 
@@ -341,7 +341,6 @@ top-nav ul li a {
 }
 
 body {
-    font-family: 'Baloo Paaji 2', cursive;
     font-family: 'Kanit', sans-serif;
 
 }
