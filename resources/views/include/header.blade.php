@@ -37,7 +37,7 @@
                     @csrf
                 </form>
             @else
-                <li class="nav-item  border rounded-pill  ms-2 pl-2 pr-2 pt-1 pb-1 mt--2"><a
+                <li class="nav-item  border rounded-pill  ms-2 pl-2 pr-2  mt--2"><a
                         href="{{ route('login') }}" class="nav-link text-red"> <i class="fas fa-user-plus"></i>
                         Login/Register</a>
                 </li>
@@ -95,7 +95,7 @@
 <div class="sidebarModal modal right fade" id="sidebarModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <button type="button" class="close" data-bs-dismiss="modal"><i class='bx bx-x'></i></button>
+            <button type="button" class="close" data-bs-dismiss="modal"><i class="far fa-times-circle text-red"></i></button>
 
             <div class="modal-body extra">
                 <div class="logo">
@@ -129,8 +129,7 @@
                                 @csrf
                             </form>
                         @else
-                            <li class="nav-item "><a href="{{ route('login') }}" class="nav-link text-white border rounded-pill  ms-2 pl-2 pr-2 pt-1 pb-1 mt-2"> <i class="fas fa-user-plus"></i> Login /
-                                    Register </a>
+                            <li class="nav-item "><a href="{{ route('login') }}" class="nav-link text-white border rounded-pill  ms-2 pl-2 pr-2 pt-1 pb-1 mt-2"> <i class="fas fa-user-plus"></i>Login/Register </a>
                             </li>
                         @endif
                     </ul>

@@ -219,7 +219,7 @@
 /* =================================== contest ========================================== */
 
 .text-red {
-    color: maroon
+    color: #ff1c1c
 }
 
 .f-18 {
@@ -304,7 +304,7 @@
 
 .top-nav ul {
     list-style-type: none;
-    line-height: 17px;
+    line-height: 10px;
     ;
 }
 
@@ -337,7 +337,7 @@ top-nav ul li a {
 }
 
 .mt--2 {
-    margin-top: -3px;
+    margin-top: -7px;
 }
 
 body {
@@ -348,4 +348,8 @@ body {
 .black-text li a{
 text-align: left;
 padding-left: 20px !important;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 0.9rem;
 }
